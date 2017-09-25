@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>批量地址</title>
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #l-map{height:500px;width:100%;}
+        #r-result{width:100%; font-size:14px;line-height:20px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=C4c37a0ef3bcb81117a725fcb923d9b7"></script>
+</head>
+<body>
+    <div id="l-map"></div>
+    <div id="r-result">
+        <input type="button" value="批量地址解析" onclick="bdGEO()" />
+        <div id="result"></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("l-map");
+    map.centerAndZoom(new BMap.Point(118.777879,32.057726), 13);
+    map.enableScrollWheelZoom(true);
+    var index = 0;
+    var myGeo = new BMap.Geocoder();
+    var adds = [
+        "南京市玄武区",
+        "南京市鼓楼区",
+        "南京市建邺区",
+        "南京市秦淮区",
+        "南京市雨花台区",
+        "南京市栖霞区",
+        "南京市浦口区",
+        "南京市六合区",
+        "南京市江宁区",
+        "南京市溧水区",
+        "南京市高淳区",
+    ];
+    function bdGEO(){
+        var add = adds[index];
+        geocodeSearch(add);
+        index++;
+    }
+    function geocodeSearch(add){
+        if(index < adds.length){
+            setTimeout(window.bdGEO,400);
+        } 
+        myGeo.getPoint(add, function(point){
+            if (point) {
+                document.getElementById("result").innerHTML +=  index + "、" + add + ":" + point.lng + "," + point.lat + "</br>";
+                var address = new BMap.Point(point.lng, point.lat);
+                addMarker(address,new BMap.Label(index+":"+add,{offset:new BMap.Size(20,-10)}));
+            }
+        }, "合肥市");
+    }
+    // 编写自定义函数,创建标注
+    function addMarker(point,label){
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+        marker.setLabel(label);
+    }
+</script>
