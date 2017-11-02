@@ -27,7 +27,7 @@ body {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url('../images/loading.gif') #0f2a41 center no-repeat;
+	background: url('./images/loading.gif') #5c89b0 center no-repeat;
     transition: all .5s ease-in;
     z-index: 100;
 	&.hide{
@@ -51,7 +51,7 @@ body {
     	width: 908px;
     	height: 138px;
     	line-height: 100px;
-    	background: url('../images/title.png') 78px no-repeat;
+    	background: url('./images/title.png') 78px no-repeat;
     	text-align: center;
     	color:#fff;
     	z-index: 10;
@@ -69,7 +69,7 @@ body {
 			top: -2px;
 			width: 10px;
 			height: 11px;
-			background: url('../images/moduleLeftTop.png') 0 no-repeat;
+			background: url('./images/moduleLeftTop.png') 0 no-repeat;
         }
         &:after{
         	content: ' ';
@@ -78,7 +78,7 @@ body {
 			top: -2px;
 			width: 10px;
 			height: 11px;
-			background: url('../images/moduleRightTop.png') 0 no-repeat;
+			background: url('./images/moduleRightTop.png') 0 no-repeat;
         }
         .leftBottomRaidus{
         	position: absolute;
@@ -86,7 +86,7 @@ body {
 			bottom: -2px;
 			width: 10px;
 			height: 11px;
-			background: url('../images/moduleLeftBottom.png') 0 no-repeat;
+			background: url('./images/moduleLeftBottom.png') 0 no-repeat;
         }
         .rightBottomRaidus{
         	position: absolute;
@@ -94,7 +94,7 @@ body {
 			bottom: -2px;
 			width: 10px;
 			height: 11px;
-			background: url('../images/moduleRightBottom.png') 0 no-repeat;
+			background: url('./images/moduleRightBottom.png') 0 no-repeat;
         }
         h5 {
             line-height: 35px;
@@ -133,7 +133,7 @@ body {
 
         .module{
         	h5{
-        		background: url('../images/leftTitleBg.png') center no-repeat;
+        		background: url('./images/leftTitleBg.png') center no-repeat;
         	}
         	.moduleContent{
 		        .block {
@@ -168,7 +168,7 @@ body {
 		    bottom: -15px;
 		    width: 360px;
 		    height: 360px;
-		    background: url(../images/leftLeftBottom.gif) left bottom no-repeat;
+		    background: url(./images/leftLeftBottom.gif) left bottom no-repeat;
 		    background-size: 100%;
         }
     }
@@ -183,7 +183,7 @@ body {
 	            height: 736px;
 	            border:1px solid #1c37c2;
 	            box-shadow: 0 0 20px #1c37c2 inset ;
-	            background: url('../images/bg.png') center/contain no-repeat!important;
+	            background: url('./images/bg.png') center/contain no-repeat!important;
 	        }
 	        .mainNum,.listTop,.xygs,.totalNum{
 				position: absolute;
@@ -252,7 +252,7 @@ body {
 					font-size: 16px;
 					span{
 						padding: 10px 20px;
-						background: url('../images/rightLeftBottom.gif') center no-repeat;
+						background: url('./images/rightLeftBottom.gif') center no-repeat;
 					}
 				}
 				ul{
@@ -283,7 +283,7 @@ body {
 	        	bottom: 0;
 	        	width: 269px;
 	        	height: 268px;
-	        	background: url('../images/mainLeftBottom.gif') no-repeat;
+	        	background: url('./images/mainLeftBottom.gif') no-repeat;
 	        }
         }
         .block {
@@ -294,7 +294,7 @@ body {
                     margin-right: 20px;
                 }
                 h5{
-	        		background: url('../images/mainTitleBg.png') center no-repeat;
+	        		background: url('./images/mainTitleBg.png') center no-repeat;
 	        	}
                 #chart5 {
                     float: left;
@@ -379,7 +379,7 @@ body {
 	    				top: 0;
 	    				padding: 25%;
 	    				transform: rotate(-40deg);
-	    				background: url('../images/chart8Light.png') 2px 7px no-repeat;
+	    				background: url('./images/chart8Light.png') 2px 7px no-repeat;
 	    				z-index: 10;
 	    				transition: all .25s ease;
     					opacity: 0;
@@ -415,7 +415,7 @@ body {
         }
         .module{
         	h5{
-        		background: url('../images/leftTitleBg.png') center no-repeat;
+        		background: url('./images/leftTitleBg.png') center no-repeat;
         	}
         }
         .xydt{
@@ -482,7 +482,7 @@ body {
 				top: -25px;
 			    width: 360px;
 			    height: 360px;
-			    background: url(../images/leftLeftBottom.gif) left bottom no-repeat;
+			    background: url(./images/leftLeftBottom.gif) left bottom no-repeat;
 			    background-size: 100%;
 	            transform: rotate(180deg);
 	        }
@@ -492,7 +492,7 @@ body {
 	        	bottom: 8px;
 	        	width: 30px;
 	        	height: 7px;
-	        	background: url('../images/rightLeftBottom.gif') no-repeat;
+	        	background: url('./images/rightLeftBottom.gif') no-repeat;
 	        }
         }
     }

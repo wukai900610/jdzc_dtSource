@@ -21,7 +21,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: url("../images/loading.gif") #0f2a41 center no-repeat;
+  background: url("./images/loading.gif") #5c89b0 center no-repeat;
   -webkit-transition: all .5s ease-in;
   transition: all .5s ease-in;
   z-index: 100; }
@@ -44,7 +44,7 @@ body {
     width: 908px;
     height: 138px;
     line-height: 100px;
-    background: url("../images/title.png") 78px no-repeat;
+    background: url("./images/title.png") 78px no-repeat;
     text-align: center;
     color: #fff;
     z-index: 10;
@@ -61,7 +61,7 @@ body {
       top: -2px;
       width: 10px;
       height: 11px;
-      background: url("../images/moduleLeftTop.png") 0 no-repeat; }
+      background: url("./images/moduleLeftTop.png") 0 no-repeat; }
     .dtCharts .module:after {
       content: ' ';
       position: absolute;
@@ -69,21 +69,21 @@ body {
       top: -2px;
       width: 10px;
       height: 11px;
-      background: url("../images/moduleRightTop.png") 0 no-repeat; }
+      background: url("./images/moduleRightTop.png") 0 no-repeat; }
     .dtCharts .module .leftBottomRaidus {
       position: absolute;
       left: -1px;
       bottom: -2px;
       width: 10px;
       height: 11px;
-      background: url("../images/moduleLeftBottom.png") 0 no-repeat; }
+      background: url("./images/moduleLeftBottom.png") 0 no-repeat; }
     .dtCharts .module .rightBottomRaidus {
       position: absolute;
       right: -1px;
       bottom: -2px;
       width: 10px;
       height: 11px;
-      background: url("../images/moduleRightBottom.png") 0 no-repeat; }
+      background: url("./images/moduleRightBottom.png") 0 no-repeat; }
     .dtCharts .module h5 {
       line-height: 35px;
       text-align: center;
@@ -111,7 +111,7 @@ body {
     .dtCharts .leftBar #chart3 {
       height: 170px; }
     .dtCharts .leftBar .module h5 {
-      background: url("../images/leftTitleBg.png") center no-repeat; }
+      background: url("./images/leftTitleBg.png") center no-repeat; }
     .dtCharts .leftBar .module .moduleContent .block {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -141,7 +141,7 @@ body {
       bottom: -15px;
       width: 360px;
       height: 360px;
-      background: url(../images/leftLeftBottom.gif) left bottom no-repeat;
+      background: url(./images/leftLeftBottom.gif) left bottom no-repeat;
       background-size: 100%; }
   .dtCharts .mainBar {
     margin: 0 10px 20px 10px;
@@ -154,7 +154,7 @@ body {
         height: 736px;
         border: 1px solid #1c37c2;
         box-shadow: 0 0 20px #1c37c2 inset;
-        background: url("../images/bg.png") center/contain no-repeat !important; }
+        background: url("./images/bg.png") center/contain no-repeat !important; }
       .dtCharts .mainBar .mainMap .mainNum, .dtCharts .mainBar .mainMap .listTop, .dtCharts .mainBar .mainMap .xygs, .dtCharts .mainBar .mainMap .totalNum {
         position: absolute;
         z-index: 10;
@@ -197,7 +197,7 @@ body {
         font-size: 16px; }
         .dtCharts .mainBar .mainMap .listTop h5 span, .dtCharts .mainBar .mainMap .xygs h5 span, .dtCharts .mainBar .mainMap .totalNum h5 span {
           padding: 10px 20px;
-          background: url("../images/rightLeftBottom.gif") center no-repeat; }
+          background: url("./images/rightLeftBottom.gif") center no-repeat; }
       .dtCharts .mainBar .mainMap .listTop ul li, .dtCharts .mainBar .mainMap .xygs ul li, .dtCharts .mainBar .mainMap .totalNum ul li {
         line-height: 1.6;
         font-size: 16px; }
@@ -218,7 +218,7 @@ body {
         bottom: 0;
         width: 269px;
         height: 268px;
-        background: url("../images/mainLeftBottom.gif") no-repeat; }
+        background: url("./images/mainLeftBottom.gif") no-repeat; }
     .dtCharts .mainBar .block {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -230,7 +230,7 @@ body {
         .dtCharts .mainBar .block .module:nth-child(1) {
           margin-right: 20px; }
         .dtCharts .mainBar .block .module h5 {
-          background: url("../images/mainTitleBg.png") center no-repeat; }
+          background: url("./images/mainTitleBg.png") center no-repeat; }
         .dtCharts .mainBar .block .module #chart5 {
           float: left;
           width: 100%;
@@ -303,7 +303,7 @@ body {
             padding: 25%;
             -webkit-transform: rotate(-40deg);
                     transform: rotate(-40deg);
-            background: url("../images/chart8Light.png") 2px 7px no-repeat;
+            background: url("./images/chart8Light.png") 2px 7px no-repeat;
             z-index: 10;
             -webkit-transition: all .25s ease;
             transition: all .25s ease;
@@ -334,7 +334,7 @@ body {
           background: -webkit-linear-gradient(#a1d73e, #03bf7c);
           background: linear-gradient(#a1d73e, #03bf7c); }
     .dtCharts .rightBar .module h5 {
-      background: url("../images/leftTitleBg.png") center no-repeat; }
+      background: url("./images/leftTitleBg.png") center no-repeat; }
     .dtCharts .rightBar .xydt {
       position: relative; }
       .dtCharts .rightBar .xydt .moduleContent {
@@ -390,7 +390,7 @@ body {
         top: -25px;
         width: 360px;
         height: 360px;
-        background: url(../images/leftLeftBottom.gif) left bottom no-repeat;
+        background: url(./images/leftLeftBottom.gif) left bottom no-repeat;
         background-size: 100%;
         -webkit-transform: rotate(180deg);
                 transform: rotate(180deg); }
@@ -400,7 +400,7 @@ body {
         bottom: 8px;
         width: 30px;
         height: 7px;
-        background: url("../images/rightLeftBottom.gif") no-repeat; }
+        background: url("./images/rightLeftBottom.gif") no-repeat; }
 
 @-webkit-keyframes myRoute {
   from {

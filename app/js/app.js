@@ -48,7 +48,7 @@ $(function(){
 		setTimeout(function(){
 			$('.jdChartLoading').addClass('hide');
 			// $('body').css({'overflow-y':'auto'});
-		}, 1500);
+		}, 2000);
 	}
 	$(window).resize(function(){
 		setScale();
@@ -76,7 +76,7 @@ function chanageXydtPicData () {
 	var num = Math.ceil(Math.random()*4+1);
 	for(var i=0;i<num;i++){
 		var random = Math.ceil(Math.random()*12+1);
-		xydtPic.appendSlide('<a><img src="images/xydt'+ random +'.jpg"></a>','swiper-slide','div');
+		xydtPic.appendSlide('<a><img src="./css/images/xydt'+ random +'.jpg"></a>','swiper-slide','div');
 	}
 	setXydtPicInterval(num);
 
@@ -133,7 +133,7 @@ function setHighlight(chart,seriesObj,seriesIndex,intervalTime){
 
 app.dtCharts = function() {
 
-	var pathLightIco = 'image://images/mapLightIco.png';
+	var pathLightIco = 'image://css/images/mapLightIco.png';
 
 	var convertData = function(data) {
 	    var res = [];
