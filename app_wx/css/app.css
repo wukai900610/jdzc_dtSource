@@ -18,8 +18,16 @@ html {
 body {
   overflow-x: hidden; }
 
+.textEllipsis {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal; }
+
 .jdChartLoading {
-  display: none;
   position: fixed;
   left: 0;
   right: 0;
@@ -30,7 +38,8 @@ body {
   transition: all 0.5s ease-in;
   z-index: 100; }
   .jdChartLoading.hide {
-    opacity: 0; }
+    opacity: 0;
+    z-index: 0; }
 
 .dtCharts {
   -webkit-transform-origin: left top 0;
@@ -94,9 +103,29 @@ body {
       color: #b8eaf9;
       font-size: 18px; }
     .dtCharts .module .moduleContent {
-      overflow: hidden;
+      overflow: auto;
       position: relative;
       z-index: 10; }
+      .dtCharts .module .moduleContent .areaBox {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 15px 30px 0 20px;
+        background: url("./images/line.gif") right center no-repeat; }
+        .dtCharts .module .moduleContent .areaBox .area {
+          margin-bottom: 20px;
+          padding-left: 25px;
+          width: 140px;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #fff;
+          border-radius: 50px;
+          color: #fff;
+          font-size: 16px; }
+          .dtCharts .module .moduleContent .areaBox .area span {
+            padding-left: 15px;
+            font-weight: bold;
+            font-size: 16px; }
   .dtCharts .leftBar,
   .dtCharts .mainBar,
   .dtCharts .rightBar {
@@ -111,80 +140,12 @@ body {
     .dtCharts .leftBar #chart1 {
       height: 225px; }
     .dtCharts .leftBar #chart2 {
-      height: 190px; }
+      height: 210px; }
     .dtCharts .leftBar #chart3 {
-      height: 190px; }
+      height: 170px; }
     .dtCharts .leftBar #chart4 {
       width: 100%;
       height: 230px; }
-    .dtCharts .leftBar .moduleBox {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; }
-      .dtCharts .leftBar .moduleBox .chart1 {
-        margin-right: 10px;
-        -webkit-box-flex: 4;
-            -ms-flex: 4;
-                flex: 4; }
-        .dtCharts .leftBar .moduleBox .chart1 .moduleContent {
-          height: 100%; }
-          .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox {
-            position: absolute;
-            left: 0;
-            top: 0;
-            padding: 15px 0 0 15px; }
-            .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox .area {
-              position: relative;
-              margin-bottom: 20px;
-              padding-left: 25px;
-              width: 190px;
-              height: 50px;
-              line-height: 50px;
-              border: 1px solid #fff;
-              border-radius: 50px;
-              color: #fff;
-              font-size: 16px; }
-              .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox .area span {
-                position: absolute;
-                right: 15px;
-                top: 0;
-                font-weight: bold;
-                font-size: 16px; }
-      .dtCharts .leftBar .moduleBox .chart1_1 {
-        -webkit-box-flex: 6;
-            -ms-flex: 6;
-                flex: 6; }
-    .dtCharts .leftBar .chart4 .toggleOutlet {
-      position: absolute;
-      bottom: 25px;
-      left: 40px;
-      z-index: 2; }
-      .dtCharts .leftBar .chart4 .toggleOutlet span {
-        display: block;
-        padding: 5px 2px;
-        width: 20px;
-        line-height: 1.2;
-        border: 1px solid #579cee;
-        text-align: center;
-        color: #579cee; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span.active {
-          background: #579cee;
-          color: #fff;
-          box-shadow: 0 0 3px #fff; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span:nth-child(1) {
-          border-radius: 5px 5px 0 0; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span:nth-child(2) {
-          border-radius: 0 0 5px 5px; }
-    .dtCharts .leftBar .chart4 .outletTitle {
-      position: absolute;
-      left: 92px;
-      top: 20px; }
-      .dtCharts .leftBar .chart4 .outletTitle .swiper-slide {
-        position: relative; }
-        .dtCharts .leftBar .chart4 .outletTitle .swiper-slide span {
-          color: #fff; }
-          .dtCharts .leftBar .chart4 .outletTitle .swiper-slide span:nth-child(1) {
-            padding-right: 14px; }
     .dtCharts .leftBar .module h5 {
       background: url("./images/leftTitleBg.png") center no-repeat; }
     .dtCharts .leftBar .leftLeftBottom {
@@ -201,14 +162,12 @@ body {
     .dtCharts .mainBar .mainMap {
       position: relative; }
       .dtCharts .mainBar .mainMap #mainMap {
-        position: relative;
         margin-bottom: 10px;
         width: 100%;
         height: 736px;
         border: 1px solid #1c37c2;
         box-shadow: 0 0 20px #1c37c2 inset;
-        background: url("./images/bg.png") center/contain no-repeat !important;
-        z-index: 1; }
+        background: url("./images/bg.png") center/contain no-repeat !important; }
       .dtCharts .mainBar .mainMap .listTop,
       .dtCharts .mainBar .mainMap .mainNum,
       .dtCharts .mainBar .mainMap .totalNum,
@@ -216,37 +175,6 @@ body {
         position: absolute;
         z-index: 10;
         color: #e2e8f3; }
-      .dtCharts .mainBar .mainMap .listTop h5,
-      .dtCharts .mainBar .mainMap .totalNum h5,
-      .dtCharts .mainBar .mainMap .xygs h5 {
-        color: #39d7db;
-        font-size: 18px; }
-        .dtCharts .mainBar .mainMap .listTop h5 span,
-        .dtCharts .mainBar .mainMap .totalNum h5 span,
-        .dtCharts .mainBar .mainMap .xygs h5 span {
-          padding: 10px 20px;
-          background: url("./images/rightLeftBottom.gif") center no-repeat; }
-      .dtCharts .mainBar .mainMap .listTop,
-      .dtCharts .mainBar .mainMap .totalNum {
-        right: 20px; }
-        .dtCharts .mainBar .mainMap .listTop ul,
-        .dtCharts .mainBar .mainMap .totalNum ul {
-          width: 100%; }
-          .dtCharts .mainBar .mainMap .listTop ul li,
-          .dtCharts .mainBar .mainMap .totalNum ul li {
-            line-height: 1.3;
-            font-size: 16px; }
-            .dtCharts .mainBar .mainMap .listTop ul li b,
-            .dtCharts .mainBar .mainMap .totalNum ul li b {
-              display: inline-block;
-              overflow: hidden;
-              width: 100px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              text-align: right; }
-            .dtCharts .mainBar .mainMap .listTop ul li span,
-            .dtCharts .mainBar .mainMap .totalNum ul li span {
-              font-size: 34px; }
       .dtCharts .mainBar .mainMap .mainNum {
         top: 60px;
         left: 40px; }
@@ -276,27 +204,74 @@ body {
               font-size: 20px; }
           .dtCharts .mainBar .mainMap .mainNum li:nth-child(2) p span {
             background-color: #523457; }
+      .dtCharts .mainBar .mainMap .listTop h5,
+      .dtCharts .mainBar .mainMap .totalNum h5,
+      .dtCharts .mainBar .mainMap .xygs h5 {
+        color: #39d7db;
+        font-size: 18px; }
+        .dtCharts .mainBar .mainMap .listTop h5 span,
+        .dtCharts .mainBar .mainMap .totalNum h5 span,
+        .dtCharts .mainBar .mainMap .xygs h5 span {
+          padding: 10px 20px;
+          background: url("./images/rightLeftBottom.gif") center no-repeat; }
+      .dtCharts .mainBar .mainMap .listTop ul li,
+      .dtCharts .mainBar .mainMap .totalNum ul li,
+      .dtCharts .mainBar .mainMap .xygs ul li {
+        width: 100%;
+        line-height: 1.3;
+        font-size: 16px; }
+        .dtCharts .mainBar .mainMap .listTop ul li b,
+        .dtCharts .mainBar .mainMap .totalNum ul li b,
+        .dtCharts .mainBar .mainMap .xygs ul li b {
+          padding-right: 5px; }
+        .dtCharts .mainBar .mainMap .listTop ul li span,
+        .dtCharts .mainBar .mainMap .totalNum ul li span,
+        .dtCharts .mainBar .mainMap .xygs ul li span {
+          font-size: 34px; }
       .dtCharts .mainBar .mainMap .listTop {
-        top: 73px; }
+        top: 73px;
+        right: 40px; }
       .dtCharts .mainBar .mainMap .xygs {
         left: 40px;
-        bottom: 30px;
-        width: 387px;
-        height: 69px;
-        background: url("./images/xygs.png") center no-repeat; }
-        .dtCharts .mainBar .mainMap .xygs li {
-          float: left;
-          width: 50%;
-          text-align: center; }
-          .dtCharts .mainBar .mainMap .xygs li h5 {
-            padding: 10px 5px 0;
-            color: #36c9d1;
-            font-size: 16px; }
-          .dtCharts .mainBar .mainMap .xygs li p {
-            color: #fff;
-            font-size: 24px; }
-      .dtCharts .mainBar .mainMap .totalNum {
         bottom: 30px; }
+      .dtCharts .mainBar .mainMap .totalNum {
+        right: 20px;
+        bottom: 30px;
+        width: 200px; }
+        .dtCharts .mainBar .mainMap .totalNum label {
+          border-bottom: 1px solid #39d7db;
+          cursor: pointer; }
+          .dtCharts .mainBar .mainMap .totalNum label.active {
+            border-bottom: 3px solid #39d7db; }
+        .dtCharts .mainBar .mainMap .totalNum .topPic {
+          height: 220px; }
+          .dtCharts .mainBar .mainMap .totalNum .topPic ul {
+            width: 100%; }
+            .dtCharts .mainBar .mainMap .totalNum .topPic ul li {
+              width: 100%;
+              line-height: 1.3;
+              font-size: 16px; }
+              .dtCharts .mainBar .mainMap .totalNum .topPic ul li b {
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 80px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                color: #fff !important; }
+                .dtCharts .mainBar .mainMap .totalNum .topPic ul li b:hover {
+                  color: #fff !important; }
+              .dtCharts .mainBar .mainMap .totalNum .topPic ul li span {
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 120px;
+                vertical-align: middle;
+                color: #fff !important; }
+                .dtCharts .mainBar .mainMap .totalNum .topPic ul li span:hover {
+                  color: #fff !important; }
       .dtCharts .mainBar .mainMap .mainLeftBottom {
         position: absolute;
         left: 0;
@@ -332,10 +307,10 @@ body {
       height: 225px; }
     .dtCharts .rightBar #chart7 {
       width: 100%;
-      height: 190px; }
+      height: 210px; }
     .dtCharts .rightBar #chart8 {
       width: 100%;
-      height: 190px; }
+      height: 170px; }
     .dtCharts .rightBar #chart9 {
       width: 100%;
       height: 230px; }
@@ -357,3 +332,16 @@ body {
   to {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg); } }
+
+.hoverTip {
+  position: absolute;
+  overflow: auto;
+  display: none;
+  padding: 5px;
+  width: 150px;
+  max-height: 150px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 1; }

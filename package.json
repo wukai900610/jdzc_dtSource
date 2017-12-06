@@ -1,8 +1,11 @@
 {
   "name": "jdzc_dt",
-  "dependencies": {},
+  "dependencies": {
+    "gulp-shell": "^0.6.3"
+  },
   "devDependencies": {
     "browser-sync": "^2.18.8",
+    "express": "^4.16.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-bom": "^1.0.0",
@@ -18,12 +21,14 @@
     "gulp-uglify": "^2.1.0",
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.8",
+    "http-proxy-middleware": "^0.17.4",
     "jshint": "^2.9.4"
   },
   "scripts": {
     "start": "gulp",
     "build": "gulp clean && gulp build",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "proxy": "node ./app/express_proxy.js"
   },
   "version": "1.0.0",
   "main": "gulpfile.js",

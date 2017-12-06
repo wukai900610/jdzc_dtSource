@@ -13,7 +13,6 @@ var sass = require('gulp-sass');
 var gutil = require('gulp-util');
 var clean = require('gulp-clean');
 
-
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
@@ -121,9 +120,11 @@ gulp.task('sass', function() {
 // 静态服务器 + 监听 scss/html 文件
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        server: "./"
+        server: {
+            baseDir: './'
+        }
     });
-    
+
     gulp.watch("app/css/sass/*.scss", ["sass"]);
     gulp.watch("app/*.html").on('change', reload);
     gulp.watch("app/js/*.js").on('change', reload);
