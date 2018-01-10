@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>吉林省进出口企业分布点图</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+
+    <script src="js/lib/layer/layer.js"></script>
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=C4c37a0ef3bcb81117a725fcb923d9b7"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="dtApp">
+        <div class="breadBar">
+            <span>当前位置 ></span>
+            <a href="">首页</a>/
+            <a href="">统计分析</a>/
+            <a href="" class="active">吉林省进出口企业分布点图</a>
+        </div>
+        <div class="distributionMap dtPage">
+            <div class="moduleName">
+                <h1>统计分析</h1>
+                <h5>吉林省进出口企业分布点图</h5>
+            </div>
+            <div class="contentBox">
+                <div class="layerBox">
+                    <h2 class="pageTitle">吉林省进出口企业分布点图</h2>
+                    <ul class="mapTopCtrl">
+                        <li class="hover">全部</li>
+                        <li>AAA级</li>
+                        <li>AA级</li>
+                        <li>A级</li>
+                        <li>BBB</li>
+                        <li>BB</li>
+                        <li>B级</li>
+                        <li>CCC级</li>
+                        <li>CC级</li>
+                        <li>C级</li>
+                    </ul>
+                    <div class="mapBox">
+                        <div id="mapStage"></div>
+                        <div class="mapRightCtrl">
+                            <div class="switch">
+                                <span class="close"></span>
+                                <span class="open"></span>
+                            </div>
+                            <div class="rightCtrlBox">
+                                <div class="area">
+                                    <h4>区域：</h4>
+                                    <ul>
+                                        <li class="hover">全部</li>
+                                        <li>长春市</li>
+                                        <li>吉林市</li>
+                                        <li>四平市</li>
+                                        <li>辽源市</li>
+                                        <li>通化市</li>
+                                        <li>白山市</li>
+                                        <li>松原市</li>
+                                        <li>白城市</li>
+                                        <li class="last">延边朝鲜族自治州</li>
+                                    </ul>
+                                </div>
+                                <div class="listCoBox">
+                                    <ul class="listCo">
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                        <li>
+                                            <h5>神华集团</h5>
+                                            <p>吉林省吉林市昌邑区松江东路8号</p>
+                                            <span class="indexIco">1</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        app.distributionMap();
+    </script>
+</body>
+
+</html>

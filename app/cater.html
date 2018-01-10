@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>餐饮行业分析</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+
+    <script src="js/lib/layer/layer.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="dtApp">
+        <div class="breadBar">
+            <span>当前位置 ></span>
+            <a href="">首页</a>/
+            <a href="">统计分析</a>/
+            <a href="" class="active">餐饮行业分析</a>
+        </div>
+        <div class="statisticalAnalysis cater dtPage">
+            <div class="moduleName">
+                <h1>统计分析</h1>
+                <h5>餐饮行业分析</h5>
+            </div>
+            <div class="classification">
+                <div class="classificationRow">
+                    <span>注册资金：</span>
+                    <ul>
+                        <li class="hover">全部</li>
+                        <li>0-100万</li>
+                        <li>100-300万</li>
+                        <li>300-500万</li>
+                        <li>500万以上</li>
+                    </ul>
+                </div>
+                <div class="classificationRow">
+                    <span>成立年限：</span>
+                    <ul>
+                        <li class="hover">全部</li>
+                        <li>成立1年内</li>
+                        <li>成立1-5年内</li>
+                        <li>成立6-10年内</li>
+                        <li>成立10年内</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contentBox">
+                <div class="mainMap">
+                    <div id="mainMap"></div>
+                    <div class="mapLevel">
+                        <span>AAA级</span>
+                        <span>AA级</span>
+                        <span>A级</span>
+                        <span>BBB级</span>
+                        <span>BB级</span>
+                        <span>B级</span>
+                        <span>CCC级</span>
+                        <span>CC级</span>
+                        <span>C级</span>
+                    </div>
+                </div>
+                <ul class="jlChart chartUl">
+                    <li id="radarChart"></li>
+                    <li id="importChart"></li>
+                    <li id="exportChart"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        app.cater();
+    </script>
+</body>
+
+</html>

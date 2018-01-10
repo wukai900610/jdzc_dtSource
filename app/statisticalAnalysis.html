@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>进出口企业信用等级展现</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+
+    <script src="js/lib/layer/layer.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="dtApp">
+        <div class="breadBar">
+            <span>当前位置 ></span>
+            <a href="">首页</a>/
+            <a href="">统计分析</a>/
+            <a href="" class="active">进出口企业信用等级展现</a>
+        </div>
+        <div class="statisticalAnalysis caterScaleAnalysis dtPage">
+            <div class="moduleName">
+                <h1>统计分析</h1>
+                <h5>进出口企业信用等级展现</h5>
+            </div>
+            <div class="contentBox">
+                <div class="mainMap">
+                    <div id="mainMap"></div>
+                    <div class="mapLevel">
+                        <span>AAA级</span>
+                        <span>AA级</span>
+                        <span>A级</span>
+                        <span>BBB级</span>
+                        <span>BB级</span>
+                        <span>B级</span>
+                        <span>CCC级</span>
+                        <span>CC级</span>
+                        <span>C级</span>
+                    </div>
+                </div>
+                <ul class="jlChart chartUl">
+                    <li id="radarChart"></li>
+                    <li id="importChart"></li>
+                    <li id="exportChart"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+        app.statisticalAnalysis();
+    </script>
+</body>
+
+</html>

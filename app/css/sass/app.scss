@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #333;
+}
+
 div,
 li,
 ul {
@@ -22,6 +27,123 @@ html {
 body {
     // overflow:hidden;
     overflow-x: hidden;
+    background-color: #f0f0f0;
+}
+
+@keyframes myRoute {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.creditInfoBox {
+    margin: 20px auto;
+    width: 1200px;
+    .title {
+        position: relative;
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        border: 1px solid #cde1fc;
+        h1 {}
+        p {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        button {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            padding-left: 40px;
+            padding-right: 20px;
+            line-height: 30px;
+            border: none;
+            background-color: #29a3f0;
+            cursor: pointer;
+            color: #fff;
+        }
+    }
+
+    .baseBox {
+        border: 1px solid #ddd;
+        .infoNum {
+            // overflow: auto;
+            margin-bottom: 20px;
+            padding-left:30px;
+            line-height: 45px;
+            border-bottom: 1px solid #ccc;
+            li {
+                position: relative; // float: left;
+                display: inline-block;
+                margin-right: 30px;
+                text-align: center;
+                cursor: pointer;
+                &.active {
+                    &:before {
+                        content: ' ';
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 100%;
+                        height: 3px;
+                        background-color: #28a4ec;
+                    }
+                }
+                span {
+                    padding-left: 5px;
+                    color: #f45655;
+                    font-size: 12px;
+                }
+            }
+        }
+        .infoContent {
+            .tableBox {
+                display: none;
+                padding: 0 25px;
+                h5 {
+                    margin-bottom: 20px;
+                    padding: 5px;
+                    border: 1px solid #28a4ec;
+                    background-color: #e4f0fc;
+                    font-size: 14px;
+                    &:before {
+                        content: ' ';
+                        float: left;
+                        margin-top: 2px;
+                        margin-right: 5px;
+                        width: 6px;
+                        height: 16px;
+                        background-color: #28a4ec;
+                    }
+                }
+                table {
+                    margin-bottom: 20px;
+                    width: 100%;
+                    border-collapse: collapse;
+                    td {
+                        box-sizing: border-box;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        font-size: 14px;
+                        &:nth-child(odd) {
+                            background-color: #e6e6e6;
+                        }
+                    }
+                }
+                .noData{
+                    padding:0 0 20px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+                &.baseInfo {
+                    display: block;
+                }
+            }
+        }
+    }
 }
 
 .jdChartLoading {
@@ -31,7 +153,7 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    background: url('./images/loading.gif') #5c89b0 center no-repeat;
+    background: url("./images/loading.gif") #5c89b0 center no-repeat;
     transition: all 0.5s ease-in;
     z-index: 100;
 
@@ -56,7 +178,7 @@ body {
         width: 908px;
         height: 138px;
         line-height: 100px;
-        background: url('./images/title.png') 78px no-repeat;
+        background: url("./images/title.png") 78px no-repeat;
         text-align: center;
         color: #fff;
         z-index: 10;
@@ -76,7 +198,7 @@ body {
             top: -2px;
             width: 10px;
             height: 11px;
-            background: url('./images/moduleLeftTop.png') 0 no-repeat;
+            background: url("./images/moduleLeftTop.png") 0 no-repeat;
         }
 
         &:after {
@@ -86,7 +208,7 @@ body {
             top: -2px;
             width: 10px;
             height: 11px;
-            background: url('./images/moduleRightTop.png') 0 no-repeat;
+            background: url("./images/moduleRightTop.png") 0 no-repeat;
         }
 
         .leftBottomRaidus {
@@ -95,7 +217,7 @@ body {
             bottom: -2px;
             width: 10px;
             height: 11px;
-            background: url('./images/moduleLeftBottom.png') 0 no-repeat;
+            background: url("./images/moduleLeftBottom.png") 0 no-repeat;
         }
 
         .rightBottomRaidus {
@@ -104,7 +226,7 @@ body {
             bottom: -2px;
             width: 10px;
             height: 11px;
-            background: url('./images/moduleRightBottom.png') 0 no-repeat;
+            background: url("./images/moduleRightBottom.png") 0 no-repeat;
         }
 
         h5 {
@@ -158,8 +280,7 @@ body {
             display: flex;
 
             .chart1 {
-                margin-right: 10px;
-                // width: 40%;
+                margin-right: 10px; // width: 40%;
                 flex: 4;
 
                 .moduleContent {
@@ -169,8 +290,7 @@ body {
                         position: absolute;
                         left: 0;
                         top: 0;
-                        padding: 15px 0 0 15px;
-                        // background: url('./images/line.gif') right center no-repeat;
+                        padding: 15px 0 0 15px; // background: url('./images/line.gif') right center no-repeat;
                         .area {
                             position: relative;
                             margin-bottom: 20px;
@@ -254,7 +374,7 @@ body {
 
         .module {
             h5 {
-                background: url('./images/leftTitleBg.png') center no-repeat;
+                background: url("./images/leftTitleBg.png") center no-repeat;
             }
         }
 
@@ -283,7 +403,7 @@ body {
                 height: 736px;
                 border: 1px solid #1c37c2;
                 box-shadow: 0 0 20px #1c37c2 inset;
-                background: url('./images/bg.png') center/contain no-repeat!important;
+                background: url("./images/bg.png") center/contain no-repeat!important;
                 z-index: 1;
             }
 
@@ -305,7 +425,7 @@ body {
 
                     span {
                         padding: 10px 20px;
-                        background: url('./images/rightLeftBottom.gif') center no-repeat;
+                        background: url("./images/rightLeftBottom.gif") center no-repeat;
                     }
                 }
             }
@@ -397,7 +517,7 @@ body {
                 bottom: 30px;
                 width: 387px;
                 height: 69px;
-                background: url('./images/xygs.png') center no-repeat;
+                background: url("./images/xygs.png") center no-repeat;
 
                 li {
                     float: left;
@@ -418,7 +538,7 @@ body {
             }
 
             .totalNum {
-                bottom: 30px;
+                top: 75px;
             }
 
             .mainLeftBottom {
@@ -427,7 +547,7 @@ body {
                 bottom: 0;
                 width: 269px;
                 height: 268px;
-                background: url('./images/mainLeftBottom.gif') no-repeat;
+                background: url("./images/mainLeftBottom.gif") no-repeat;
             }
         }
 
@@ -442,7 +562,7 @@ body {
                 }
 
                 h5 {
-                    background: url('./images/mainTitleBg.png') center no-repeat;
+                    background: url("./images/mainTitleBg.png") center no-repeat;
                 }
 
                 #chart5 {
@@ -486,10 +606,9 @@ body {
 
         .module {
             h5 {
-                background: url('./images/leftTitleBg.png') center no-repeat;
+                background: url("./images/leftTitleBg.png") center no-repeat;
             }
-        }
-        // .xydt {
+        } // .xydt {
         //     position: relative;
         //
         //     .moduleContent {
@@ -579,12 +698,1032 @@ body {
         // }
     }
 }
-@keyframes myRoute {
-    from {
-        transform: rotate(0);
+
+.dtApp {
+    .breadBar {
+        display: none;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        line-height: 48px;
+        border-top: 2px solid #1a6ca8;
+        background-color: #fff;
+        font-size: 14px;
+
+        a {
+            padding: 0 3px;
+
+            &.active {
+                color: #035294;
+            }
+        }
     }
 
-    to {
-        transform: rotate(360deg);
+    .moduleName {
+        display: none;
+        overflow: auto; // margin-bottom: 20px;
+        line-height: 48px;
+        border-bottom: 1px solid #e4edf4;
+        background-color: #fff;
+
+        h1,
+        h5 {
+            position: relative;
+            float: left;
+            padding-right: 60px;
+
+            &::after {
+                content: ' ';
+                position: absolute;
+                margin-left: 30px;
+                top: 50%;
+                transform: translate(0, -50%);
+                width: 1px;
+                height: 20px;
+                background-color: #ccc;
+            }
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h5 {
+            color: #333;
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 1101px) {
+    .dtApp {
+        overflow: auto;
+        margin: 0 auto;
+        width: 1200px;
+        background-color: #f0f0f0;
+
+        .dtPage {
+            overflow: auto;
+            padding: 0 20px 20px;
+            background-color: #fff;
+
+            .contentBox {
+                padding: 20px;
+                width: 1160px;
+                background-color: #e4e8eb;
+
+                .pageTitle {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: 18px;
+                }
+
+                .textInfoTip {
+                    position: absolute;
+                    left: 35px;
+                    top: 5%;
+                    z-index: 10;
+
+                    li {
+                        line-height: 30px;
+                    }
+                }
+
+                .classification {
+                    padding: 0 0 20px;
+
+                    .classificationRow {
+                        padding: 5px 0;
+                        border-bottom: 1px dashed #ccc;
+
+                        span {
+                            float: left;
+                            line-height: 26px;
+                            font-size: 12px;
+                        }
+
+                        ul {
+                            overflow: auto;
+
+                            li {
+                                float: left;
+                                margin-right: 10px;
+                                padding: 3px 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-size: 14px;
+
+                                &.hover,
+                                &:hover {
+                                    background-color: #e70012;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mapTopCtrl {
+                    overflow: auto;
+                    margin-top: 35px;
+
+                    li {
+                        float: left;
+                        padding: 5px 0;
+                        width: 110px;
+                        border-top: 1px solid #0b66ac;
+                        border-bottom: 1px solid #0b66ac;
+                        border-right: 1px solid #0b66ac;
+                        text-align: center;
+                        cursor: pointer;
+                        font-size: 14px;
+
+                        &:first-child {
+                            border-left: 1px solid #0b66ac;
+                            border-radius: 5px 0 0 5px;
+                        }
+
+                        &:last-child {
+                            border-radius: 0 5px 5px 0;
+                        }
+
+                        &.hover,
+                        &:hover {
+                            background-color: #0b66ac;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .mapBox {
+                    position: relative;
+                    height: 600px;
+                    background-color: #ccc;
+
+                    #mapStage {
+                        height: 100%;
+                    }
+
+                    .mapRightCtrl {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        bottom: 10px;
+
+                        .switch {
+                            position: absolute;
+                            top: 10px;
+                            left: -30px;
+
+                            .close,
+                            .open {
+                                position: relative;
+                                display: block;
+                                width: 30px;
+                                height: 50px;
+                                box-shadow: -3px 0 3px #ccc;
+                                background-color: #fff;
+                                cursor: pointer;
+
+                                &:before {
+                                    content: ' ';
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 8px;
+                                    height: 14px;
+                                    background: url("../css/images/switchIco.png") #fff no-repeat;
+                                }
+                            }
+
+                            .close {
+                                &:before {
+                                    background-position: left top;
+                                }
+                            }
+
+                            .open {
+                                display: none;
+
+                                &:before {
+                                    background-position: left bottom;
+                                }
+                            }
+                        }
+
+                        .rightCtrlBox {
+                            padding: 20px 0;
+                            width: 280px;
+                            background-color: #fff;
+
+                            .area {
+                                padding: 0 20px 20px;
+
+                                h4 {
+                                    font-weight: normal;
+                                }
+
+                                ul {
+                                    overflow: auto;
+
+                                    li {
+                                        float: left;
+                                        margin: 10px 10px 0 0;
+                                        padding: 3px 0;
+                                        width: 65px;
+                                        background-color: #e4e8eb;
+                                        text-align: center;
+                                        cursor: pointer;
+                                        font-size: 12px;
+
+                                        &.hover,
+                                        &:hover {
+                                            background-color: #0b66ac;
+                                            color: #fff;
+                                        }
+
+                                        &:last-child {
+                                            width: 215px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .listCoBox {
+                                li {
+                                    position: relative;
+                                    padding: 10px 25px 10px 50px;
+                                    cursor: pointer;
+
+                                    &.hover,
+                                    &:hover {
+                                        background-color: #eceff1;
+                                    }
+
+                                    .indexIco {
+                                        position: absolute;
+                                        left: 25px;
+                                        top: 16px;
+                                        width: 18px;
+                                        height: 24px;
+                                        line-height: 20px;
+                                        background: url("../css/images/indexIco.png") center no-repeat;
+                                        text-align: center;
+                                        color: #fff;
+                                        font-size: 12px;
+                                    }
+
+                                    h5 {
+                                        color: #0b66ac;
+                                        font-size: 14px;
+                                    }
+
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mapLevel,
+                .mapRightLevel {
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    z-index: 10;
+
+                    span {
+                        display: block;
+                        margin-bottom: 10px;
+                        width: 145px;
+                        height: 34px;
+                        line-height: 34px;
+                        background: #f1f1f1;
+                        border: 1px solid #1a6ca8;
+                        border-radius: 4px;
+                        text-align: center;
+                        color: #333;
+                        cursor: pointer;
+
+                        &.hover,
+                        &:hover {
+                            background-color: #1a6ca8;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .mapLevel {
+                    left: 35px;
+                }
+
+                .mapRightLevel {
+                    right: 35px;
+                }
+
+                .toggleButton {
+                    overflow: auto;
+                    margin: 0 0 0 560px;
+
+                    span {
+                        float: left;
+                        padding: 3px 5px;
+                        background-color: #ceeaff;
+                        border: 1px solid #ccc;
+                        border-bottom: none;
+                        cursor: pointer;
+                        font-size: 14px;
+
+                        &:nth-child(1) {
+                            border-right: none;
+                        }
+
+                        &.hover {
+                            background-color: #0091ff;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .layerBox {
+                    overflow: auto;
+                    padding: 20px 10px;
+                    background-color: #fff;
+
+                    .grid {
+                        overflow: auto;
+
+                        li {
+                            position: relative;
+                            overflow: hidden;
+                            float: left;
+                            margin-bottom: 20px;
+                            height: 400px;
+                            background-color: #fafafa;
+
+                            &.lastChild {
+                                margin-right: 0!important;
+                            }
+
+                            &.mainMap {
+                                height: 500px;
+                            }
+
+                            .chart {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        &.grid1 {
+                            li {
+                                width: 100%;
+                            }
+                        }
+
+                        &.grid2 {
+                            li {
+                                margin-right: 2%;
+                                width: 49%;
+                            }
+                        }
+
+                        &.grid3 {
+                            li {
+                                margin-right: 2%;
+                                width: 32%;
+                            }
+                        }
+
+                        &.grid4 {
+                            li {
+                                margin-right: 1%;
+                                width: 24.5%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 721px) and (max-width: 1100px) {
+    .dtApp {
+        overflow: auto;
+        margin: 0 auto;
+        width: 100%;
+        background-color: #f0f0f0;
+
+        .dtPage {
+            overflow: auto;
+            padding: 20px;
+            background-color: #fff;
+
+            .contentBox {
+                padding: 20px;
+                background-color: #e4e8eb;
+
+                .pageTitle {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: 18px;
+                }
+
+                .textInfoTip {
+                    position: absolute;
+                    left: 35px;
+                    top: 5%;
+                    z-index: 10;
+
+                    li {
+                        line-height: 30px;
+                    }
+                }
+
+                .classification {
+                    padding: 0 0 20px;
+
+                    .classificationRow {
+                        padding: 5px 0;
+                        border-bottom: 1px dashed #ccc;
+
+                        span {
+                            float: left;
+                            line-height: 26px;
+                            font-size: 12px;
+                        }
+
+                        ul {
+                            overflow: auto;
+
+                            li {
+                                float: left;
+                                margin-right: 10px;
+                                padding: 3px 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-size: 14px;
+
+                                &.hover,
+                                &:hover {
+                                    background-color: #e70012;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mapTopCtrl {
+                    overflow: auto;
+                    margin-top: 35px;
+
+                    li {
+                        float: left;
+                        padding: 5px 0;
+                        width: 110px;
+                        border-top: 1px solid #0b66ac;
+                        border-bottom: 1px solid #0b66ac;
+                        border-right: 1px solid #0b66ac;
+                        text-align: center;
+                        cursor: pointer;
+                        font-size: 14px;
+
+                        &:first-child {
+                            border-left: 1px solid #0b66ac;
+                            border-radius: 5px 0 0 5px;
+                        }
+
+                        &:last-child {
+                            border-radius: 0 5px 5px 0;
+                        }
+
+                        &.hover,
+                        &:hover {
+                            background-color: #0b66ac;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .mapBox {
+                    position: relative;
+                    height: 600px;
+                    background-color: #ccc;
+
+                    #mapStage {
+                        height: 100%;
+                    }
+
+                    .mapRightCtrl {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        bottom: 10px;
+
+                        .switch {
+                            position: absolute;
+                            top: 10px;
+                            left: -30px;
+
+                            .close,
+                            .open {
+                                position: relative;
+                                display: block;
+                                width: 30px;
+                                height: 50px;
+                                box-shadow: -3px 0 3px #ccc;
+                                background-color: #fff;
+                                cursor: pointer;
+
+                                &:before {
+                                    content: ' ';
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 8px;
+                                    height: 14px;
+                                    background: url("../css/images/switchIco.png") #fff no-repeat;
+                                }
+                            }
+
+                            .close {
+                                &:before {
+                                    background-position: left top;
+                                }
+                            }
+
+                            .open {
+                                display: none;
+
+                                &:before {
+                                    background-position: left bottom;
+                                }
+                            }
+                        }
+
+                        .rightCtrlBox {
+                            padding: 20px 0;
+                            width: 280px;
+                            background-color: #fff;
+
+                            .area {
+                                padding: 0 20px 20px;
+
+                                h4 {
+                                    font-weight: normal;
+                                }
+
+                                ul {
+                                    overflow: auto;
+
+                                    li {
+                                        float: left;
+                                        margin: 10px 10px 0 0;
+                                        padding: 3px 0;
+                                        width: 65px;
+                                        background-color: #e4e8eb;
+                                        text-align: center;
+                                        cursor: pointer;
+                                        font-size: 12px;
+
+                                        &.hover,
+                                        &:hover {
+                                            background-color: #0b66ac;
+                                            color: #fff;
+                                        }
+
+                                        &:last-child {
+                                            width: 215px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .listCoBox {
+                                li {
+                                    position: relative;
+                                    padding: 10px 25px 10px 50px;
+                                    cursor: pointer;
+
+                                    &.hover,
+                                    &:hover {
+                                        background-color: #eceff1;
+                                    }
+
+                                    .indexIco {
+                                        position: absolute;
+                                        left: 25px;
+                                        top: 16px;
+                                        width: 18px;
+                                        height: 24px;
+                                        line-height: 20px;
+                                        background: url("../css/images/indexIco.png") center no-repeat;
+                                        text-align: center;
+                                        color: #fff;
+                                        font-size: 12px;
+                                    }
+
+                                    h5 {
+                                        color: #0b66ac;
+                                        font-size: 14px;
+                                    }
+
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .mapLevel {
+                    position: absolute;
+                    left: 35px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    z-index: 10;
+
+                    span {
+                        display: block;
+                        margin-bottom: 10px;
+                        width: 145px;
+                        height: 34px;
+                        line-height: 34px;
+                        border: 1px solid #1a6ca8;
+                        border-radius: 4px;
+                        text-align: center;
+                        color: #333;
+                        cursor: pointer;
+
+                        &.hover,
+                        &:hover {
+                            background-color: #1a6ca8;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .toggleButton {
+                    overflow: auto;
+                    margin: 0 0 0 560px;
+
+                    span {
+                        float: left;
+                        padding: 3px 5px;
+                        background-color: #ceeaff;
+                        border: 1px solid #ccc;
+                        border-bottom: none;
+                        cursor: pointer;
+                        font-size: 14px;
+
+                        &:nth-child(1) {
+                            border-right: none;
+                        }
+
+                        &.hover {
+                            background-color: #0091ff;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .layerBox {
+                    overflow: auto;
+                    padding: 20px 10px;
+                    background-color: #fff;
+
+                    .grid {
+                        overflow: auto;
+
+                        li {
+                            position: relative;
+                            overflow: hidden;
+                            margin-bottom: 20px;
+                            height: 400px;
+                            background-color: #fafafa;
+
+                            &.lastChild {
+                                margin-right: 0!important;
+                            }
+
+                            &.mainMap {
+                                height: 500px;
+                            }
+
+                            .chart {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .dtApp {
+        .dtPage {
+            overflow: auto;
+            padding: 20px;
+            background-color: #fff;
+
+            .contentBox {
+                .mapLevel {
+                    position: absolute;
+                    left: 5%;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    z-index: 10;
+
+                    span {
+                        display: block;
+                        margin-bottom: 5px;
+                        width: 50px;
+                        height: 20px;
+                        line-height: 20px;
+                        border: 1px solid #1a6ca8;
+                        border-radius: 4px;
+                        background-color: #fff;
+                        text-align: center;
+                        color: #333;
+                        cursor: pointer;
+                        font-size: 12px;
+
+                        &.hover,
+                        &:hover {
+                            background-color: #1a6ca8;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .mapTopCtrl {
+                    overflow: auto;
+                    margin: 20px 0;
+
+                    li {
+                        float: left;
+                        margin: 0 5px 5px 0;
+                        padding: 5px 0;
+                        width: 60px;
+                        border: 1px solid #0b66ac;
+                        text-align: center;
+                        cursor: pointer;
+                        font-size: 12px;
+
+                        &.hover,
+                        &:hover {
+                            background-color: #0b66ac;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .mapBox {
+                    position: relative;
+                    height: 600px;
+
+                    #mapStage {
+                        height: 100%;
+                    }
+
+                    .mapRightCtrl {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        bottom: 10px;
+
+                        .switch {
+                            position: absolute;
+                            top: 10px;
+                            left: -30px;
+
+                            .close,
+                            .open {
+                                position: relative;
+                                display: block;
+                                width: 30px;
+                                height: 50px;
+                                box-shadow: -3px 0 3px #ccc;
+                                background-color: #fff;
+                                cursor: pointer;
+
+                                &:before {
+                                    content: ' ';
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 8px;
+                                    height: 14px;
+                                    background: url("../css/images/switchIco.png") #fff no-repeat;
+                                }
+                            }
+
+                            .close {
+                                &:before {
+                                    background-position: left top;
+                                }
+                            }
+
+                            .open {
+                                display: none;
+
+                                &:before {
+                                    background-position: left bottom;
+                                }
+                            }
+                        }
+
+                        .rightCtrlBox {
+                            padding: 20px 0;
+                            width: 280px;
+                            background-color: #fff;
+
+                            .area {
+                                padding: 0 20px 20px;
+
+                                h4 {
+                                    font-weight: normal;
+                                }
+
+                                ul {
+                                    overflow: auto;
+
+                                    li {
+                                        float: left;
+                                        margin: 10px 10px 0 0;
+                                        padding: 3px 0;
+                                        width: 65px;
+                                        background-color: #e4e8eb;
+                                        text-align: center;
+                                        cursor: pointer;
+                                        font-size: 12px;
+
+                                        &.hover,
+                                        &:hover {
+                                            background-color: #0b66ac;
+                                            color: #fff;
+                                        }
+
+                                        &:last-child {
+                                            width: 215px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .listCoBox {
+                                li {
+                                    position: relative;
+                                    padding: 10px 25px 10px 50px;
+                                    cursor: pointer;
+
+                                    &.hover,
+                                    &:hover {
+                                        background-color: #eceff1;
+                                    }
+
+                                    .indexIco {
+                                        position: absolute;
+                                        left: 25px;
+                                        top: 16px;
+                                        width: 18px;
+                                        height: 24px;
+                                        line-height: 20px;
+                                        background: url("../css/images/indexIco.png") center no-repeat;
+                                        text-align: center;
+                                        color: #fff;
+                                        font-size: 12px;
+                                    }
+
+                                    h5 {
+                                        color: #0b66ac;
+                                        font-size: 14px;
+                                    }
+
+                                    p {
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .classification {
+                    padding: 0 0 20px;
+
+                    .classificationRow {
+                        padding: 5px 0;
+                        border-bottom: 1px dashed #ccc;
+
+                        span {
+                            float: left;
+                            line-height: 26px;
+                            font-size: 12px;
+                        }
+
+                        ul {
+                            overflow: auto;
+
+                            li {
+                                float: left;
+                                margin-right: 10px;
+                                padding: 3px 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-size: 14px;
+
+                                &.hover,
+                                &:hover {
+                                    background-color: #e70012;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .toggleButton {
+                    overflow: auto;
+                    margin: 20px auto;
+
+                    span {
+                        float: left;
+                        padding: 3px 5px;
+                        background-color: #ceeaff;
+                        border: 1px solid #ccc;
+                        border-bottom: none;
+                        cursor: pointer;
+                        font-size: 14px;
+
+                        &:nth-child(1) {
+                            border-right: none;
+                        }
+
+                        &.hover {
+                            background-color: #0091ff;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                #labelTip {
+                    position: absolute;
+                    top: 60px;
+                    left: 106px;
+                    width: 100%;
+                    height: 30px;
+                    font-weight: bold;
+                    font-size: 12px;
+
+                    .swiper-slide {
+                        span {
+                            float: left;
+                            width: 120px;
+                        }
+                    }
+                }
+
+                .layerBox {
+                    .pageTitle {
+                        margin-bottom: 20px;
+                        text-align: center;
+                        font-size: 18px;
+                    }
+
+                    .grid {
+                        overflow: auto;
+
+                        li {
+                            position: relative;
+                            overflow: hidden;
+                            margin-bottom: 20px;
+                            width: 100%;
+                            height: 400px;
+                            background-color: #fafafa;
+
+                            &.mainMap {
+                                height: 500px;
+                            }
+
+                            .chart {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

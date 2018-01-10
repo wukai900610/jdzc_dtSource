@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>法人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script>
+    $(function(){
+        $('.creditInfoBox .baseBox .infoNum li').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).index();
+            $('.creditInfoBox .baseBox .infoContent .tableBox').eq(index).show().siblings().hide();
+        })
+    })
+    </script>
+</head>
+
+<body>
+    <div class="creditInfoBox">
+        <div class="title">
+            <h1>浙江万控电气有限公司</h1>
+            <p>统一社会信用代码：<b>asdfas34234</b></p>
+            <p>地址：<b>xx市</b></p>
+            <button class="downCreditReport">下载信用报告</button>
+        </div>
+        <div class="baseBox">
+            <ul class="infoNum">
+                <li class="active">基础信息<span></span></li>
+                <li>行政许可<span>2</span></li>
+                <li>行政处罚<span>0</span></li>
+                <li>守信红名单<span>0</span></li>
+                <li>黑名单<span>0</span></li>
+                <li>荣誉信息<span>0</span></li>
+                <li>其他信息<span>0</span></li>
+            </ul>
+            <div class="infoContent">
+                <div class="baseInfo tableBox">
+                    <h5>基本信息</h5>
+                    <table>
+                        <tr>
+                            <td width="180">企业名称</td>
+                            <td>--</td>
+                            <td width="180">统一社会信用代码</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>组织机构代码</td>
+                            <td>--</td>
+                            <td>法定代表人</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>税务登记号</td>
+                            <td>--</td>
+                            <td>营业执照</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>法定代表人姓名</td>
+                            <td>--</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>注册资金</td>
+                            <td>--</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>经营方式</td>
+                            <td colspan="3">--</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tableBox">
+                    <h5>行政许可</h5>
+                    <table>
+                        <tr>
+                            <td width="180">行政决定许可文书号</td>
+                            <td>--</td>
+                            <td width="180">审核类型</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>法人代表人姓名</td>
+                            <td>--</td>
+                            <td>内容许可</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可有效期</td>
+                            <td>--</td>
+                            <td>许可决定效期</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可截止期</td>
+                            <td>--</td>
+                            <td>地方编码</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可机关</td>
+                            <td>--</td>
+                            <td>数据更新时间</td>
+                            <td>--</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td width="180">行政决定许可文书号</td>
+                            <td>--</td>
+                            <td width="180">审核类型</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>法人代表人姓名</td>
+                            <td>--</td>
+                            <td>内容许可</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可有效期</td>
+                            <td>--</td>
+                            <td>许可决定效期</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可截止期</td>
+                            <td>--</td>
+                            <td>地方编码</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>许可机关</td>
+                            <td>--</td>
+                            <td>数据更新时间</td>
+                            <td>--</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tableBox">
+                    <h5>行政处罚</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>守信红名单</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>黑名单</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>荣誉信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>其他信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,8 +1,8 @@
 var express = require('express');
 var proxyMiddleWare = require("http-proxy-middleware");
 
-var proxyPath = "http://221.226.147.58:84/";//测试地址
-// var proxyPath = "http://10.10.136.71:8080";//本地地址
+// var proxyPath = "http://221.226.147.58:84/";//测试地址
+var proxyPath = "http://10.10.136.71:8080";//本地地址
 var proxyOption ={target:proxyPath,changeOrigoin:true};
 var app = express();
 // app.use(express.static("./public"));

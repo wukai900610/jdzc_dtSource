@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自然人</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script>
+    $(function(){
+        $('.creditInfoBox .baseBox .infoNum li').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).index();
+            $('.creditInfoBox .baseBox .infoContent .tableBox').eq(index).show().siblings().hide();
+        })
+    })
+    </script>
+</head>
+
+<body>
+    <div class="zrrInfo creditInfoBox">
+        <div class="title">
+            <h1>邯xx</h1>
+            <p>身份证：<b>321xxxx21312dfasdf</b></p>
+            <button class="downCreditReport">下载信用报告</button>
+        </div>
+        <div class="baseBox">
+            <ul class="infoNum">
+                <li class="active">基础信息<span></span></li>
+                <li>执业信息<span>2</span></li>
+                <li>行政许可信息<span>2</span></li>
+                <li>行政处罚信息<span>0</span></li>
+                <li>失信被执行人信息<span>0</span></li>
+                <li>荣誉信息<span>0</span></li>
+                <li>其他信息<span>0</span></li>
+            </ul>
+            <div class="infoContent">
+                <div class="baseInfo tableBox">
+                    <h5>基本信息</h5>
+                    <table>
+                        <tr>
+                            <td width="180">邯xx</td>
+                            <td>--</td>
+                            <td width="180">身份证编码</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>性别</td>
+                            <td>--</td>
+                            <td>出生日期</td>
+                            <td>--</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tableBox">
+                    <h5>执业信息</h5>
+                    <table>
+                        <tr>
+                            <td width="180">执业证书名称</td>
+                            <td>--</td>
+                            <td width="180">执业证书编号</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>颁发单位</td>
+                            <td>--</td>
+                            <td>生效日期</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>有效期</td>
+                            <td>--</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tableBox">
+                    <h5>行政许可信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>行政处罚信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="tableBox">
+                    <h5>失信被执行人信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="ryxxInfo tableBox">
+                    <h5>荣誉信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+                <div class="otherInfo tableBox">
+                    <h5>其他信息</h5>
+                    <p class="noData">暂无数据</p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

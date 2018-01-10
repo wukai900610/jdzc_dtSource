@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>外贸大数据分析</title>
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+
+    <script src="js/lib/layer/layer.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="jdChartLoading"></div>
+    <div class="dtCharts">
+        <div class="title">外贸大数据分析</div>
+        <div class="leftBar">
+            <div class="moduleBox">
+                <div class="module chart1">
+                    <h5>城市进出口额排名</h5>
+                    <div class="moduleContent">
+                        <ul class="areaBox">
+                            <li class="area area1">
+                                进口总额排名 <span>0</span>
+                            </li>
+                            <li class="area area2">
+                                出口总额排名 <span>0</span>
+                            </li>
+                            <li class="area area3">
+                                进出口总额排名 <span>0</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+                <div class="module chart1_1">
+                    <h5>外贸企业</h5>
+                    <div class="moduleContent">
+                        <div id="chart1"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+            </div>
+
+            <div class="module">
+                <h5>进口商品</h5>
+                <div class="moduleContent">
+                    <div id="chart2"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>出口商品</h5>
+                <div class="moduleContent">
+                    <div id="chart3"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module chart4">
+                <h5>进出口国TOP6</h5>
+                <div class="moduleContent">
+                    <div class="block">
+                        <div class="toggleOutlet">
+                            <span class="active">进口国</span>
+                            <span>出口国</span>
+                        </div>
+                        <div class="outletTitle">
+                            <div class="swiper-container" id="toggleOutletBox">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <span>主要进口国排名</span>
+                                        <span>进口金额占比</span>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <span>主要出口国排名</span>
+                                        <span>出口金额占比</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="chart4"></div>
+                    </div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="leftLeftBottom"></div>
+        </div>
+        <div class="mainBar">
+            <div class="mainMap">
+                <div id="mainMap"></div>
+                <ul class="mainNum">
+                    <li>
+                        <h5>进口总额</h5>
+                        <p></p>
+                    </li>
+                    <li>
+                        <h5>出口总额</h5>
+                        <p></p>
+                    </li>
+                </ul>
+                <!-- <div class="listTop">
+                    <h5><span></span>城市进出口额TOP5</h5>
+                    <ul>
+                        <li>法人：<span>0</span>万</li>
+                        <li>关联处罚：<span>0</span>万</li>
+                        <li>自然人<span>0</span>万</li>
+                    </ul>
+                </div> -->
+                <ul class="xygs">
+                    <li>
+                        <h5>展示区域</h5>
+                        <p>广州市</p>
+                    </li>
+                    <li>
+                        <h5>展示时间</h5>
+                        <p>0000年</p>
+                    </li>
+                </ul>
+                <div class="totalNum">
+                    <h5>
+                        <span></span>商品进出口额TOP5
+                    </h5>
+                    <ul>
+                        <!-- <li>工商局：<span>0</span></li>
+                        <li>发改委：<span>0</span></li>
+                        <li>税务局：<span>0</span></li> -->
+                    </ul>
+                </div>
+                <div class="mainLeftBottom"></div>
+            </div>
+            <div class="block">
+                <div class="module">
+                    <h5>进口企业信用等级</h5>
+                    <div class="moduleContent">
+                        <div id="chart5"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+                <div class="module">
+                    <h5>出口企业信用等级</h5>
+                    <div class="moduleContent">
+                        <div id="chart6"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBar">
+            <div class="module chart10">
+                <h5>进出口贸易额趋势</h5>
+                <div class="moduleContent">
+                    <div id="chart10"></div>
+                </div>
+                <div class="rightLeftTop"></div>
+                <div class="rightLeftBottom"></div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>运输方式</h5>
+                <div class="moduleContent">
+                    <div id="chart7"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>贸易方式</h5>
+                <div class="moduleContent">
+                    <div id="chart8"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>企业性质</h5>
+                <div class="moduleContent">
+                    <div id="chart9"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/myMap.js"></script>
+</body>
+
+</html>
