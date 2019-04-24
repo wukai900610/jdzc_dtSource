@@ -732,7 +732,7 @@ app.dtCharts = function() {
 	        axisLabel: {
 	        	color: '#fff',
 	        	rotate: -45,
-	        	interval:0,
+	        	// interval:0,
 	        }
 	    },
 	    yAxis: {

@@ -1,10 +1,12 @@
+@charset "UTF-8";
 * {
   margin: 0;
-  padding: 0; }
-
-a {
-  text-decoration: none;
-  color: #333; }
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
 
 div,
 li,
@@ -20,106 +22,9 @@ html {
   height: 100%; }
 
 body {
-  overflow-x: hidden;
-  background-color: #f0f0f0; }
-
-@-webkit-keyframes myRoute {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-@keyframes myRoute {
-  from {
-    -webkit-transform: rotate(0);
-            transform: rotate(0); }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg); } }
-
-.creditInfoBox {
-  margin: 20px auto;
-  width: 1200px; }
-  .creditInfoBox .title {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 10px 15px;
-    border: 1px solid #cde1fc; }
-    .creditInfoBox .title p {
-      margin-bottom: 5px;
-      font-size: 14px; }
-    .creditInfoBox .title button {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      padding-left: 40px;
-      padding-right: 20px;
-      line-height: 30px;
-      border: none;
-      background-color: #29a3f0;
-      cursor: pointer;
-      color: #fff; }
-  .creditInfoBox .baseBox {
-    border: 1px solid #ddd; }
-    .creditInfoBox .baseBox .infoNum {
-      margin-bottom: 20px;
-      padding-left: 30px;
-      line-height: 45px;
-      border-bottom: 1px solid #ccc; }
-      .creditInfoBox .baseBox .infoNum li {
-        position: relative;
-        display: inline-block;
-        margin-right: 30px;
-        text-align: center;
-        cursor: pointer; }
-        .creditInfoBox .baseBox .infoNum li.active:before {
-          content: ' ';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 100%;
-          height: 3px;
-          background-color: #28a4ec; }
-        .creditInfoBox .baseBox .infoNum li span {
-          padding-left: 5px;
-          color: #f45655;
-          font-size: 12px; }
-    .creditInfoBox .baseBox .infoContent .tableBox {
-      display: none;
-      padding: 0 25px; }
-      .creditInfoBox .baseBox .infoContent .tableBox h5 {
-        margin-bottom: 20px;
-        padding: 5px;
-        border: 1px solid #28a4ec;
-        background-color: #e4f0fc;
-        font-size: 14px; }
-        .creditInfoBox .baseBox .infoContent .tableBox h5:before {
-          content: ' ';
-          float: left;
-          margin-top: 2px;
-          margin-right: 5px;
-          width: 6px;
-          height: 16px;
-          background-color: #28a4ec; }
-      .creditInfoBox .baseBox .infoContent .tableBox table {
-        margin-bottom: 20px;
-        width: 100%;
-        border-collapse: collapse; }
-        .creditInfoBox .baseBox .infoContent .tableBox table td {
-          box-sizing: border-box;
-          padding: 10px;
-          border: 1px solid #ccc;
-          font-size: 14px; }
-          .creditInfoBox .baseBox .infoContent .tableBox table td:nth-child(odd) {
-            background-color: #e6e6e6; }
-      .creditInfoBox .baseBox .infoContent .tableBox .noData {
-        padding: 0 0 20px;
-        text-align: center;
-        font-size: 14px; }
-      .creditInfoBox .baseBox .infoContent .tableBox.baseInfo {
-        display: block; }
+  overflow-x: hidden; }
+  body::-webkit-scrollbar {
+    display: none; }
 
 .jdChartLoading {
   display: none;
@@ -135,990 +40,333 @@ body {
   .jdChartLoading.hide {
     opacity: 0; }
 
-.dtCharts {
+.page {
+  position: relative;
   -webkit-transform-origin: left top 0;
           transform-origin: left top 0;
   overflow: hidden;
   padding-top: 60px;
   width: 1920px;
-  height: 1080px;
-  background-color: #1a1f55; }
-  .dtCharts .title {
+  height: 1080px; }
+  .page .container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; }
+  .page .flashSquare {
+    position: relative; }
+    .page .flashSquare .corner {
+      position: absolute; }
+      .page .flashSquare .corner:after, .page .flashSquare .corner:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        -webkit-animation: cornerFlash 0.5s linear infinite alternate;
+                animation: cornerFlash 0.5s linear infinite alternate; }
+      .page .flashSquare .corner:before {
+        width: 9px;
+        height: 1px; }
+      .page .flashSquare .corner:after {
+        width: 1px;
+        height: 9px; }
+
+@-webkit-keyframes cornerFlash {
+  from {
+    background-color: #00fffd; }
+  to {
+    background-color: transparent; } }
+
+@keyframes cornerFlash {
+  from {
+    background-color: #00fffd; }
+  to {
+    background-color: transparent; } }
+    .page .flashSquare .top {
+      top: 0;
+      left: 0; }
+      .page .flashSquare .top:before {
+        top: -1px; }
+      .page .flashSquare .top:after {
+        left: -1px; }
+    .page .flashSquare .right {
+      top: 0;
+      right: 0; }
+      .page .flashSquare .right:before {
+        top: -1px;
+        right: -1px; }
+      .page .flashSquare .right:after {
+        right: -1px; }
+    .page .flashSquare .bottom {
+      bottom: 0;
+      right: 0; }
+      .page .flashSquare .bottom:before {
+        right: -1px;
+        bottom: -1px; }
+      .page .flashSquare .bottom:after {
+        right: -1px;
+        bottom: -1px; }
+    .page .flashSquare .left {
+      bottom: 0;
+      left: 0; }
+      .page .flashSquare .left:before {
+        bottom: -1px; }
+      .page .flashSquare .left:after {
+        left: -1px;
+        bottom: -1px; }
+  .page .dots {
     position: absolute;
+    top: 7px;
+    left: 210px; }
+    .page .dots div {
+      float: left;
+      margin-right: 5px;
+      width: 6px;
+      height: 7px;
+      -webkit-transform: skew(30deg, 0);
+              transform: skew(30deg, 0);
+      background: #2fd5d3; }
+
+@-webkit-keyframes dotFlash {
+  from {
+    background-color: #2dc3c2; }
+  to {
+    background-color: #00fffd;
+    box-shadow: 0 0 10px #fff; } }
+
+@keyframes dotFlash {
+  from {
+    background-color: #2dc3c2; }
+  to {
+    background-color: #00fffd;
+    box-shadow: 0 0 10px #fff; } }
+      .page .dots div:nth-child(1) {
+        width: 6px;
+        -webkit-animation: dotFlash 0.5s linear infinite alternate;
+                animation: dotFlash 0.5s linear infinite alternate; }
+      .page .dots div:nth-child(2) {
+        width: 5px;
+        -webkit-animation: dotFlash 0.5s linear 0.2s infinite alternate;
+                animation: dotFlash 0.5s linear 0.2s infinite alternate; }
+      .page .dots div:nth-child(3) {
+        width: 4px;
+        -webkit-animation: dotFlash 0.5s linear 0.3s infinite alternate;
+                animation: dotFlash 0.5s linear 0.3s infinite alternate; }
+      .page .dots div:nth-child(4) {
+        width: 3px;
+        -webkit-animation: dotFlash 0.5s linear 0.4s infinite alternate;
+                animation: dotFlash 0.5s linear 0.4s infinite alternate; }
+      .page .dots div:nth-child(5) {
+        width: 2px;
+        -webkit-animation: dotFlash 0.5s linear 0.5s infinite alternate;
+                animation: dotFlash 0.5s linear 0.5s infinite alternate; }
+      .page .dots div:nth-child(6) {
+        width: 1px;
+        -webkit-animation: dotFlash 0.5s linear 0.6s infinite alternate;
+                animation: dotFlash 0.5s linear 0.6s infinite alternate; }
+  .page .number {
+    background: url("../css/images/number.png") no-repeat;
+    width: 25px;
+    height: 38px;
+    text-indent: -2000em;
+    background-position-x: 6px; }
+    .page .number.flip {
+      -webkit-transition: 1s;
+      transition: 1s;
+      -webkit-transform: rotateY(720deg);
+              transform: rotateY(720deg); }
+    .page .number.num0 {
+      background-position-y: 7px; }
+    .page .number.num1 {
+      background-position-y: -42px; }
+    .page .number.num2 {
+      background-position-y: -93px; }
+    .page .number.num3 {
+      background-position-y: -143px; }
+    .page .number.num4 {
+      background-position-y: -193px; }
+    .page .number.num5 {
+      background-position-y: -243px; }
+    .page .number.num6 {
+      background-position-y: -293px; }
+    .page .number.num7 {
+      background-position-y: -343px; }
+    .page .number.num8 {
+      background-position-y: -393px; }
+    .page .number.num9 {
+      background-position-y: -443px; }
+    .page .number.dot {
+      background-position-y: -497px; }
+  .page .stage {
+    position: absolute;
+    left: 0;
     top: 0;
-    left: 50%;
-    margin-left: -454px;
-    width: 908px;
-    height: 138px;
-    line-height: 100px;
-    background: url("./images/title.png") 78px no-repeat;
-    text-align: center;
-    color: #fff;
-    z-index: 10;
-    font-size: 36px; }
-  .dtCharts .module {
-    position: relative;
-    margin-bottom: 10px;
-    border: 1px solid #1c37c2;
-    border-radius: 3px; }
-    .dtCharts .module:before {
-      content: ' ';
+    bottom: 0;
+    right: 0;
+    background: #000; }
+    .page .stage .leftPannel {
       position: absolute;
-      left: -1px;
-      top: -2px;
-      width: 10px;
-      height: 11px;
-      background: url("./images/moduleLeftTop.png") 0 no-repeat; }
-    .dtCharts .module:after {
-      content: ' ';
+      top: 140px;
+      bottom: 0;
+      z-index: 1; }
+  .page.page1 {
+    background-color: #171a1e; }
+    .page.page1 .logo {
       position: absolute;
-      right: -1px;
-      top: -2px;
-      width: 10px;
-      height: 11px;
-      background: url("./images/moduleRightTop.png") 0 no-repeat; }
-    .dtCharts .module .leftBottomRaidus {
-      position: absolute;
-      left: -1px;
-      bottom: -2px;
-      width: 10px;
-      height: 11px;
-      background: url("./images/moduleLeftBottom.png") 0 no-repeat; }
-    .dtCharts .module .rightBottomRaidus {
-      position: absolute;
-      right: -1px;
-      bottom: -2px;
-      width: 10px;
-      height: 11px;
-      background: url("./images/moduleRightBottom.png") 0 no-repeat; }
-    .dtCharts .module h5 {
-      line-height: 35px;
-      text-align: center;
-      color: #b8eaf9;
-      font-size: 18px; }
-    .dtCharts .module .moduleContent {
-      overflow: hidden;
-      position: relative;
-      z-index: 10; }
-  .dtCharts .leftBar,
-  .dtCharts .mainBar,
-  .dtCharts .rightBar {
-    float: left; }
-  .dtCharts .leftBar {
-    margin: 0 10px 20px 20px;
-    width: 545px; }
-    .dtCharts .leftBar #chart1,
-    .dtCharts .leftBar #chart2,
-    .dtCharts .leftBar #chart3 {
-      width: 100%; }
-    .dtCharts .leftBar #chart1 {
-      height: 225px; }
-    .dtCharts .leftBar #chart2 {
-      height: 190px; }
-    .dtCharts .leftBar #chart3 {
-      height: 190px; }
-    .dtCharts .leftBar #chart4 {
-      width: 100%;
-      height: 230px; }
-    .dtCharts .leftBar .moduleBox {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; }
-      .dtCharts .leftBar .moduleBox .chart1 {
-        margin-right: 10px;
-        -webkit-box-flex: 4;
-            -ms-flex: 4;
-                flex: 4; }
-        .dtCharts .leftBar .moduleBox .chart1 .moduleContent {
-          height: 100%; }
-          .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox {
-            position: absolute;
-            left: 0;
-            top: 0;
-            padding: 15px 0 0 15px; }
-            .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox .area {
-              position: relative;
-              margin-bottom: 20px;
-              padding-left: 25px;
-              width: 190px;
-              height: 50px;
-              line-height: 50px;
-              border: 1px solid #fff;
-              border-radius: 50px;
+      left: 40px;
+      top: 35px;
+      z-index: 1;
+      width: 490px;
+      height: 68px;
+      background: url("../css/images/logo.png") no-repeat; }
+    .page.page1 .stage .leftPannel {
+      left: -100%;
+      opacity: 0;
+      -webkit-transition: all 2s ease-in;
+      transition: all 2s ease-in;
+      z-index: 5; }
+      .page.page1 .stage .leftPannel.show {
+        left: 35px;
+        opacity: 1; }
+      .page.page1 .stage .leftPannel .titleBar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        margin-top: 40px; }
+        .page.page1 .stage .leftPannel .titleBar:before {
+          content: ' ';
+          display: block;
+          width: 35px;
+          height: 35px;
+          background-position: center;
+          background-repeat: no-repeat; }
+        .page.page1 .stage .leftPannel .titleBar.titleBar1:before {
+          background-image: url("../css/images/titleico1.png"); }
+        .page.page1 .stage .leftPannel .titleBar.titleBar2:before {
+          background-image: url("../css/images/titleico2.png"); }
+        .page.page1 .stage .leftPannel .titleBar.titleBar3:before {
+          background-image: url("../css/images/titleico3.png"); }
+        .page.page1 .stage .leftPannel .titleBar.titleBar4:before {
+          background-image: url("../css/images/titleico4.png"); }
+        .page.page1 .stage .leftPannel .titleBar .title {
+          position: relative;
+          padding-left: 20px;
+          width: 655px;
+          height: 51px;
+          line-height: 51px;
+          background: url("../css/images/titleBar.png") no-repeat;
+          color: #fff;
+          font-weight: normal;
+          font-family: "Microsoft YaHei";
+          font-size: 16px; }
+      .page.page1 .stage .leftPannel .content {
+        padding-top: 10px;
+        padding-left: 40px; }
+        .page.page1 .stage .leftPannel .content .animateNumber {
+          display: inline-block;
+          vertical-align: middle; }
+          .page.page1 .stage .leftPannel .content .animateNumber span {
+            position: relative;
+            display: inline-block;
+            margin: 0 5px 0 0;
+            width: 36px;
+            height: 52px;
+            line-height: 52px;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            background-color: #0c434a;
+            text-align: center;
+            font-size: 50px; }
+            .page.page1 .stage .leftPannel .content .animateNumber span.dot {
+              width: 15px;
+              border: none;
+              background-position-x: -5px;
+              background-color: transparent; }
+        .page.page1 .stage .leftPannel .content ul {
+          overflow: auto; }
+          .page.page1 .stage .leftPannel .content ul li {
+            float: left;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            margin: 10px 10px 10px 0; }
+            .page.page1 .stage .leftPannel .content ul li span {
+              padding-bottom: 5px;
               color: #fff;
               font-size: 16px; }
-              .dtCharts .leftBar .moduleBox .chart1 .moduleContent .areaBox .area span {
-                position: absolute;
-                right: 15px;
-                top: 0;
-                font-weight: bold;
-                font-size: 16px; }
-      .dtCharts .leftBar .moduleBox .chart1_1 {
-        -webkit-box-flex: 6;
-            -ms-flex: 6;
-                flex: 6; }
-    .dtCharts .leftBar .chart4 .toggleOutlet {
-      position: absolute;
-      bottom: 25px;
-      left: 40px;
-      z-index: 2; }
-      .dtCharts .leftBar .chart4 .toggleOutlet span {
-        display: block;
-        padding: 5px 2px;
-        width: 20px;
-        line-height: 1.2;
-        border: 1px solid #579cee;
-        text-align: center;
-        color: #579cee; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span.active {
-          background: #579cee;
-          color: #fff;
-          box-shadow: 0 0 3px #fff; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span:nth-child(1) {
-          border-radius: 5px 5px 0 0; }
-        .dtCharts .leftBar .chart4 .toggleOutlet span:nth-child(2) {
-          border-radius: 0 0 5px 5px; }
-    .dtCharts .leftBar .chart4 .outletTitle {
-      position: absolute;
-      left: 92px;
-      top: 20px; }
-      .dtCharts .leftBar .chart4 .outletTitle .swiper-slide {
-        position: relative; }
-        .dtCharts .leftBar .chart4 .outletTitle .swiper-slide span {
-          color: #fff; }
-          .dtCharts .leftBar .chart4 .outletTitle .swiper-slide span:nth-child(1) {
-            padding-right: 14px; }
-    .dtCharts .leftBar .module h5 {
-      background: url("./images/leftTitleBg.png") center no-repeat; }
-    .dtCharts .leftBar .leftLeftBottom {
-      position: absolute;
-      left: -100px;
-      bottom: -15px;
-      width: 360px;
-      height: 360px;
-      background: url("./images/leftLeftBottom.gif") left bottom no-repeat;
-      background-size: 100%; }
-  .dtCharts .mainBar {
-    margin: 0 10px 20px;
-    width: 744px; }
-    .dtCharts .mainBar .mainMap {
-      position: relative; }
-      .dtCharts .mainBar .mainMap #mainMap {
-        position: relative;
-        margin-bottom: 10px;
-        width: 100%;
-        height: 736px;
-        border: 1px solid #1c37c2;
-        box-shadow: 0 0 20px #1c37c2 inset;
-        background: url("./images/bg.png") center/contain no-repeat !important;
-        z-index: 1; }
-      .dtCharts .mainBar .mainMap .listTop,
-      .dtCharts .mainBar .mainMap .mainNum,
-      .dtCharts .mainBar .mainMap .totalNum,
-      .dtCharts .mainBar .mainMap .xygs {
-        position: absolute;
-        z-index: 10;
-        color: #e2e8f3; }
-      .dtCharts .mainBar .mainMap .listTop h5,
-      .dtCharts .mainBar .mainMap .totalNum h5,
-      .dtCharts .mainBar .mainMap .xygs h5 {
-        color: #39d7db;
-        font-size: 18px; }
-        .dtCharts .mainBar .mainMap .listTop h5 span,
-        .dtCharts .mainBar .mainMap .totalNum h5 span,
-        .dtCharts .mainBar .mainMap .xygs h5 span {
-          padding: 10px 20px;
-          background: url("./images/rightLeftBottom.gif") center no-repeat; }
-      .dtCharts .mainBar .mainMap .listTop,
-      .dtCharts .mainBar .mainMap .totalNum {
-        right: 20px; }
-        .dtCharts .mainBar .mainMap .listTop ul,
-        .dtCharts .mainBar .mainMap .totalNum ul {
-          width: 100%; }
-          .dtCharts .mainBar .mainMap .listTop ul li,
-          .dtCharts .mainBar .mainMap .totalNum ul li {
-            line-height: 1.3;
-            font-size: 16px; }
-            .dtCharts .mainBar .mainMap .listTop ul li b,
-            .dtCharts .mainBar .mainMap .totalNum ul li b {
-              display: inline-block;
-              overflow: hidden;
-              width: 100px;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              text-align: right; }
-            .dtCharts .mainBar .mainMap .listTop ul li span,
-            .dtCharts .mainBar .mainMap .totalNum ul li span {
-              font-size: 34px; }
-      .dtCharts .mainBar .mainMap .mainNum {
-        top: 60px;
-        left: 40px; }
-        .dtCharts .mainBar .mainMap .mainNum li {
-          margin-bottom: 20px;
-          font-size: 16px; }
-          .dtCharts .mainBar .mainMap .mainNum li h5 {
-            line-height: 52px;
-            vertical-align: middle;
-            color: #36c9d1;
-            font-size: 18px; }
-          .dtCharts .mainBar .mainMap .mainNum li p {
-            display: inline-block;
-            vertical-align: middle; }
-            .dtCharts .mainBar .mainMap .mainNum li p span {
-              position: relative;
-              display: inline-block;
-              margin: 0 5px 0 0;
-              width: 36px;
-              height: 52px;
-              line-height: 52px;
-              border: 1px solid #4f5492;
-              text-align: center;
-              font-size: 50px;
-              background-color: #325586; }
-            .dtCharts .mainBar .mainMap .mainNum li p b {
-              font-size: 20px; }
-          .dtCharts .mainBar .mainMap .mainNum li:nth-child(2) p span {
-            background-color: #523457; }
-      .dtCharts .mainBar .mainMap .listTop {
-        top: 73px; }
-      .dtCharts .mainBar .mainMap .xygs {
-        left: 40px;
-        bottom: 30px;
-        width: 387px;
-        height: 69px;
-        background: url("./images/xygs.png") center no-repeat; }
-        .dtCharts .mainBar .mainMap .xygs li {
-          float: left;
-          width: 50%;
-          text-align: center; }
-          .dtCharts .mainBar .mainMap .xygs li h5 {
-            padding: 10px 5px 0;
-            color: #36c9d1;
-            font-size: 16px; }
-          .dtCharts .mainBar .mainMap .xygs li p {
-            color: #fff;
-            font-size: 24px; }
-      .dtCharts .mainBar .mainMap .totalNum {
-        top: 75px; }
-      .dtCharts .mainBar .mainMap .mainLeftBottom {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 269px;
-        height: 268px;
-        background: url("./images/mainLeftBottom.gif") no-repeat; }
-    .dtCharts .mainBar .block {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex; }
-      .dtCharts .mainBar .block .module {
-        -webkit-box-flex: 1;
-            -ms-flex: 1;
-                flex: 1; }
-        .dtCharts .mainBar .block .module:nth-child(1) {
-          margin-right: 20px; }
-        .dtCharts .mainBar .block .module h5 {
-          background: url("./images/mainTitleBg.png") center no-repeat; }
-        .dtCharts .mainBar .block .module #chart5 {
-          float: left;
-          width: 100%;
-          height: 230px; }
-        .dtCharts .mainBar .block .module #chart6 {
-          float: left;
-          width: 100%;
-          height: 230px; }
-  .dtCharts .rightBar {
-    margin: 0 20px 20px 10px;
-    width: 550px; }
-    .dtCharts .rightBar #chart10 {
-      width: 100%;
-      height: 225px; }
-    .dtCharts .rightBar #chart7 {
-      width: 100%;
-      height: 190px; }
-    .dtCharts .rightBar #chart8 {
-      width: 100%;
-      height: 190px; }
-    .dtCharts .rightBar #chart9 {
-      width: 100%;
-      height: 230px; }
-    .dtCharts .rightBar .module h5 {
-      background: url("./images/leftTitleBg.png") center no-repeat; }
-
-.dtApp .breadBar {
-  display: none;
-  margin-bottom: 20px;
-  padding: 0 20px;
-  line-height: 48px;
-  border-top: 2px solid #1a6ca8;
-  background-color: #fff;
-  font-size: 14px; }
-  .dtApp .breadBar a {
-    padding: 0 3px; }
-    .dtApp .breadBar a.active {
-      color: #035294; }
-
-.dtApp .moduleName {
-  display: none;
-  overflow: auto;
-  line-height: 48px;
-  border-bottom: 1px solid #e4edf4;
-  background-color: #fff; }
-  .dtApp .moduleName h1,
-  .dtApp .moduleName h5 {
-    position: relative;
-    float: left;
-    padding-right: 60px; }
-    .dtApp .moduleName h1::after,
-    .dtApp .moduleName h5::after {
-      content: ' ';
-      position: absolute;
-      margin-left: 30px;
-      top: 50%;
-      -webkit-transform: translate(0, -50%);
-              transform: translate(0, -50%);
-      width: 1px;
-      height: 20px;
-      background-color: #ccc; }
-  .dtApp .moduleName h1 {
-    font-size: 20px; }
-  .dtApp .moduleName h5 {
-    color: #333;
-    font-size: 16px; }
-
-@media (min-width: 1101px) {
-  .dtApp {
-    overflow: auto;
-    margin: 0 auto;
-    width: 1200px;
-    background-color: #f0f0f0; }
-    .dtApp .dtPage {
-      overflow: auto;
-      padding: 0 20px 20px;
-      background-color: #fff; }
-      .dtApp .dtPage .contentBox {
-        padding: 20px;
-        width: 1160px;
-        background-color: #e4e8eb; }
-        .dtApp .dtPage .contentBox .pageTitle {
-          margin-bottom: 20px;
-          text-align: center;
-          font-size: 18px; }
-        .dtApp .dtPage .contentBox .textInfoTip {
-          position: absolute;
-          left: 35px;
-          top: 5%;
-          z-index: 10; }
-          .dtApp .dtPage .contentBox .textInfoTip li {
-            line-height: 30px; }
-        .dtApp .dtPage .contentBox .classification {
-          padding: 0 0 20px; }
-          .dtApp .dtPage .contentBox .classification .classificationRow {
-            padding: 5px 0;
-            border-bottom: 1px dashed #ccc; }
-            .dtApp .dtPage .contentBox .classification .classificationRow span {
-              float: left;
+            .page.page1 .stage .leftPannel .content ul li p {
+              color: #33fefa;
               line-height: 26px;
-              font-size: 12px; }
-            .dtApp .dtPage .contentBox .classification .classificationRow ul {
-              overflow: auto; }
-              .dtApp .dtPage .contentBox .classification .classificationRow ul li {
-                float: left;
-                margin-right: 10px;
-                padding: 3px 5px;
-                border-radius: 3px;
-                cursor: pointer;
-                font-size: 14px; }
-                .dtApp .dtPage .contentBox .classification .classificationRow ul li.hover, .dtApp .dtPage .contentBox .classification .classificationRow ul li:hover {
-                  background-color: #e70012;
-                  color: #fff; }
-        .dtApp .dtPage .contentBox .mapTopCtrl {
+              font-family: "Microsoft YaHei";
+              font-weight: bold;
+              font-size: 26px; }
+        .page.page1 .stage .leftPannel .content .flashSquareBox {
           overflow: auto;
-          margin-top: 35px; }
-          .dtApp .dtPage .contentBox .mapTopCtrl li {
-            float: left;
-            padding: 5px 0;
-            width: 110px;
-            border-top: 1px solid #0b66ac;
-            border-bottom: 1px solid #0b66ac;
-            border-right: 1px solid #0b66ac;
-            text-align: center;
-            cursor: pointer;
-            font-size: 14px; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li:first-child {
-              border-left: 1px solid #0b66ac;
-              border-radius: 5px 0 0 5px; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li:last-child {
-              border-radius: 0 5px 5px 0; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li.hover, .dtApp .dtPage .contentBox .mapTopCtrl li:hover {
-              background-color: #0b66ac;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .mapBox {
-          position: relative;
-          height: 600px;
-          background-color: #ccc; }
-          .dtApp .dtPage .contentBox .mapBox #mapStage {
-            height: 100%; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            bottom: 10px; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch {
-              position: absolute;
-              top: 10px;
-              left: -30px; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close,
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-                position: relative;
-                display: block;
-                width: 30px;
-                height: 50px;
-                box-shadow: -3px 0 3px #ccc;
-                background-color: #fff;
-                cursor: pointer; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before,
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-                  content: ' ';
-                  position: absolute;
-                  left: 50%;
-                  top: 50%;
-                  -webkit-transform: translate(-50%, -50%);
-                          transform: translate(-50%, -50%);
-                  width: 8px;
-                  height: 14px;
-                  background: url("../css/images/switchIco.png") #fff no-repeat; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before {
-                background-position: left top; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-                display: none; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-                  background-position: left bottom; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox {
-              padding: 20px 0;
-              width: 280px;
-              background-color: #fff; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area {
-                padding: 0 20px 20px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area h4 {
-                  font-weight: normal; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul {
-                  overflow: auto; }
-                  .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li {
-                    float: left;
-                    margin: 10px 10px 0 0;
-                    padding: 3px 0;
-                    width: 65px;
-                    background-color: #e4e8eb;
-                    text-align: center;
-                    cursor: pointer;
-                    font-size: 12px; }
-                    .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:hover {
-                      background-color: #0b66ac;
-                      color: #fff; }
-                    .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:last-child {
-                      width: 215px; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li {
-                position: relative;
-                padding: 10px 25px 10px 50px;
-                cursor: pointer; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li:hover {
-                  background-color: #eceff1; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li .indexIco {
-                  position: absolute;
-                  left: 25px;
-                  top: 16px;
-                  width: 18px;
-                  height: 24px;
-                  line-height: 20px;
-                  background: url("../css/images/indexIco.png") center no-repeat;
-                  text-align: center;
-                  color: #fff;
-                  font-size: 12px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li h5 {
-                  color: #0b66ac;
-                  font-size: 14px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li p {
-                  font-size: 14px; }
-        .dtApp .dtPage .contentBox .mapLevel,
-        .dtApp .dtPage .contentBox .mapRightLevel {
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translate(0, -50%);
-                  transform: translate(0, -50%);
-          z-index: 10; }
-          .dtApp .dtPage .contentBox .mapLevel span,
-          .dtApp .dtPage .contentBox .mapRightLevel span {
-            display: block;
-            margin-bottom: 10px;
-            width: 145px;
-            height: 34px;
-            line-height: 34px;
-            background: #f1f1f1;
-            border: 1px solid #1a6ca8;
-            border-radius: 4px;
-            text-align: center;
-            color: #333;
-            cursor: pointer; }
-            .dtApp .dtPage .contentBox .mapLevel span.hover, .dtApp .dtPage .contentBox .mapLevel span:hover,
-            .dtApp .dtPage .contentBox .mapRightLevel span.hover,
-            .dtApp .dtPage .contentBox .mapRightLevel span:hover {
-              background-color: #1a6ca8;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .mapLevel {
-          left: 35px; }
-        .dtApp .dtPage .contentBox .mapRightLevel {
-          right: 35px; }
-        .dtApp .dtPage .contentBox .toggleButton {
-          overflow: auto;
-          margin: 0 0 0 560px; }
-          .dtApp .dtPage .contentBox .toggleButton span {
-            float: left;
-            padding: 3px 5px;
-            background-color: #ceeaff;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            cursor: pointer;
-            font-size: 14px; }
-            .dtApp .dtPage .contentBox .toggleButton span:nth-child(1) {
-              border-right: none; }
-            .dtApp .dtPage .contentBox .toggleButton span.hover {
-              background-color: #0091ff;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .layerBox {
-          overflow: auto;
-          padding: 20px 10px;
-          background-color: #fff; }
-          .dtApp .dtPage .contentBox .layerBox .grid {
-            overflow: auto; }
-            .dtApp .dtPage .contentBox .layerBox .grid li {
-              position: relative;
-              overflow: hidden;
-              float: left;
-              margin-bottom: 20px;
-              height: 400px;
-              background-color: #fafafa; }
-              .dtApp .dtPage .contentBox .layerBox .grid li.lastChild {
-                margin-right: 0 !important; }
-              .dtApp .dtPage .contentBox .layerBox .grid li.mainMap {
-                height: 500px; }
-              .dtApp .dtPage .contentBox .layerBox .grid li .chart {
-                width: 100%;
-                height: 100%; }
-            .dtApp .dtPage .contentBox .layerBox .grid.grid1 li {
-              width: 100%; }
-            .dtApp .dtPage .contentBox .layerBox .grid.grid2 li {
-              margin-right: 2%;
-              width: 49%; }
-            .dtApp .dtPage .contentBox .layerBox .grid.grid3 li {
-              margin-right: 2%;
-              width: 32%; }
-            .dtApp .dtPage .contentBox .layerBox .grid.grid4 li {
-              margin-right: 1%;
-              width: 24.5%; } }
-
-@media (min-width: 721px) and (max-width: 1100px) {
-  .dtApp {
-    overflow: auto;
-    margin: 0 auto;
-    width: 100%;
-    background-color: #f0f0f0; }
-    .dtApp .dtPage {
-      overflow: auto;
-      padding: 20px;
-      background-color: #fff; }
-      .dtApp .dtPage .contentBox {
-        padding: 20px;
-        background-color: #e4e8eb; }
-        .dtApp .dtPage .contentBox .pageTitle {
-          margin-bottom: 20px;
-          text-align: center;
-          font-size: 18px; }
-        .dtApp .dtPage .contentBox .textInfoTip {
-          position: absolute;
-          left: 35px;
-          top: 5%;
-          z-index: 10; }
-          .dtApp .dtPage .contentBox .textInfoTip li {
-            line-height: 30px; }
-        .dtApp .dtPage .contentBox .classification {
-          padding: 0 0 20px; }
-          .dtApp .dtPage .contentBox .classification .classificationRow {
-            padding: 5px 0;
-            border-bottom: 1px dashed #ccc; }
-            .dtApp .dtPage .contentBox .classification .classificationRow span {
-              float: left;
-              line-height: 26px;
-              font-size: 12px; }
-            .dtApp .dtPage .contentBox .classification .classificationRow ul {
-              overflow: auto; }
-              .dtApp .dtPage .contentBox .classification .classificationRow ul li {
-                float: left;
-                margin-right: 10px;
-                padding: 3px 5px;
-                border-radius: 3px;
-                cursor: pointer;
-                font-size: 14px; }
-                .dtApp .dtPage .contentBox .classification .classificationRow ul li.hover, .dtApp .dtPage .contentBox .classification .classificationRow ul li:hover {
-                  background-color: #e70012;
-                  color: #fff; }
-        .dtApp .dtPage .contentBox .mapTopCtrl {
-          overflow: auto;
-          margin-top: 35px; }
-          .dtApp .dtPage .contentBox .mapTopCtrl li {
-            float: left;
-            padding: 5px 0;
-            width: 110px;
-            border-top: 1px solid #0b66ac;
-            border-bottom: 1px solid #0b66ac;
-            border-right: 1px solid #0b66ac;
-            text-align: center;
-            cursor: pointer;
-            font-size: 14px; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li:first-child {
-              border-left: 1px solid #0b66ac;
-              border-radius: 5px 0 0 5px; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li:last-child {
-              border-radius: 0 5px 5px 0; }
-            .dtApp .dtPage .contentBox .mapTopCtrl li.hover, .dtApp .dtPage .contentBox .mapTopCtrl li:hover {
-              background-color: #0b66ac;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .mapBox {
-          position: relative;
-          height: 600px;
-          background-color: #ccc; }
-          .dtApp .dtPage .contentBox .mapBox #mapStage {
-            height: 100%; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            bottom: 10px; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch {
-              position: absolute;
-              top: 10px;
-              left: -30px; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close,
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-                position: relative;
-                display: block;
-                width: 30px;
-                height: 50px;
-                box-shadow: -3px 0 3px #ccc;
-                background-color: #fff;
-                cursor: pointer; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before,
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-                  content: ' ';
-                  position: absolute;
-                  left: 50%;
-                  top: 50%;
-                  -webkit-transform: translate(-50%, -50%);
-                          transform: translate(-50%, -50%);
-                  width: 8px;
-                  height: 14px;
-                  background: url("../css/images/switchIco.png") #fff no-repeat; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before {
-                background-position: left top; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-                display: none; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-                  background-position: left bottom; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox {
-              padding: 20px 0;
-              width: 280px;
-              background-color: #fff; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area {
-                padding: 0 20px 20px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area h4 {
-                  font-weight: normal; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul {
-                  overflow: auto; }
-                  .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li {
-                    float: left;
-                    margin: 10px 10px 0 0;
-                    padding: 3px 0;
-                    width: 65px;
-                    background-color: #e4e8eb;
-                    text-align: center;
-                    cursor: pointer;
-                    font-size: 12px; }
-                    .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:hover {
-                      background-color: #0b66ac;
-                      color: #fff; }
-                    .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:last-child {
-                      width: 215px; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li {
-                position: relative;
-                padding: 10px 25px 10px 50px;
-                cursor: pointer; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li:hover {
-                  background-color: #eceff1; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li .indexIco {
-                  position: absolute;
-                  left: 25px;
-                  top: 16px;
-                  width: 18px;
-                  height: 24px;
-                  line-height: 20px;
-                  background: url("../css/images/indexIco.png") center no-repeat;
-                  text-align: center;
-                  color: #fff;
-                  font-size: 12px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li h5 {
-                  color: #0b66ac;
-                  font-size: 14px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li p {
-                  font-size: 14px; }
-        .dtApp .dtPage .contentBox .mapLevel {
-          position: absolute;
-          left: 35px;
-          top: 50%;
-          -webkit-transform: translate(0, -50%);
-                  transform: translate(0, -50%);
-          z-index: 10; }
-          .dtApp .dtPage .contentBox .mapLevel span {
-            display: block;
-            margin-bottom: 10px;
-            width: 145px;
-            height: 34px;
-            line-height: 34px;
-            border: 1px solid #1a6ca8;
-            border-radius: 4px;
-            text-align: center;
-            color: #333;
-            cursor: pointer; }
-            .dtApp .dtPage .contentBox .mapLevel span.hover, .dtApp .dtPage .contentBox .mapLevel span:hover {
-              background-color: #1a6ca8;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .toggleButton {
-          overflow: auto;
-          margin: 0 0 0 560px; }
-          .dtApp .dtPage .contentBox .toggleButton span {
-            float: left;
-            padding: 3px 5px;
-            background-color: #ceeaff;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            cursor: pointer;
-            font-size: 14px; }
-            .dtApp .dtPage .contentBox .toggleButton span:nth-child(1) {
-              border-right: none; }
-            .dtApp .dtPage .contentBox .toggleButton span.hover {
-              background-color: #0091ff;
-              color: #fff; }
-        .dtApp .dtPage .contentBox .layerBox {
-          overflow: auto;
-          padding: 20px 10px;
-          background-color: #fff; }
-          .dtApp .dtPage .contentBox .layerBox .grid {
-            overflow: auto; }
-            .dtApp .dtPage .contentBox .layerBox .grid li {
-              position: relative;
-              overflow: hidden;
-              margin-bottom: 20px;
-              height: 400px;
-              background-color: #fafafa; }
-              .dtApp .dtPage .contentBox .layerBox .grid li.lastChild {
-                margin-right: 0 !important; }
-              .dtApp .dtPage .contentBox .layerBox .grid li.mainMap {
-                height: 500px; }
-              .dtApp .dtPage .contentBox .layerBox .grid li .chart {
-                width: 100%;
-                height: 100%; } }
-
-@media screen and (max-width: 720px) {
-  .dtApp .dtPage {
-    overflow: auto;
-    padding: 20px;
-    background-color: #fff; }
-    .dtApp .dtPage .contentBox .mapLevel {
+          width: 800px; }
+          .page.page1 .stage .leftPannel .content .flashSquareBox .flashSquare {
+            width: 90px;
+            height: 90px;
+            border: 1px solid rgba(51, 254, 250, 0.5);
+            background: rgba(23, 26, 31, 0.5); }
+            .page.page1 .stage .leftPannel .content .flashSquareBox .flashSquare p {
+              -webkit-transition: all 1s ease-in;
+              transition: all 1s ease-in; }
+            .page.page1 .stage .leftPannel .content .flashSquareBox .flashSquare.light p {
+              text-shadow: 0 0 10px #33fefa; }
+        .page.page1 .stage .leftPannel .content .productBox li {
+          padding: 0 20px;
+          height: 78px;
+          background: url("../css/images/line.png") no-repeat; }
+    .page.page1 .stage .next {
       position: absolute;
-      left: 5%;
-      top: 50%;
-      -webkit-transform: translate(0, -50%);
-              transform: translate(0, -50%);
-      z-index: 10; }
-      .dtApp .dtPage .contentBox .mapLevel span {
-        display: block;
-        margin-bottom: 5px;
-        width: 50px;
-        height: 20px;
-        line-height: 20px;
-        border: 1px solid #1a6ca8;
-        border-radius: 4px;
-        background-color: #fff;
-        text-align: center;
-        color: #333;
-        cursor: pointer;
-        font-size: 12px; }
-        .dtApp .dtPage .contentBox .mapLevel span.hover, .dtApp .dtPage .contentBox .mapLevel span:hover {
-          background-color: #1a6ca8;
-          color: #fff; }
-    .dtApp .dtPage .contentBox .mapTopCtrl {
-      overflow: auto;
-      margin: 20px 0; }
-      .dtApp .dtPage .contentBox .mapTopCtrl li {
-        float: left;
-        margin: 0 5px 5px 0;
-        padding: 5px 0;
-        width: 60px;
-        border: 1px solid #0b66ac;
-        text-align: center;
-        cursor: pointer;
-        font-size: 12px; }
-        .dtApp .dtPage .contentBox .mapTopCtrl li.hover, .dtApp .dtPage .contentBox .mapTopCtrl li:hover {
-          background-color: #0b66ac;
-          color: #fff; }
-    .dtApp .dtPage .contentBox .mapBox {
-      position: relative;
-      height: 600px; }
-      .dtApp .dtPage .contentBox .mapBox #mapStage {
-        height: 100%; }
-      .dtApp .dtPage .contentBox .mapBox .mapRightCtrl {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        bottom: 10px; }
-        .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch {
-          position: absolute;
-          top: 10px;
-          left: -30px; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close,
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-            position: relative;
-            display: block;
-            width: 30px;
-            height: 50px;
-            box-shadow: -3px 0 3px #ccc;
-            background-color: #fff;
-            cursor: pointer; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before,
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-              content: ' ';
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              -webkit-transform: translate(-50%, -50%);
-                      transform: translate(-50%, -50%);
-              width: 8px;
-              height: 14px;
-              background: url("../css/images/switchIco.png") #fff no-repeat; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .close:before {
-            background-position: left top; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open {
-            display: none; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .switch .open:before {
-              background-position: left bottom; }
-        .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox {
-          padding: 20px 0;
-          width: 280px;
-          background-color: #fff; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area {
-            padding: 0 20px 20px; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area h4 {
-              font-weight: normal; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul {
-              overflow: auto; }
-              .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li {
-                float: left;
-                margin: 10px 10px 0 0;
-                padding: 3px 0;
-                width: 65px;
-                background-color: #e4e8eb;
-                text-align: center;
-                cursor: pointer;
-                font-size: 12px; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:hover {
-                  background-color: #0b66ac;
-                  color: #fff; }
-                .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .area ul li:last-child {
-                  width: 215px; }
-          .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li {
-            position: relative;
-            padding: 10px 25px 10px 50px;
-            cursor: pointer; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li.hover, .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li:hover {
-              background-color: #eceff1; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li .indexIco {
-              position: absolute;
-              left: 25px;
-              top: 16px;
-              width: 18px;
-              height: 24px;
-              line-height: 20px;
-              background: url("../css/images/indexIco.png") center no-repeat;
-              text-align: center;
-              color: #fff;
-              font-size: 12px; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li h5 {
-              color: #0b66ac;
-              font-size: 14px; }
-            .dtApp .dtPage .contentBox .mapBox .mapRightCtrl .rightCtrlBox .listCoBox li p {
-              font-size: 14px; }
-    .dtApp .dtPage .contentBox .classification {
-      padding: 0 0 20px; }
-      .dtApp .dtPage .contentBox .classification .classificationRow {
-        padding: 5px 0;
-        border-bottom: 1px dashed #ccc; }
-        .dtApp .dtPage .contentBox .classification .classificationRow span {
-          float: left;
-          line-height: 26px;
-          font-size: 12px; }
-        .dtApp .dtPage .contentBox .classification .classificationRow ul {
-          overflow: auto; }
-          .dtApp .dtPage .contentBox .classification .classificationRow ul li {
-            float: left;
-            margin-right: 10px;
-            padding: 3px 5px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 14px; }
-            .dtApp .dtPage .contentBox .classification .classificationRow ul li.hover, .dtApp .dtPage .contentBox .classification .classificationRow ul li:hover {
-              background-color: #e70012;
-              color: #fff; }
-    .dtApp .dtPage .contentBox .toggleButton {
-      overflow: auto;
-      margin: 20px auto; }
-      .dtApp .dtPage .contentBox .toggleButton span {
-        float: left;
-        padding: 3px 5px;
-        background-color: #ceeaff;
-        border: 1px solid #ccc;
-        border-bottom: none;
-        cursor: pointer;
-        font-size: 14px; }
-        .dtApp .dtPage .contentBox .toggleButton span:nth-child(1) {
-          border-right: none; }
-        .dtApp .dtPage .contentBox .toggleButton span.hover {
-          background-color: #0091ff;
-          color: #fff; }
-    .dtApp .dtPage .contentBox #labelTip {
-      position: absolute;
-      top: 60px;
-      left: 106px;
-      width: 100%;
-      height: 30px;
-      font-weight: bold;
-      font-size: 12px; }
-      .dtApp .dtPage .contentBox #labelTip .swiper-slide span {
-        float: left;
-        width: 120px; }
-    .dtApp .dtPage .contentBox .layerBox .pageTitle {
-      margin-bottom: 20px;
-      text-align: center;
-      font-size: 18px; }
-    .dtApp .dtPage .contentBox .layerBox .grid {
-      overflow: auto; }
-      .dtApp .dtPage .contentBox .layerBox .grid li {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 20px;
-        width: 100%;
-        height: 400px;
-        background-color: #fafafa; }
-        .dtApp .dtPage .contentBox .layerBox .grid li.mainMap {
-          height: 500px; }
-        .dtApp .dtPage .contentBox .layerBox .grid li .chart {
-          width: 100%;
-          height: 100%; } }
+      bottom: 30px;
+      left: 50%;
+      cursor: pointer; }
+      .page.page1 .stage .next div {
+        margin: 0 auto 5px;
+        height: 2px;
+        border-radius: 5px;
+        background: #2fd5d3; }
+
+@-webkit-keyframes nextFlash {
+  from {
+    background-color: #4cfffe; }
+  to {
+    background-color: #2487a3; } }
+
+@keyframes nextFlash {
+  from {
+    background-color: #4cfffe; }
+  to {
+    background-color: #2487a3; } }
+        .page.page1 .stage .next div:nth-child(1) {
+          width: 10px;
+          -webkit-animation: nextFlash 0.5s linear infinite alternate;
+                  animation: nextFlash 0.5s linear infinite alternate; }
+        .page.page1 .stage .next div:nth-child(2) {
+          width: 24px;
+          -webkit-animation: nextFlash 0.5s linear 0.2s infinite alternate;
+                  animation: nextFlash 0.5s linear 0.2s infinite alternate; }
+        .page.page1 .stage .next div:nth-child(3) {
+          width: 34px;
+          -webkit-animation: nextFlash 0.5s linear 0.3s infinite alternate;
+                  animation: nextFlash 0.5s linear 0.3s infinite alternate; }
+        .page.page1 .stage .next div:nth-child(4) {
+          width: 44px;
+          -webkit-animation: nextFlash 0.5s linear 0.4s infinite alternate;
+                  animation: nextFlash 0.5s linear 0.4s infinite alternate; }
+        .page.page1 .stage .next div:nth-child(5) {
+          width: 54px;
+          -webkit-animation: nextFlash 0.5s linear 0.5s infinite alternate;
+                  animation: nextFlash 0.5s linear 0.5s infinite alternate; }

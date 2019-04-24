@@ -1,7 +1,8 @@
 {
   "name": "jdzc_dt",
   "dependencies": {
-    "gulp-shell": "^0.6.3"
+    "gulp-shell": "^0.6.3",
+    "supervisor": "^0.12.0"
   },
   "devDependencies": {
     "browser-sync": "^2.18.8",
@@ -28,7 +29,7 @@
     "start": "gulp",
     "build": "gulp clean && gulp build",
     "clean": "gulp clean",
-    "proxy": "node ./app/express_proxy.js"
+    "proxy": "supervisor ./app/express_proxy.js"
   },
   "version": "1.0.0",
   "main": "gulpfile.js",

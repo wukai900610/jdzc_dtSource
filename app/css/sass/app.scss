@@ -1,11 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: #333;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
+    user-select: none;
 }
 
 div,
@@ -27,122 +24,9 @@ html {
 body {
     // overflow:hidden;
     overflow-x: hidden;
-    background-color: #f0f0f0;
-}
 
-@keyframes myRoute {
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.creditInfoBox {
-    margin: 20px auto;
-    width: 1200px;
-    .title {
-        position: relative;
-        margin-bottom: 20px;
-        padding: 10px 15px;
-        border: 1px solid #cde1fc;
-        h1 {}
-        p {
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        button {
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-            padding-left: 40px;
-            padding-right: 20px;
-            line-height: 30px;
-            border: none;
-            background-color: #29a3f0;
-            cursor: pointer;
-            color: #fff;
-        }
-    }
-
-    .baseBox {
-        border: 1px solid #ddd;
-        .infoNum {
-            // overflow: auto;
-            margin-bottom: 20px;
-            padding-left:30px;
-            line-height: 45px;
-            border-bottom: 1px solid #ccc;
-            li {
-                position: relative; // float: left;
-                display: inline-block;
-                margin-right: 30px;
-                text-align: center;
-                cursor: pointer;
-                &.active {
-                    &:before {
-                        content: ' ';
-                        position: absolute;
-                        bottom: -2px;
-                        left: 0;
-                        width: 100%;
-                        height: 3px;
-                        background-color: #28a4ec;
-                    }
-                }
-                span {
-                    padding-left: 5px;
-                    color: #f45655;
-                    font-size: 12px;
-                }
-            }
-        }
-        .infoContent {
-            .tableBox {
-                display: none;
-                padding: 0 25px;
-                h5 {
-                    margin-bottom: 20px;
-                    padding: 5px;
-                    border: 1px solid #28a4ec;
-                    background-color: #e4f0fc;
-                    font-size: 14px;
-                    &:before {
-                        content: ' ';
-                        float: left;
-                        margin-top: 2px;
-                        margin-right: 5px;
-                        width: 6px;
-                        height: 16px;
-                        background-color: #28a4ec;
-                    }
-                }
-                table {
-                    margin-bottom: 20px;
-                    width: 100%;
-                    border-collapse: collapse;
-                    td {
-                        box-sizing: border-box;
-                        padding: 10px;
-                        border: 1px solid #ccc;
-                        font-size: 14px;
-                        &:nth-child(odd) {
-                            background-color: #e6e6e6;
-                        }
-                    }
-                }
-                .noData{
-                    padding:0 0 20px;
-                    text-align: center;
-                    font-size: 14px;
-                }
-                &.baseInfo {
-                    display: block;
-                }
-            }
-        }
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
 
@@ -162,321 +46,338 @@ body {
     }
 }
 
-.dtCharts {
+.page {
+    position: relative;
     transform-origin: left top 0;
     overflow: hidden;
     padding-top: 60px;
     width: 1920px;
     height: 1080px;
-    background-color: #1a1f55;
 
-    .title {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        margin-left: -454px;
-        width: 908px;
-        height: 138px;
-        line-height: 100px;
-        background: url("./images/title.png") 78px no-repeat;
-        text-align: center;
-        color: #fff;
-        z-index: 10;
-        font-size: 36px;
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
     }
 
-    .module {
+    .flashSquare {
         position: relative;
-        margin-bottom: 10px;
-        border: 1px solid #1c37c2;
-        border-radius: 3px;
 
-        &:before {
-            content: ' ';
+        .corner {
             position: absolute;
-            left: -1px;
-            top: -2px;
-            width: 10px;
-            height: 11px;
-            background: url("./images/moduleLeftTop.png") 0 no-repeat;
+
+            &:after,
+            &:before {
+                content: ' ';
+                display: block;
+                position: absolute;
+                // background-color: #33fefa;
+                animation: cornerFlash 0.5s linear infinite alternate;
+            }
+
+            &:before {
+                width: 9px;
+                height: 1px;
+            }
+
+            &:after {
+                width: 1px;
+                height: 9px;
+            }
+        }
+        @keyframes cornerFlash {
+            from {
+                // transform: rotate(0);
+                background-color: #00fffd;
+            }
+
+            to {
+                // transform: rotate(360deg);
+                background-color: transparent;
+                // background-color: #00fffd;
+            }
         }
 
-        &:after {
-            content: ' ';
-            position: absolute;
-            right: -1px;
-            top: -2px;
-            width: 10px;
-            height: 11px;
-            background: url("./images/moduleRightTop.png") 0 no-repeat;
+        .top {
+            top: 0;
+            left: 0;
+
+            &:before {
+                top: -1px;
+            }
+
+            &:after {
+                left: -1px;
+            }
         }
 
-        .leftBottomRaidus {
-            position: absolute;
-            left: -1px;
-            bottom: -2px;
-            width: 10px;
-            height: 11px;
-            background: url("./images/moduleLeftBottom.png") 0 no-repeat;
+        .right {
+            top: 0;
+            right: 0;
+
+            &:before {
+                top: -1px;
+                right: -1px;
+            }
+
+            &:after {
+                right: -1px;
+            }
         }
 
-        .rightBottomRaidus {
-            position: absolute;
-            right: -1px;
-            bottom: -2px;
-            width: 10px;
-            height: 11px;
-            background: url("./images/moduleRightBottom.png") 0 no-repeat;
+        .bottom {
+            bottom: 0;
+            right: 0;
+
+            &:before {
+                right: -1px;
+                bottom: -1px;
+            }
+
+            &:after {
+                right: -1px;
+                bottom: -1px;
+            }
         }
 
-        h5 {
-            line-height: 35px;
-            text-align: center;
-            color: #b8eaf9;
-            font-size: 18px;
-        }
+        .left {
+            bottom: 0;
+            left: 0;
 
-        .moduleContent {
-            overflow: hidden;
-            position: relative;
-            z-index: 10;
+            &:before {
+                bottom: -1px;
+            }
+
+            &:after {
+                left: -1px;
+                bottom: -1px;
+            }
         }
     }
 
-    .leftBar,
-    .mainBar,
-    .rightBar {
-        float: left;
+    .dots {
+        position: absolute;
+        top: 7px;
+        left: 210px;
+
+        div {
+            float: left;
+            margin-right: 5px;
+            width: 6px;
+            height: 7px;
+            transform: skew(30deg,0);
+            background: #2fd5d3;
+            @keyframes dotFlash {
+                from {
+                    // transform: rotate(0);
+                    background-color: #2dc3c2;
+                }
+
+                to {
+                    // transform: rotate(360deg);
+                    background-color: #00fffd;
+                    box-shadow: 0 0 10px #fff;
+                }
+            }
+
+            &:nth-child(1) {
+                width: 6px;
+                animation: dotFlash 0.5s linear infinite alternate;
+            }
+
+            &:nth-child(2) {
+                width: 5px;
+                animation: dotFlash 0.5s linear 0.2s infinite alternate;
+            }
+
+            &:nth-child(3) {
+                width: 4px;
+                animation: dotFlash 0.5s linear 0.3s infinite alternate;
+            }
+
+            &:nth-child(4) {
+                width: 3px;
+                animation: dotFlash 0.5s linear 0.4s infinite alternate;
+            }
+
+            &:nth-child(5) {
+                width: 2px;
+                animation: dotFlash 0.5s linear 0.5s infinite alternate;
+            }
+
+            &:nth-child(6) {
+                width: 1px;
+                animation: dotFlash 0.5s linear 0.6s infinite alternate;
+            }
+        }
     }
 
-    .leftBar {
-        margin: 0 10px 20px 20px;
-        width: 545px;
+    .number {
+        background: url("../css/images/number.png") no-repeat;
+        width: 25px;
+        height: 38px;
+        text-indent: -2000em;
+        background-position-x: 6px;
 
-        #chart1,
-        #chart2,
-        #chart3 {
-            width: 100%;
+        &.flip {
+            transition: 1s;
+            transform: rotateY(720deg);
         }
 
-        #chart1 {
-            height: 225px;
+        &.num0 {
+            background-position-y: 7px;
         }
 
-        #chart2 {
-            height: 190px;
+        &.num1 {
+            background-position-y: -42px;
         }
 
-        #chart3 {
-            height: 190px;
+        &.num2 {
+            background-position-y: -93px;
         }
 
-        #chart4 {
-            width: 100%;
-            height: 230px;
+        &.num3 {
+            background-position-y: -143px;
         }
 
-        .moduleBox {
-            display: flex;
+        &.num4 {
+            background-position-y: -193px;
+        }
 
-            .chart1 {
-                margin-right: 10px; // width: 40%;
-                flex: 4;
+        &.num5 {
+            background-position-y: -243px;
+        }
 
-                .moduleContent {
-                    height: 100%;
+        &.num6 {
+            background-position-y: -293px;
+        }
 
-                    .areaBox {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        padding: 15px 0 0 15px; // background: url('./images/line.gif') right center no-repeat;
-                        .area {
-                            position: relative;
-                            margin-bottom: 20px;
-                            padding-left: 25px;
-                            width: 190px;
-                            height: 50px;
-                            line-height: 50px;
-                            border: 1px solid #fff;
-                            border-radius: 50px;
-                            color: #fff;
-                            font-size: 16px;
+        &.num7 {
+            background-position-y: -343px;
+        }
 
-                            span {
-                                position: absolute;
-                                right: 15px;
-                                top: 0;
-                                font-weight: bold;
-                                font-size: 16px;
-                            }
+        &.num8 {
+            background-position-y: -393px;
+        }
+
+        &.num9 {
+            background-position-y: -443px;
+        }
+
+        &.dot {
+            background-position-y: -497px;
+        }
+    }
+
+    .stage {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: #000;
+
+        .leftPannel {
+            position: absolute;
+            // left: 35px;
+            top: 140px;
+            bottom: 0;
+            // right: 0;
+            z-index: 1;
+        }
+    }
+
+    &.page1 {
+        background-color: #171a1e;
+
+        .logo {
+            position: absolute;
+            left: 40px;
+            top: 35px;
+            z-index: 1;
+            width: 490px;
+            height: 68px;
+            background: url("../css/images/logo.png") no-repeat;
+        }
+
+        .stage {
+            // .muder {
+            //     position: absolute;
+            //     left: 0;
+            //     top: 0;
+            //     width: 100%;
+            //     height: 100%;
+            //     z-index: 1;
+            // }
+            .leftPannel {
+                left: -100%;
+                opacity: 0;
+                transition: all 2s ease-in;
+                z-index: 5;
+
+                &.show {
+                    left: 35px;
+                    opacity: 1;
+                }
+
+                .titleBar {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 40px;
+
+                    &:before {
+                        content: ' ';
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+
+                    &.titleBar1 {
+                        &:before {
+                            background-image: url("../css/images/titleico1.png");
                         }
                     }
-                }
-            }
 
-            .chart1_1 {
-                // width: 60%;
-                flex: 6;
-            }
-        }
-
-        .chart4 {
-            .toggleOutlet {
-                position: absolute;
-                bottom: 25px;
-                left: 40px;
-                z-index: 2;
-
-                span {
-                    display: block;
-                    padding: 5px 2px;
-                    width: 20px;
-                    line-height: 1.2;
-                    border: 1px solid #579cee;
-                    text-align: center;
-                    color: #579cee;
-
-                    &.active {
-                        background: #579cee;
-                        color: #fff;
-                        box-shadow: 0 0 3px #fff;
-                    }
-
-                    &:nth-child(1) {
-                        border-radius: 5px 5px 0 0;
-                    }
-
-                    &:nth-child(2) {
-                        border-radius: 0 0 5px 5px;
-                    }
-                }
-            }
-
-            .outletTitle {
-                position: absolute;
-                left: 92px;
-                top: 20px;
-
-                .swiper-slide {
-                    position: relative;
-
-                    span {
-                        color: #fff;
-
-                        &:nth-child(1) {
-                            padding-right: 14px;
+                    &.titleBar2 {
+                        &:before {
+                            background-image: url("../css/images/titleico2.png");
                         }
                     }
-                }
-            }
-        }
 
-        .module {
-            h5 {
-                background: url("./images/leftTitleBg.png") center no-repeat;
-            }
-        }
-
-        .leftLeftBottom {
-            position: absolute;
-            left: -100px;
-            bottom: -15px;
-            width: 360px;
-            height: 360px;
-            background: url("./images/leftLeftBottom.gif") left bottom no-repeat;
-            background-size: 100%;
-        }
-    }
-
-    .mainBar {
-        margin: 0 10px 20px;
-        width: 744px;
-
-        .mainMap {
-            position: relative;
-
-            #mainMap {
-                position: relative;
-                margin-bottom: 10px;
-                width: 100%;
-                height: 736px;
-                border: 1px solid #1c37c2;
-                box-shadow: 0 0 20px #1c37c2 inset;
-                background: url("./images/bg.png") center/contain no-repeat!important;
-                z-index: 1;
-            }
-
-            .listTop,
-            .mainNum,
-            .totalNum,
-            .xygs {
-                position: absolute;
-                z-index: 10;
-                color: #e2e8f3;
-            }
-
-            .listTop,
-            .totalNum,
-            .xygs {
-                h5 {
-                    color: #39d7db;
-                    font-size: 18px;
-
-                    span {
-                        padding: 10px 20px;
-                        background: url("./images/rightLeftBottom.gif") center no-repeat;
+                    &.titleBar3 {
+                        &:before {
+                            background-image: url("../css/images/titleico3.png");
+                        }
                     }
-                }
-            }
 
-            .listTop,
-            .totalNum {
-                right: 20px;
+                    &.titleBar4 {
+                        &:before {
+                            background-image: url("../css/images/titleico4.png");
+                        }
+                    }
 
-                ul {
-                    width: 100%;
-
-                    li {
-                        // display: block;
-                        // overflow: hidden;
-                        // text-overflow: ellipsis;
-                        // white-space: nowrap;
-                        line-height: 1.3;
+                    .title {
+                        position: relative;
+                        padding-left: 20px;
+                        width: 655px;
+                        height: 51px;
+                        line-height: 51px;
+                        background: url("../css/images/titleBar.png") no-repeat;
+                        color: #fff;
+                        font-weight: normal;
+                        font-family: "Microsoft YaHei";
                         font-size: 16px;
-
-                        b {
-                            display: inline-block;
-                            overflow: hidden;
-                            width: 100px;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            text-align: right;
-                        }
-
-                        span {
-                            font-size: 34px;
-                        }
                     }
                 }
-            }
 
-            .mainNum {
-                top: 60px;
-                left: 40px;
+                .content {
+                    padding-top: 10px;
+                    padding-left: 40px;
 
-                li {
-                    margin-bottom: 20px;
-                    font-size: 16px;
-
-                    h5 {
-                        line-height: 52px;
-                        vertical-align: middle;
-                        color: #36c9d1;
-                        font-size: 18px;
-                    }
-
-                    p {
+                    .animateNumber {
                         display: inline-block;
                         vertical-align: middle;
 
@@ -487,1240 +388,123 @@ body {
                             width: 36px;
                             height: 52px;
                             line-height: 52px;
-                            border: 1px solid #4f5492;
+                            border: 1px solid rgba(0, 0, 0, .5);
+                            background-color: #0c434a;
                             text-align: center;
                             font-size: 50px;
-                            background-color: #325586;
+
+                            &.dot {
+                                width: 15px;
+                                border: none;
+                                background-position-x: -5px;
+                                background-color: transparent;
+                            }
+                        }
+                    }
+
+                    ul {
+                        overflow: auto;
+
+                        li {
+                            float: left;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 10px 10px 10px 0;
+
+                            span {
+                                padding-bottom: 5px;
+                                color: #fff;
+                                font-size: 16px;
+                            }
+
+                            p {
+                                color: #33fefa;
+                                line-height: 26px;
+                                font-family: "Microsoft YaHei";
+                                font-weight: bold;
+                                font-size: 26px;
+                            }
+                        }
+                    }
+
+                    .flashSquareBox {
+                        overflow: auto;
+                        width: 800px;
+
+                        .flashSquare {
+                            width: 90px;
+                            height: 90px;
+                            border: 1px solid rgba(51, 254, 250, .5);
+                            background: rgba(23, 26, 31, .5);
+
+                            p {
+                                transition: all 1s ease-in;
+                            }
+
+                            &.light {
+                                p {
+                                    text-shadow: 0 0 10px #33fefa;
+                                }
+                            }
+                        }
+                    }
+
+                    .productBox {
+                        li {
+                            padding: 0 20px;
+                            height: 78px;
+                            background: url("../css/images/line.png") no-repeat;
+                        }
+                    }
+                }
+            }
+
+            .next {
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                cursor: pointer;
+
+                div {
+                    margin: 0 auto 5px;
+                    height: 2px;
+                    border-radius: 5px;
+                    background: #2fd5d3;
+                    @keyframes nextFlash {
+                        from {
+                            background-color: #4cfffe;
                         }
 
-                        b {
-                            font-size: 20px;
+                        to {
+                            background-color: #2487a3;
                         }
+                    }
+
+                    &:nth-child(1) {
+                        width: 10px;
+                        animation: nextFlash 0.5s linear infinite alternate;
                     }
 
                     &:nth-child(2) {
-                        p {
-                            span {
-                                background-color: #523457;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .listTop {
-                top: 73px;
-            }
-
-            .xygs {
-                left: 40px;
-                bottom: 30px;
-                width: 387px;
-                height: 69px;
-                background: url("./images/xygs.png") center no-repeat;
-
-                li {
-                    float: left;
-                    width: 50%;
-                    text-align: center;
-
-                    h5 {
-                        padding: 10px 5px 0;
-                        color: #36c9d1;
-                        font-size: 16px;
+                        width: 24px;
+                        animation: nextFlash 0.5s linear 0.2s infinite alternate;
                     }
 
-                    p {
-                        color: #fff;
-                        font-size: 24px;
-                    }
-                }
-            }
-
-            .totalNum {
-                top: 75px;
-            }
-
-            .mainLeftBottom {
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                width: 269px;
-                height: 268px;
-                background: url("./images/mainLeftBottom.gif") no-repeat;
-            }
-        }
-
-        .block {
-            display: flex;
-
-            .module {
-                flex: 1;
-
-                &:nth-child(1) {
-                    margin-right: 20px;
-                }
-
-                h5 {
-                    background: url("./images/mainTitleBg.png") center no-repeat;
-                }
-
-                #chart5 {
-                    float: left;
-                    width: 100%;
-                    height: 230px;
-                }
-
-                #chart6 {
-                    float: left;
-                    width: 100%;
-                    height: 230px;
-                }
-            }
-        }
-    }
-
-    .rightBar {
-        margin: 0 20px 20px 10px;
-        width: 550px;
-
-        #chart10 {
-            width: 100%;
-            height: 225px;
-        }
-
-        #chart7 {
-            width: 100%;
-            height: 190px;
-        }
-
-        #chart8 {
-            width: 100%;
-            height: 190px;
-        }
-
-        #chart9 {
-            width: 100%;
-            height: 230px;
-        }
-
-        .module {
-            h5 {
-                background: url("./images/leftTitleBg.png") center no-repeat;
-            }
-        } // .xydt {
-        //     position: relative;
-        //
-        //     .moduleContent {
-        //         padding: 20px 10px 0;
-        //         height: 225px;
-        //
-        //         #topPic {
-        //             float: left;
-        //             width: 277px;
-        //             height: 183px;
-        //
-        //             .pagination {
-        //                 position: absolute;
-        //                 right: 5px;
-        //                 bottom: 0;
-        //                 z-index: 20;
-        //
-        //                 .swiper-pagination-switch {
-        //                     display: inline-block;
-        //                     width: 4px;
-        //                     height: 4px;
-        //                     border-radius: 5px;
-        //                     background: #fff;
-        //                     margin-right: 5px;
-        //                     opacity: 0.8;
-        //                     cursor: pointer;
-        //                 }
-        //
-        //                 .swiper-visible-switch {
-        //                     background: #aaa;
-        //                 }
-        //
-        //                 .swiper-active-switch {
-        //                     width: 6px;
-        //                     height: 6px;
-        //                     border-radius: 6px;
-        //                     background: #f9b62c;
-        //                 }
-        //             }
-        //         }
-        //
-        //         .news {
-        //             float: left;
-        //             padding-left: 20px;
-        //             width: 250px;
-        //             box-sizing: border-box;
-        //
-        //             li {
-        //                 position: relative;
-        //                 overflow: hidden;
-        //                 padding-left: 5px;
-        //                 list-style: square inside;
-        //                 color: #757898;
-        //                 border-bottom: 1px dotted rgba(72, 75, 119, .7);
-        //                 text-overflow: ellipsis;
-        //                 white-space: nowrap;
-        //
-        //                 a {
-        //                     line-height: 38px;
-        //                     text-decoration: none;
-        //                     color: #e2e8f3;
-        //                     font-size: 14px;
-        //                 }
-        //             }
-        //         }
-        //     }
-        //
-        //     .rightLeftTop {
-        //         position: absolute;
-        //         right: -124px;
-        //         top: -25px;
-        //         width: 360px;
-        //         height: 360px;
-        //         background: url("./images/leftLeftBottom.gif") left bottom no-repeat;
-        //         background-size: 100%;
-        //         transform: rotate(180deg);
-        //     }
-        //
-        //     .rightLeftBottom {
-        //         position: absolute;
-        //         left: 10px;
-        //         bottom: 8px;
-        //         width: 30px;
-        //         height: 7px;
-        //         background: url('./images/rightLeftBottom.gif') no-repeat;
-        //     }
-        // }
-    }
-}
-
-.dtApp {
-    .breadBar {
-        display: none;
-        margin-bottom: 20px;
-        padding: 0 20px;
-        line-height: 48px;
-        border-top: 2px solid #1a6ca8;
-        background-color: #fff;
-        font-size: 14px;
-
-        a {
-            padding: 0 3px;
-
-            &.active {
-                color: #035294;
-            }
-        }
-    }
-
-    .moduleName {
-        display: none;
-        overflow: auto; // margin-bottom: 20px;
-        line-height: 48px;
-        border-bottom: 1px solid #e4edf4;
-        background-color: #fff;
-
-        h1,
-        h5 {
-            position: relative;
-            float: left;
-            padding-right: 60px;
-
-            &::after {
-                content: ' ';
-                position: absolute;
-                margin-left: 30px;
-                top: 50%;
-                transform: translate(0, -50%);
-                width: 1px;
-                height: 20px;
-                background-color: #ccc;
-            }
-        }
-
-        h1 {
-            font-size: 20px;
-        }
-
-        h5 {
-            color: #333;
-            font-size: 16px;
-        }
-    }
-}
-
-@media (min-width: 1101px) {
-    .dtApp {
-        overflow: auto;
-        margin: 0 auto;
-        width: 1200px;
-        background-color: #f0f0f0;
-
-        .dtPage {
-            overflow: auto;
-            padding: 0 20px 20px;
-            background-color: #fff;
-
-            .contentBox {
-                padding: 20px;
-                width: 1160px;
-                background-color: #e4e8eb;
-
-                .pageTitle {
-                    margin-bottom: 20px;
-                    text-align: center;
-                    font-size: 18px;
-                }
-
-                .textInfoTip {
-                    position: absolute;
-                    left: 35px;
-                    top: 5%;
-                    z-index: 10;
-
-                    li {
-                        line-height: 30px;
-                    }
-                }
-
-                .classification {
-                    padding: 0 0 20px;
-
-                    .classificationRow {
-                        padding: 5px 0;
-                        border-bottom: 1px dashed #ccc;
-
-                        span {
-                            float: left;
-                            line-height: 26px;
-                            font-size: 12px;
-                        }
-
-                        ul {
-                            overflow: auto;
-
-                            li {
-                                float: left;
-                                margin-right: 10px;
-                                padding: 3px 5px;
-                                border-radius: 3px;
-                                cursor: pointer;
-                                font-size: 14px;
-
-                                &.hover,
-                                &:hover {
-                                    background-color: #e70012;
-                                    color: #fff;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .mapTopCtrl {
-                    overflow: auto;
-                    margin-top: 35px;
-
-                    li {
-                        float: left;
-                        padding: 5px 0;
-                        width: 110px;
-                        border-top: 1px solid #0b66ac;
-                        border-bottom: 1px solid #0b66ac;
-                        border-right: 1px solid #0b66ac;
-                        text-align: center;
-                        cursor: pointer;
-                        font-size: 14px;
-
-                        &:first-child {
-                            border-left: 1px solid #0b66ac;
-                            border-radius: 5px 0 0 5px;
-                        }
-
-                        &:last-child {
-                            border-radius: 0 5px 5px 0;
-                        }
-
-                        &.hover,
-                        &:hover {
-                            background-color: #0b66ac;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .mapBox {
-                    position: relative;
-                    height: 600px;
-                    background-color: #ccc;
-
-                    #mapStage {
-                        height: 100%;
+                    &:nth-child(3) {
+                        width: 34px;
+                        animation: nextFlash 0.5s linear 0.3s infinite alternate;
                     }
 
-                    .mapRightCtrl {
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
-                        bottom: 10px;
-
-                        .switch {
-                            position: absolute;
-                            top: 10px;
-                            left: -30px;
-
-                            .close,
-                            .open {
-                                position: relative;
-                                display: block;
-                                width: 30px;
-                                height: 50px;
-                                box-shadow: -3px 0 3px #ccc;
-                                background-color: #fff;
-                                cursor: pointer;
-
-                                &:before {
-                                    content: ' ';
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
-                                    width: 8px;
-                                    height: 14px;
-                                    background: url("../css/images/switchIco.png") #fff no-repeat;
-                                }
-                            }
-
-                            .close {
-                                &:before {
-                                    background-position: left top;
-                                }
-                            }
-
-                            .open {
-                                display: none;
-
-                                &:before {
-                                    background-position: left bottom;
-                                }
-                            }
-                        }
-
-                        .rightCtrlBox {
-                            padding: 20px 0;
-                            width: 280px;
-                            background-color: #fff;
-
-                            .area {
-                                padding: 0 20px 20px;
-
-                                h4 {
-                                    font-weight: normal;
-                                }
-
-                                ul {
-                                    overflow: auto;
-
-                                    li {
-                                        float: left;
-                                        margin: 10px 10px 0 0;
-                                        padding: 3px 0;
-                                        width: 65px;
-                                        background-color: #e4e8eb;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        font-size: 12px;
-
-                                        &.hover,
-                                        &:hover {
-                                            background-color: #0b66ac;
-                                            color: #fff;
-                                        }
-
-                                        &:last-child {
-                                            width: 215px;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .listCoBox {
-                                li {
-                                    position: relative;
-                                    padding: 10px 25px 10px 50px;
-                                    cursor: pointer;
-
-                                    &.hover,
-                                    &:hover {
-                                        background-color: #eceff1;
-                                    }
-
-                                    .indexIco {
-                                        position: absolute;
-                                        left: 25px;
-                                        top: 16px;
-                                        width: 18px;
-                                        height: 24px;
-                                        line-height: 20px;
-                                        background: url("../css/images/indexIco.png") center no-repeat;
-                                        text-align: center;
-                                        color: #fff;
-                                        font-size: 12px;
-                                    }
-
-                                    h5 {
-                                        color: #0b66ac;
-                                        font-size: 14px;
-                                    }
-
-                                    p {
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .mapLevel,
-                .mapRightLevel {
-                    position: absolute;
-                    top: 50%;
-                    transform: translate(0, -50%);
-                    z-index: 10;
-
-                    span {
-                        display: block;
-                        margin-bottom: 10px;
-                        width: 145px;
-                        height: 34px;
-                        line-height: 34px;
-                        background: #f1f1f1;
-                        border: 1px solid #1a6ca8;
-                        border-radius: 4px;
-                        text-align: center;
-                        color: #333;
-                        cursor: pointer;
-
-                        &.hover,
-                        &:hover {
-                            background-color: #1a6ca8;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .mapLevel {
-                    left: 35px;
-                }
-
-                .mapRightLevel {
-                    right: 35px;
-                }
-
-                .toggleButton {
-                    overflow: auto;
-                    margin: 0 0 0 560px;
-
-                    span {
-                        float: left;
-                        padding: 3px 5px;
-                        background-color: #ceeaff;
-                        border: 1px solid #ccc;
-                        border-bottom: none;
-                        cursor: pointer;
-                        font-size: 14px;
-
-                        &:nth-child(1) {
-                            border-right: none;
-                        }
-
-                        &.hover {
-                            background-color: #0091ff;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .layerBox {
-                    overflow: auto;
-                    padding: 20px 10px;
-                    background-color: #fff;
-
-                    .grid {
-                        overflow: auto;
-
-                        li {
-                            position: relative;
-                            overflow: hidden;
-                            float: left;
-                            margin-bottom: 20px;
-                            height: 400px;
-                            background-color: #fafafa;
-
-                            &.lastChild {
-                                margin-right: 0!important;
-                            }
-
-                            &.mainMap {
-                                height: 500px;
-                            }
-
-                            .chart {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-
-                        &.grid1 {
-                            li {
-                                width: 100%;
-                            }
-                        }
-
-                        &.grid2 {
-                            li {
-                                margin-right: 2%;
-                                width: 49%;
-                            }
-                        }
-
-                        &.grid3 {
-                            li {
-                                margin-right: 2%;
-                                width: 32%;
-                            }
-                        }
-
-                        &.grid4 {
-                            li {
-                                margin-right: 1%;
-                                width: 24.5%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 721px) and (max-width: 1100px) {
-    .dtApp {
-        overflow: auto;
-        margin: 0 auto;
-        width: 100%;
-        background-color: #f0f0f0;
-
-        .dtPage {
-            overflow: auto;
-            padding: 20px;
-            background-color: #fff;
-
-            .contentBox {
-                padding: 20px;
-                background-color: #e4e8eb;
-
-                .pageTitle {
-                    margin-bottom: 20px;
-                    text-align: center;
-                    font-size: 18px;
-                }
-
-                .textInfoTip {
-                    position: absolute;
-                    left: 35px;
-                    top: 5%;
-                    z-index: 10;
-
-                    li {
-                        line-height: 30px;
-                    }
-                }
-
-                .classification {
-                    padding: 0 0 20px;
-
-                    .classificationRow {
-                        padding: 5px 0;
-                        border-bottom: 1px dashed #ccc;
-
-                        span {
-                            float: left;
-                            line-height: 26px;
-                            font-size: 12px;
-                        }
-
-                        ul {
-                            overflow: auto;
-
-                            li {
-                                float: left;
-                                margin-right: 10px;
-                                padding: 3px 5px;
-                                border-radius: 3px;
-                                cursor: pointer;
-                                font-size: 14px;
-
-                                &.hover,
-                                &:hover {
-                                    background-color: #e70012;
-                                    color: #fff;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .mapTopCtrl {
-                    overflow: auto;
-                    margin-top: 35px;
-
-                    li {
-                        float: left;
-                        padding: 5px 0;
-                        width: 110px;
-                        border-top: 1px solid #0b66ac;
-                        border-bottom: 1px solid #0b66ac;
-                        border-right: 1px solid #0b66ac;
-                        text-align: center;
-                        cursor: pointer;
-                        font-size: 14px;
-
-                        &:first-child {
-                            border-left: 1px solid #0b66ac;
-                            border-radius: 5px 0 0 5px;
-                        }
-
-                        &:last-child {
-                            border-radius: 0 5px 5px 0;
-                        }
-
-                        &.hover,
-                        &:hover {
-                            background-color: #0b66ac;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .mapBox {
-                    position: relative;
-                    height: 600px;
-                    background-color: #ccc;
-
-                    #mapStage {
-                        height: 100%;
+                    &:nth-child(4) {
+                        width: 44px;
+                        animation: nextFlash 0.5s linear 0.4s infinite alternate;
                     }
 
-                    .mapRightCtrl {
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
-                        bottom: 10px;
-
-                        .switch {
-                            position: absolute;
-                            top: 10px;
-                            left: -30px;
-
-                            .close,
-                            .open {
-                                position: relative;
-                                display: block;
-                                width: 30px;
-                                height: 50px;
-                                box-shadow: -3px 0 3px #ccc;
-                                background-color: #fff;
-                                cursor: pointer;
-
-                                &:before {
-                                    content: ' ';
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
-                                    width: 8px;
-                                    height: 14px;
-                                    background: url("../css/images/switchIco.png") #fff no-repeat;
-                                }
-                            }
-
-                            .close {
-                                &:before {
-                                    background-position: left top;
-                                }
-                            }
-
-                            .open {
-                                display: none;
-
-                                &:before {
-                                    background-position: left bottom;
-                                }
-                            }
-                        }
-
-                        .rightCtrlBox {
-                            padding: 20px 0;
-                            width: 280px;
-                            background-color: #fff;
-
-                            .area {
-                                padding: 0 20px 20px;
-
-                                h4 {
-                                    font-weight: normal;
-                                }
-
-                                ul {
-                                    overflow: auto;
-
-                                    li {
-                                        float: left;
-                                        margin: 10px 10px 0 0;
-                                        padding: 3px 0;
-                                        width: 65px;
-                                        background-color: #e4e8eb;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        font-size: 12px;
-
-                                        &.hover,
-                                        &:hover {
-                                            background-color: #0b66ac;
-                                            color: #fff;
-                                        }
-
-                                        &:last-child {
-                                            width: 215px;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .listCoBox {
-                                li {
-                                    position: relative;
-                                    padding: 10px 25px 10px 50px;
-                                    cursor: pointer;
-
-                                    &.hover,
-                                    &:hover {
-                                        background-color: #eceff1;
-                                    }
-
-                                    .indexIco {
-                                        position: absolute;
-                                        left: 25px;
-                                        top: 16px;
-                                        width: 18px;
-                                        height: 24px;
-                                        line-height: 20px;
-                                        background: url("../css/images/indexIco.png") center no-repeat;
-                                        text-align: center;
-                                        color: #fff;
-                                        font-size: 12px;
-                                    }
-
-                                    h5 {
-                                        color: #0b66ac;
-                                        font-size: 14px;
-                                    }
-
-                                    p {
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .mapLevel {
-                    position: absolute;
-                    left: 35px;
-                    top: 50%;
-                    transform: translate(0, -50%);
-                    z-index: 10;
-
-                    span {
-                        display: block;
-                        margin-bottom: 10px;
-                        width: 145px;
-                        height: 34px;
-                        line-height: 34px;
-                        border: 1px solid #1a6ca8;
-                        border-radius: 4px;
-                        text-align: center;
-                        color: #333;
-                        cursor: pointer;
-
-                        &.hover,
-                        &:hover {
-                            background-color: #1a6ca8;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .toggleButton {
-                    overflow: auto;
-                    margin: 0 0 0 560px;
-
-                    span {
-                        float: left;
-                        padding: 3px 5px;
-                        background-color: #ceeaff;
-                        border: 1px solid #ccc;
-                        border-bottom: none;
-                        cursor: pointer;
-                        font-size: 14px;
-
-                        &:nth-child(1) {
-                            border-right: none;
-                        }
-
-                        &.hover {
-                            background-color: #0091ff;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .layerBox {
-                    overflow: auto;
-                    padding: 20px 10px;
-                    background-color: #fff;
-
-                    .grid {
-                        overflow: auto;
-
-                        li {
-                            position: relative;
-                            overflow: hidden;
-                            margin-bottom: 20px;
-                            height: 400px;
-                            background-color: #fafafa;
-
-                            &.lastChild {
-                                margin-right: 0!important;
-                            }
-
-                            &.mainMap {
-                                height: 500px;
-                            }
-
-                            .chart {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 720px) {
-    .dtApp {
-        .dtPage {
-            overflow: auto;
-            padding: 20px;
-            background-color: #fff;
-
-            .contentBox {
-                .mapLevel {
-                    position: absolute;
-                    left: 5%;
-                    top: 50%;
-                    transform: translate(0, -50%);
-                    z-index: 10;
-
-                    span {
-                        display: block;
-                        margin-bottom: 5px;
-                        width: 50px;
-                        height: 20px;
-                        line-height: 20px;
-                        border: 1px solid #1a6ca8;
-                        border-radius: 4px;
-                        background-color: #fff;
-                        text-align: center;
-                        color: #333;
-                        cursor: pointer;
-                        font-size: 12px;
-
-                        &.hover,
-                        &:hover {
-                            background-color: #1a6ca8;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .mapTopCtrl {
-                    overflow: auto;
-                    margin: 20px 0;
-
-                    li {
-                        float: left;
-                        margin: 0 5px 5px 0;
-                        padding: 5px 0;
-                        width: 60px;
-                        border: 1px solid #0b66ac;
-                        text-align: center;
-                        cursor: pointer;
-                        font-size: 12px;
-
-                        &.hover,
-                        &:hover {
-                            background-color: #0b66ac;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                .mapBox {
-                    position: relative;
-                    height: 600px;
-
-                    #mapStage {
-                        height: 100%;
-                    }
-
-                    .mapRightCtrl {
-                        position: absolute;
-                        right: 10px;
-                        top: 10px;
-                        bottom: 10px;
-
-                        .switch {
-                            position: absolute;
-                            top: 10px;
-                            left: -30px;
-
-                            .close,
-                            .open {
-                                position: relative;
-                                display: block;
-                                width: 30px;
-                                height: 50px;
-                                box-shadow: -3px 0 3px #ccc;
-                                background-color: #fff;
-                                cursor: pointer;
-
-                                &:before {
-                                    content: ' ';
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
-                                    width: 8px;
-                                    height: 14px;
-                                    background: url("../css/images/switchIco.png") #fff no-repeat;
-                                }
-                            }
-
-                            .close {
-                                &:before {
-                                    background-position: left top;
-                                }
-                            }
-
-                            .open {
-                                display: none;
-
-                                &:before {
-                                    background-position: left bottom;
-                                }
-                            }
-                        }
-
-                        .rightCtrlBox {
-                            padding: 20px 0;
-                            width: 280px;
-                            background-color: #fff;
-
-                            .area {
-                                padding: 0 20px 20px;
-
-                                h4 {
-                                    font-weight: normal;
-                                }
-
-                                ul {
-                                    overflow: auto;
-
-                                    li {
-                                        float: left;
-                                        margin: 10px 10px 0 0;
-                                        padding: 3px 0;
-                                        width: 65px;
-                                        background-color: #e4e8eb;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        font-size: 12px;
-
-                                        &.hover,
-                                        &:hover {
-                                            background-color: #0b66ac;
-                                            color: #fff;
-                                        }
-
-                                        &:last-child {
-                                            width: 215px;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .listCoBox {
-                                li {
-                                    position: relative;
-                                    padding: 10px 25px 10px 50px;
-                                    cursor: pointer;
-
-                                    &.hover,
-                                    &:hover {
-                                        background-color: #eceff1;
-                                    }
-
-                                    .indexIco {
-                                        position: absolute;
-                                        left: 25px;
-                                        top: 16px;
-                                        width: 18px;
-                                        height: 24px;
-                                        line-height: 20px;
-                                        background: url("../css/images/indexIco.png") center no-repeat;
-                                        text-align: center;
-                                        color: #fff;
-                                        font-size: 12px;
-                                    }
-
-                                    h5 {
-                                        color: #0b66ac;
-                                        font-size: 14px;
-                                    }
-
-                                    p {
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .classification {
-                    padding: 0 0 20px;
-
-                    .classificationRow {
-                        padding: 5px 0;
-                        border-bottom: 1px dashed #ccc;
-
-                        span {
-                            float: left;
-                            line-height: 26px;
-                            font-size: 12px;
-                        }
-
-                        ul {
-                            overflow: auto;
-
-                            li {
-                                float: left;
-                                margin-right: 10px;
-                                padding: 3px 5px;
-                                border-radius: 3px;
-                                cursor: pointer;
-                                font-size: 14px;
-
-                                &.hover,
-                                &:hover {
-                                    background-color: #e70012;
-                                    color: #fff;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .toggleButton {
-                    overflow: auto;
-                    margin: 20px auto;
-
-                    span {
-                        float: left;
-                        padding: 3px 5px;
-                        background-color: #ceeaff;
-                        border: 1px solid #ccc;
-                        border-bottom: none;
-                        cursor: pointer;
-                        font-size: 14px;
-
-                        &:nth-child(1) {
-                            border-right: none;
-                        }
-
-                        &.hover {
-                            background-color: #0091ff;
-                            color: #fff;
-                        }
-                    }
-                }
-
-                #labelTip {
-                    position: absolute;
-                    top: 60px;
-                    left: 106px;
-                    width: 100%;
-                    height: 30px;
-                    font-weight: bold;
-                    font-size: 12px;
-
-                    .swiper-slide {
-                        span {
-                            float: left;
-                            width: 120px;
-                        }
-                    }
-                }
-
-                .layerBox {
-                    .pageTitle {
-                        margin-bottom: 20px;
-                        text-align: center;
-                        font-size: 18px;
-                    }
-
-                    .grid {
-                        overflow: auto;
-
-                        li {
-                            position: relative;
-                            overflow: hidden;
-                            margin-bottom: 20px;
-                            width: 100%;
-                            height: 400px;
-                            background-color: #fafafa;
-
-                            &.mainMap {
-                                height: 500px;
-                            }
-
-                            .chart {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
+                    &:nth-child(5) {
+                        width: 54px;
+                        animation: nextFlash 0.5s linear 0.5s infinite alternate;
                     }
                 }
             }

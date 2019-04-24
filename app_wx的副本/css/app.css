@@ -1,0 +1,347 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+div,
+li,
+ul {
+  box-sizing: border-box; }
+
+li,
+ul {
+  list-style: none; }
+
+body,
+html {
+  height: 100%; }
+
+body {
+  overflow-x: hidden; }
+
+.textEllipsis {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal; }
+
+.jdChartLoading {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url("./images/loading.gif") #5c89b0 center no-repeat;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  z-index: 100; }
+  .jdChartLoading.hide {
+    opacity: 0;
+    z-index: 0; }
+
+.dtCharts {
+  -webkit-transform-origin: left top 0;
+          transform-origin: left top 0;
+  overflow: hidden;
+  padding-top: 60px;
+  width: 1920px;
+  height: 1080px;
+  background-color: #1a1f55; }
+  .dtCharts .title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -454px;
+    width: 908px;
+    height: 138px;
+    line-height: 100px;
+    background: url("./images/title.png") 78px no-repeat;
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    font-size: 36px; }
+  .dtCharts .module {
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid #1c37c2;
+    border-radius: 3px; }
+    .dtCharts .module:before {
+      content: ' ';
+      position: absolute;
+      left: -1px;
+      top: -2px;
+      width: 10px;
+      height: 11px;
+      background: url("./images/moduleLeftTop.png") 0 no-repeat; }
+    .dtCharts .module:after {
+      content: ' ';
+      position: absolute;
+      right: -1px;
+      top: -2px;
+      width: 10px;
+      height: 11px;
+      background: url("./images/moduleRightTop.png") 0 no-repeat; }
+    .dtCharts .module .leftBottomRaidus {
+      position: absolute;
+      left: -1px;
+      bottom: -2px;
+      width: 10px;
+      height: 11px;
+      background: url("./images/moduleLeftBottom.png") 0 no-repeat; }
+    .dtCharts .module .rightBottomRaidus {
+      position: absolute;
+      right: -1px;
+      bottom: -2px;
+      width: 10px;
+      height: 11px;
+      background: url("./images/moduleRightBottom.png") 0 no-repeat; }
+    .dtCharts .module h5 {
+      line-height: 35px;
+      text-align: center;
+      color: #b8eaf9;
+      font-size: 18px; }
+    .dtCharts .module .moduleContent {
+      overflow: auto;
+      position: relative;
+      z-index: 10; }
+      .dtCharts .module .moduleContent .areaBox {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 15px 30px 0 20px;
+        background: url("./images/line.gif") right center no-repeat; }
+        .dtCharts .module .moduleContent .areaBox .area {
+          margin-bottom: 20px;
+          padding-left: 25px;
+          width: 140px;
+          height: 50px;
+          line-height: 50px;
+          border: 1px solid #fff;
+          border-radius: 50px;
+          color: #fff;
+          font-size: 16px; }
+          .dtCharts .module .moduleContent .areaBox .area span {
+            padding-left: 15px;
+            font-weight: bold;
+            font-size: 16px; }
+  .dtCharts .leftBar,
+  .dtCharts .mainBar,
+  .dtCharts .rightBar {
+    float: left; }
+  .dtCharts .leftBar {
+    margin: 0 10px 20px 20px;
+    width: 545px; }
+    .dtCharts .leftBar #chart1,
+    .dtCharts .leftBar #chart2,
+    .dtCharts .leftBar #chart3 {
+      width: 100%; }
+    .dtCharts .leftBar #chart1 {
+      height: 225px; }
+    .dtCharts .leftBar #chart2 {
+      height: 210px; }
+    .dtCharts .leftBar #chart3 {
+      height: 170px; }
+    .dtCharts .leftBar #chart4 {
+      width: 100%;
+      height: 230px; }
+    .dtCharts .leftBar .module h5 {
+      background: url("./images/leftTitleBg.png") center no-repeat; }
+    .dtCharts .leftBar .leftLeftBottom {
+      position: absolute;
+      left: -100px;
+      bottom: -15px;
+      width: 360px;
+      height: 360px;
+      background: url("./images/leftLeftBottom.gif") left bottom no-repeat;
+      background-size: 100%; }
+  .dtCharts .mainBar {
+    margin: 0 10px 20px;
+    width: 744px; }
+    .dtCharts .mainBar .mainMap {
+      position: relative; }
+      .dtCharts .mainBar .mainMap #mainMap {
+        margin-bottom: 10px;
+        width: 100%;
+        height: 736px;
+        border: 1px solid #1c37c2;
+        box-shadow: 0 0 20px #1c37c2 inset;
+        background: url("./images/bg.png") center/contain no-repeat !important; }
+      .dtCharts .mainBar .mainMap .listTop,
+      .dtCharts .mainBar .mainMap .mainNum,
+      .dtCharts .mainBar .mainMap .totalNum,
+      .dtCharts .mainBar .mainMap .xygs {
+        position: absolute;
+        z-index: 10;
+        color: #e2e8f3; }
+      .dtCharts .mainBar .mainMap .mainNum {
+        top: 60px;
+        left: 40px; }
+        .dtCharts .mainBar .mainMap .mainNum li {
+          margin-bottom: 20px;
+          font-size: 16px; }
+          .dtCharts .mainBar .mainMap .mainNum li h5 {
+            line-height: 52px;
+            vertical-align: middle;
+            color: #36c9d1;
+            font-size: 18px; }
+          .dtCharts .mainBar .mainMap .mainNum li p {
+            display: inline-block;
+            vertical-align: middle; }
+            .dtCharts .mainBar .mainMap .mainNum li p span {
+              position: relative;
+              display: inline-block;
+              margin: 0 5px 0 0;
+              width: 36px;
+              height: 52px;
+              line-height: 52px;
+              border: 1px solid #4f5492;
+              text-align: center;
+              font-size: 50px;
+              background-color: #325586; }
+            .dtCharts .mainBar .mainMap .mainNum li p b {
+              font-size: 20px; }
+          .dtCharts .mainBar .mainMap .mainNum li:nth-child(2) p span {
+            background-color: #523457; }
+      .dtCharts .mainBar .mainMap .listTop h5,
+      .dtCharts .mainBar .mainMap .totalNum h5,
+      .dtCharts .mainBar .mainMap .xygs h5 {
+        color: #39d7db;
+        font-size: 18px; }
+        .dtCharts .mainBar .mainMap .listTop h5 span,
+        .dtCharts .mainBar .mainMap .totalNum h5 span,
+        .dtCharts .mainBar .mainMap .xygs h5 span {
+          padding: 10px 20px;
+          background: url("./images/rightLeftBottom.gif") center no-repeat; }
+      .dtCharts .mainBar .mainMap .listTop ul li,
+      .dtCharts .mainBar .mainMap .totalNum ul li,
+      .dtCharts .mainBar .mainMap .xygs ul li {
+        width: 100%;
+        line-height: 1.3;
+        font-size: 16px; }
+        .dtCharts .mainBar .mainMap .listTop ul li b,
+        .dtCharts .mainBar .mainMap .totalNum ul li b,
+        .dtCharts .mainBar .mainMap .xygs ul li b {
+          padding-right: 5px; }
+        .dtCharts .mainBar .mainMap .listTop ul li span,
+        .dtCharts .mainBar .mainMap .totalNum ul li span,
+        .dtCharts .mainBar .mainMap .xygs ul li span {
+          font-size: 34px; }
+      .dtCharts .mainBar .mainMap .listTop {
+        top: 73px;
+        right: 40px; }
+      .dtCharts .mainBar .mainMap .xygs {
+        left: 40px;
+        bottom: 30px; }
+      .dtCharts .mainBar .mainMap .totalNum {
+        right: 20px;
+        bottom: 30px;
+        width: 200px; }
+        .dtCharts .mainBar .mainMap .totalNum label {
+          border-bottom: 1px solid #39d7db;
+          cursor: pointer; }
+          .dtCharts .mainBar .mainMap .totalNum label.active {
+            border-bottom: 3px solid #39d7db; }
+        .dtCharts .mainBar .mainMap .totalNum .topPic {
+          height: 220px; }
+          .dtCharts .mainBar .mainMap .totalNum .topPic ul {
+            width: 100%; }
+            .dtCharts .mainBar .mainMap .totalNum .topPic ul li {
+              width: 100%;
+              line-height: 1.3;
+              font-size: 16px; }
+              .dtCharts .mainBar .mainMap .totalNum .topPic ul li b {
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 80px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                color: #fff !important; }
+                .dtCharts .mainBar .mainMap .totalNum .topPic ul li b:hover {
+                  color: #fff !important; }
+              .dtCharts .mainBar .mainMap .totalNum .topPic ul li span {
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 120px;
+                vertical-align: middle;
+                color: #fff !important; }
+                .dtCharts .mainBar .mainMap .totalNum .topPic ul li span:hover {
+                  color: #fff !important; }
+      .dtCharts .mainBar .mainMap .mainLeftBottom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 269px;
+        height: 268px;
+        background: url("./images/mainLeftBottom.gif") no-repeat; }
+    .dtCharts .mainBar .block {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .dtCharts .mainBar .block .module {
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1; }
+        .dtCharts .mainBar .block .module:nth-child(1) {
+          margin-right: 20px; }
+        .dtCharts .mainBar .block .module h5 {
+          background: url("./images/mainTitleBg.png") center no-repeat; }
+        .dtCharts .mainBar .block .module #chart5 {
+          float: left;
+          width: 100%;
+          height: 230px; }
+        .dtCharts .mainBar .block .module #chart6 {
+          float: left;
+          width: 100%;
+          height: 230px; }
+  .dtCharts .rightBar {
+    margin: 0 20px 20px 10px;
+    width: 550px; }
+    .dtCharts .rightBar #chart10 {
+      width: 100%;
+      height: 225px; }
+    .dtCharts .rightBar #chart7 {
+      width: 100%;
+      height: 210px; }
+    .dtCharts .rightBar #chart8 {
+      width: 100%;
+      height: 170px; }
+    .dtCharts .rightBar #chart9 {
+      width: 100%;
+      height: 230px; }
+    .dtCharts .rightBar .module h5 {
+      background: url("./images/leftTitleBg.png") center no-repeat; }
+
+@-webkit-keyframes myRoute {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes myRoute {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+.hoverTip {
+  position: absolute;
+  overflow: auto;
+  display: none;
+  padding: 5px;
+  width: 150px;
+  max-height: 150px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #fff;
+  z-index: 1; }
