@@ -60,8 +60,8 @@ body {
         content: ' ';
         display: block;
         position: absolute;
-        -webkit-animation: cornerFlash 0.5s linear infinite alternate;
-                animation: cornerFlash 0.5s linear infinite alternate; }
+        -webkit-animation: cornerFlash 1.5s linear infinite alternate;
+                animation: cornerFlash 1.5s linear infinite alternate; }
       .page .flashSquare .corner:before {
         width: 9px;
         height: 1px; }
@@ -208,8 +208,8 @@ body {
       right: 0;
       padding: 5px 10px;
       border-radius: 5px 0 0 5px;
-      background-color: #2963ad;
-      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #d2d5d7;
       cursor: pointer;
       font-size: 20px; }
     .page .stage .leftPannel {
@@ -328,8 +328,8 @@ body {
           .page.page1 .stage .leftPannel .content .flashSquareBox .flashSquare {
             width: 90px;
             height: 90px;
-            border: 1px solid rgba(51, 254, 250, 0.5);
-            background: rgba(23, 26, 31, 0.5); }
+            border: 1px solid rgba(51, 254, 250, 0.15);
+            background: rgba(0, 0, 0, 0.15); }
             .page.page1 .stage .leftPannel .content .flashSquareBox .flashSquare p {
               -webkit-transition: all 1s ease-in;
               transition: all 1s ease-in; }

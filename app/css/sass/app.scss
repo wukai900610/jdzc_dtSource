@@ -72,7 +72,7 @@ body {
                 display: block;
                 position: absolute;
                 // background-color: #33fefa;
-                animation: cornerFlash 0.5s linear infinite alternate;
+                animation: cornerFlash 1.5s linear infinite alternate;
             }
 
             &:before {
@@ -283,8 +283,8 @@ body {
             right: 0;
             padding: 5px 10px;
             border-radius: 5px 0 0 5px;
-            background-color: #2963ad;
-            color: #fff;
+            background-color: rgba(255, 255, 255, .1);
+            color: #d2d5d7;
             cursor: pointer;
             font-size: 20px;
         }
@@ -449,8 +449,8 @@ body {
                         .flashSquare {
                             width: 90px;
                             height: 90px;
-                            border: 1px solid rgba(51, 254, 250, .5);
-                            background: rgba(23, 26, 31, .5);
+                            border: 1px solid rgba(51, 254, 250, .15);
+                            background: rgba(0, 0, 0, .15);
 
                             p {
                                 transition: all 1s ease-in;

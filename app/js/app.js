@@ -110,7 +110,7 @@ page.page1 = {
 
                 // layer.render();
                 layer.draw();
-                if(index < 40){
+                if(index < 10){
                     tempLayers.push({
                         layer:layer,
                         data:csv,
@@ -126,7 +126,7 @@ page.page1 = {
             }
             // 循环渲染
             for (var i=0;i<numArr.length;i++){
-                loop(i)
+                loop(i);
             }
 
             var wholeLoop;
@@ -142,11 +142,11 @@ page.page1 = {
                         if(index < ranNum){
                             setTimeout(function () {
                                 mapDotFlash(item);
-                            }, ranTime*50);
+                            }, ranTime*150);
                         }
                     });
-                }, 500);
-            }, 7000);
+                }, 1000);
+            }, 6000);
 
             function mapDotFlash(item) {
                 var data;
@@ -186,7 +186,7 @@ page.page1 = {
             var timeScale = setTimeout(function () {
                 if(myUtil.isFullscreen() == false){
                     $('.page .fullScreen').show();
-                    $('.page').css('height','1080px');
+                    // $('.page').css('height','1080px');
                 }else{
                 }
         		myUtil.setScale();
@@ -199,7 +199,7 @@ page.page1 = {
         $('.page .fullScreen').click(function (e) {
             $(this).hide();
             var el = e.srcElement || e.target;
-            $('.page').css('height','1440px');
+            // $('.page').css('height','1440px');
             myUtil.FullScreen(el);
         });
 
