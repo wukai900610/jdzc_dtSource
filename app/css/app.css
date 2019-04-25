@@ -22,8 +22,7 @@ html {
   height: 100%; }
 
 body {
-  overflow-x: hidden;
-  background: #1c2025; }
+  overflow-x: hidden; }
   body::-webkit-scrollbar {
     display: none; }
 
@@ -203,20 +202,19 @@ body {
     bottom: 0;
     right: 0;
     background: #1c2025; }
-    .page .stage .fullPage {
+    .page .stage .fullScreen {
       position: absolute;
       top: 100px;
       right: 0;
       padding: 5px 10px;
       border-radius: 5px 0 0 5px;
-      background-color: #76f9fa;
+      background-color: #2963ad;
       color: #fff;
       cursor: pointer;
       font-size: 20px; }
     .page .stage .leftPannel {
       position: absolute;
       top: 140px;
-      bottom: 0;
       z-index: 1; }
   .page.page1 {
     background-color: #171a1e; }
@@ -230,6 +228,9 @@ body {
       background: url("../css/images/logo.png") no-repeat; }
     .page.page1 .stage .leftPannel {
       left: -100%;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
       opacity: 0;
       -webkit-transition: all 2s ease-in;
       transition: all 2s ease-in;
@@ -339,7 +340,7 @@ body {
           height: 78px;
           background: url("../css/images/line.png") no-repeat; }
     .page.page1 .stage .next {
-      position: absolute;
+      position: fixed;
       bottom: 30px;
       left: 50%;
       cursor: pointer; }

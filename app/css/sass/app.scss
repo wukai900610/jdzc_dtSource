@@ -24,7 +24,6 @@ html {
 body {
     // overflow:hidden;
     overflow-x: hidden;
-    background: #1c2025;
 
     &::-webkit-scrollbar {
         display: none;
@@ -278,13 +277,13 @@ body {
         right: 0;
         background: #1c2025;
 
-        .fullPage {
+        .fullScreen {
             position: absolute;
             top: 100px;
             right: 0;
             padding: 5px 10px;
             border-radius: 5px 0 0 5px;
-            background-color: #76f9fa;
+            background-color: #2963ad;
             color: #fff;
             cursor: pointer;
             font-size: 20px;
@@ -294,7 +293,7 @@ body {
             position: absolute;
             // left: 35px;
             top: 140px;
-            bottom: 0;
+            // bottom: 0;
             // right: 0;
             z-index: 1;
         }
@@ -324,6 +323,8 @@ body {
             // }
             .leftPannel {
                 left: -100%;
+                top: 50%;
+                transform: translate(0,-50%);
                 opacity: 0;
                 transition: all 2s ease-in;
                 z-index: 5;
@@ -474,7 +475,7 @@ body {
             }
 
             .next {
-                position: absolute;
+                position: fixed;
                 bottom: 30px;
                 left: 50%;
                 cursor: pointer;

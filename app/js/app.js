@@ -129,24 +129,24 @@ page.page1 = {
                 loop(i)
             }
 
-            // var wholeLoop;
-            // setTimeout(function () {
-            //     clearInterval(wholeLoop);
-            // }, 120000);
-            // setTimeout(function () {
-            //     // 循环闪烁数据
-            //     wholeLoop = setInterval(function () {
-            //         var ranNum = parseInt(Math.random()*tempLayers.length);
-            //         tempLayers.map(function (item,index) {
-            //             var ranTime = parseInt(Math.random()*10);
-            //             if(index < ranNum){
-            //                 setTimeout(function () {
-            //                     mapDotFlash(item);
-            //                 }, ranTime*50);
-            //             }
-            //         });
-            //     }, 500);
-            // }, 6000);
+            var wholeLoop;
+            setTimeout(function () {
+                clearInterval(wholeLoop);
+            }, 120000);
+            setTimeout(function () {
+                // 循环闪烁数据
+                wholeLoop = setInterval(function () {
+                    var ranNum = parseInt(Math.random()*tempLayers.length);
+                    tempLayers.map(function (item,index) {
+                        var ranTime = parseInt(Math.random()*10);
+                        if(index < ranNum){
+                            setTimeout(function () {
+                                mapDotFlash(item);
+                            }, ranTime*50);
+                        }
+                    });
+                }, 500);
+            }, 7000);
 
             function mapDotFlash(item) {
                 var data;
@@ -185,7 +185,7 @@ page.page1 = {
             clearTimeout(timeScale);
             var timeScale = setTimeout(function () {
                 if(myUtil.isFullscreen() == false){
-                    $('.page .fullPage').show();
+                    $('.page .fullScreen').show();
                     $('.page').css('height','1080px');
                 }else{
                 }
@@ -196,7 +196,7 @@ page.page1 = {
     	myUtil.setScale();
 
         // 全屏功能
-        $('.page .fullPage').click(function (e) {
+        $('.page .fullScreen').click(function (e) {
             $(this).hide();
             var el = e.srcElement || e.target;
             $('.page').css('height','1440px');
