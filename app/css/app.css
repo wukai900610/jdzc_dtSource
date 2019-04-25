@@ -22,7 +22,8 @@ html {
   height: 100%; }
 
 body {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background: #1c2025; }
   body::-webkit-scrollbar {
     display: none; }
 
@@ -45,7 +46,6 @@ body {
   -webkit-transform-origin: left top 0;
           transform-origin: left top 0;
   overflow: hidden;
-  padding-top: 60px;
   width: 1920px;
   height: 1080px; }
   .page .container {
@@ -202,7 +202,17 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    background: #000; }
+    background: #1c2025; }
+    .page .stage .fullPage {
+      position: absolute;
+      top: 100px;
+      right: 0;
+      padding: 5px 10px;
+      border-radius: 5px 0 0 5px;
+      background-color: #76f9fa;
+      color: #fff;
+      cursor: pointer;
+      font-size: 20px; }
     .page .stage .leftPannel {
       position: absolute;
       top: 140px;

@@ -84,8 +84,9 @@ page.page1 = {
             };
 
             var renderCsvData = [];
+            var tempLayers = [];
             // 渲染方法
-            function render(data) {
+            function render(data,index) {
                 var layer = Loca.visualLayer({
                     container: map,
                     type: 'point',
@@ -109,16 +110,62 @@ page.page1 = {
 
                 // layer.render();
                 layer.draw();
+                if(index < 40){
+                    tempLayers.push({
+                        layer:layer,
+                        data:csv,
+                        flashCount:0
+                    });
+                }
             }
 
             function loop(i){
                 setTimeout(function () {
-                    render(numArr[i]);
+                    render(numArr[i],i);
                 }, 100*i);
             }
             // 循环渲染
             for (var i=0;i<numArr.length;i++){
                 loop(i)
+            }
+
+            // var wholeLoop;
+            // setTimeout(function () {
+            //     clearInterval(wholeLoop);
+            // }, 120000);
+            // setTimeout(function () {
+            //     // 循环闪烁数据
+            //     wholeLoop = setInterval(function () {
+            //         var ranNum = parseInt(Math.random()*tempLayers.length);
+            //         tempLayers.map(function (item,index) {
+            //             var ranTime = parseInt(Math.random()*10);
+            //             if(index < ranNum){
+            //                 setTimeout(function () {
+            //                     mapDotFlash(item);
+            //                 }, ranTime*50);
+            //             }
+            //         });
+            //     }, 500);
+            // }, 6000);
+
+            function mapDotFlash(item) {
+                var data;
+                if(item.flashCount % 2 == 0){
+                    data = title+'\n'+'116.858428,40.386874,4';
+                }else{
+                    data = item.data;
+                }
+                // console.log(data);
+                item.layer.setData(data, {
+                    lnglat: function (obj) {
+                        var value = obj.value;
+                        return [value['lng'], value['lat']];
+                    },
+                    type: 'csv'
+                });
+                item.layer.draw();
+
+                item.flashCount++;
             }
 
             // 自动移动地图
@@ -128,15 +175,34 @@ page.page1 = {
                     clearInterval(timePan);
                 }else{
                     lX = lX - 20;
-                    // lY = lY + 50;
                 }
-                // lX <= -1000 ? lX=0 : lX = lX - 10;
-                // lY >= 1000 ? lY=0 : lY = lY + 10;
                 amap.panBy(-16,30);
             }, 150);
         });
     },
     pageInit:function () {
+        $(window).resize(function(){
+            clearTimeout(timeScale);
+            var timeScale = setTimeout(function () {
+                if(myUtil.isFullscreen() == false){
+                    $('.page .fullPage').show();
+                    $('.page').css('height','1080px');
+                }else{
+                }
+        		myUtil.setScale();
+            }, 250);
+    	});
+    	// //缩放页面
+    	myUtil.setScale();
+
+        // 全屏功能
+        $('.page .fullPage').click(function (e) {
+            $(this).hide();
+            var el = e.srcElement || e.target;
+            $('.page').css('height','1440px');
+            myUtil.FullScreen(el);
+        });
+
         var payload = {
             area:['东城区','西城区','朝阳区','丰台区','石景山区','海淀区','顺义区','通州区','大兴区','房山区','门头沟区','昌平区','平谷区','密云区','怀柔区','延庆区'],
             industry:['生产行业','通信行业','互联网行业','服务行业','餐饮行业','工业行业','其他'],
