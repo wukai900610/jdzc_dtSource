@@ -4,13 +4,13 @@ var myUtil = {
 		var height = $(window).height();
 		var scale = width / 1920;
 
-		$('.page').css({
+		$('.pageWrap').css({
 			'transform': 'scale(' + scale + ')'
 		});
 
 		//隐藏load
 		setTimeout(function() {
-			$('.jdChartLoading').addClass('hide');
+			// $('.jdChartLoading').addClass('hide');
 			// $('body').css({'overflow-y':'auto'});
 		}, 2000);
 	},

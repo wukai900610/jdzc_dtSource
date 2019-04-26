@@ -1,4 +1,13 @@
 var page = {};
+page.pannel = function () {
+    var pannel='';
+    var max = 12;
+    for(var i=0;i<max;i++){
+        var deg = 360 / max;
+        pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+i+'</span></div></li>';
+    }
+    $('.roulette ul').html(pannel);
+}
 page.page1 = {
     mainChart:function () {
         var startRotation = 30;
@@ -136,6 +145,7 @@ page.page1 = {
             }
 
             var wholeLoop;
+            // 长时间清空定时
             setTimeout(function () {
                 clearInterval(wholeLoop);
             }, 120000);
@@ -187,20 +197,6 @@ page.page1 = {
         });
     },
     pageInit:function () {
-        $(window).resize(function(){
-            clearTimeout(timeScale);
-            var timeScale = setTimeout(function () {
-                if(myUtil.isFullscreen() == false){
-                    $('.page .fullScreen').show();
-                    // $('.page').css('height','1080px');
-                }else{
-                }
-        		myUtil.setScale();
-            }, 250);
-    	});
-    	// //缩放页面
-    	myUtil.setScale();
-
         // 全屏功能
         $('.page .fullScreen').click(function (e) {
             $(this).hide();
@@ -307,7 +303,135 @@ page.page1 = {
         // 加载iframe
         setTimeout(function () {
             var mainIframe = document.getElementById('mainIframe');
-            var path = './pageFrame.html';
+            var path = './page1Frame.html';
+             mainIframe.src = path;
+        }, 0);
+    }
+}
+page.page2 = {
+    mainChart:function () {
+        var startRotation = 30;
+        var startPitch = 60;
+        var startZoom = 12;
+        var startCenter = [116.397217, 39.909071];
+
+        var amap = new AMap.Map('container', {
+            mapStyle: 'amap://styles/midnight',
+            zoom: startZoom,
+            center: startCenter,
+            features: ['bg', 'road'],
+            pitch: startPitch,
+            rotation: startRotation,
+            skyColor: '#2b2050',
+            // scrollWheel: false,
+            viewMode: '3D'
+        });
+
+        var map = Loca.create(amap);
+
+        var colors = [
+            '#c57f34',
+            '#cbfddf',
+            '#edea70',
+            '#8cc9f1',
+            '#2c7bb6'
+        ];
+
+        // 10万辆北京公共交通车辆
+        $.get('./js/traffic_110000.csv', function (csv) {
+            var optionConfig = {
+                style: {
+                    // 根据车辆类型设定不同半径
+                    radius: function (obj) {
+                        var value = obj.value;
+                        switch (parseInt(value.type)) {
+                            case 3:
+                                return 1;
+                            case 4:
+                                return 1.2;
+                            case 41:
+                                return 1.4;
+                            case 5:
+                                return 1.2;
+                            default:
+                                return 1;
+                        }
+                    },
+                    // 根据车辆类型设定不同填充颜色
+                    color: function (obj) {
+                        var value = obj.value;
+                        switch (parseInt(value.type)) {
+                            case 3:
+                                return colors[0];
+                            case 4:
+                                return colors[1];
+                            case 41:
+                                return colors[2];
+                            case 5:
+                                return colors[3];
+                            default:
+                                return colors[4];
+                        }
+                    },
+                    opacity: 0.8
+                }
+            };
+
+            var layer = Loca.visualLayer({
+                container: map,
+                type: 'point',
+                shape: 'circle'
+            });
+
+            layer.setOptions(optionConfig);
+
+            layer.setData(csv, {
+                lnglat: function (obj) {
+                    var value = obj.value;
+                    return [value['lng'], value['lat']];
+                },
+                type: 'csv'
+            });
+
+            layer.render();
+
+            // 地图上帝视角切换
+            var direction = parseInt(Math.random()*2) == 0 ? 'up' : 'down';
+            var loopSet;
+            setTimeout(function () {
+                loopSet = setInterval(function () {
+                    if(direction == 'up'){
+                        if(startPitch >= 75){
+                            direction = 'down';
+                        }else{
+                            startPitch = startPitch + 0.05;
+                        }
+                    }else{
+                        if(startPitch <= 0){
+                            direction = 'up';
+                        }else{
+                            startPitch = startPitch - 0.05;
+                        }
+                    }
+                    startRotation = startRotation + 0.1;
+                    // 设置旋转角度
+                    amap.setRotation(startRotation % 360);
+
+                    // 设置仰角
+                    amap.setPitch(startPitch);
+                }, 44);
+            }, 2000);
+            setTimeout(function () {
+                clearInterval(loopSet);
+            }, 60000);
+        });
+
+    },
+    pageInit:function () {
+        // 加载iframe
+        setTimeout(function () {
+            var mainIframe = document.getElementById('mainIframe2');
+            var path = './page2Frame.html';
              mainIframe.src = path;
         }, 0);
     }
