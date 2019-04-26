@@ -19,7 +19,7 @@ page.page1 = {
         });
         var map = Loca.create(amap);
 
-        amap.panBy(1000,-1000);
+        amap.panBy(850,-850);
 
         var colors = [
             '#c57f34',
@@ -38,10 +38,10 @@ page.page1 = {
 
             var title = newCsv.splice(0,1);
             var numArr = [];
-            for(var i=1;i<(newCsv.length/1000);i++){
+            for(var i=1;i<(newCsv.length/500);i++){
                 // 3万个点
-                if(i<50){
-                    numArr.push(newCsv.slice(i*1000,1000+i*1000));
+                if(i<100){
+                    numArr.push(newCsv.slice(i*500,500+i*500));
                 }
             }
 
@@ -120,9 +120,15 @@ page.page1 = {
             }
 
             function loop(i){
-                setTimeout(function () {
-                    render(numArr[i],i);
-                }, 100*i);
+                if(i<30){
+                    setTimeout(function () {
+                        render(numArr[i],i);
+                    }, 170*i);
+                }else{
+                    setTimeout(function () {
+                        render(numArr[i],i);
+                    }, 100*i);
+                }
             }
             // 循环渲染
             for (var i=0;i<numArr.length;i++){
@@ -146,7 +152,7 @@ page.page1 = {
                         }
                     });
                 }, 1000);
-            }, 6000);
+            }, 7500);
 
             function mapDotFlash(item) {
                 var data;
@@ -171,7 +177,7 @@ page.page1 = {
             // 自动移动地图
             var lX=0,lY=0;
             var timePan = setInterval(function () {
-                if(lX <= -700){
+                if(lX <= -550){
                     clearInterval(timePan);
                 }else{
                     lX = lX - 20;
