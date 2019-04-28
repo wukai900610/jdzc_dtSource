@@ -27,56 +27,48 @@ body {
     display: none; }
 
 .pageWrap .roulette {
-  display: none;
   position: fixed;
   left: 50%;
   bottom: 0;
-  -webkit-transform: translate(-250px, 0);
-          transform: translate(-250px, 0);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background: url("../css/images/pannelBg.png") center top no-repeat;
+  width: 940px;
+  height: 143px;
   z-index: 1; }
-  .pageWrap .roulette .murder {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    background: #fcc;
-    z-index: 1; }
   .pageWrap .roulette ul {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 940px;
+    height: 940px;
     list-style: none;
     border-radius: 50%;
     overflow: hidden;
-    -webkit-transition: all 5s ease-out;
-    transition: all 5s ease-out;
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg); }
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out; }
     .pageWrap .roulette ul li {
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 160px;
-      height: 160px;
+      top: 0;
+      left: 0;
+      width: 470px;
+      height: 470px;
       -webkit-transform-origin: 100% 100%;
               transform-origin: 100% 100%;
-      overflow: hidden; }
-      .pageWrap .roulette ul li:nth-child(odd) div {
-        background-color: #ccc; }
-      .pageWrap .roulette ul li:nth-child(even) div {
-        background-color: #f00; }
+      overflow: hidden;
+      color: #fff; }
+      .pageWrap .roulette ul li.menu {
+        cursor: pointer; }
+      .pageWrap .roulette ul li.center span {
+        color: #33fefa;
+        text-shadow: 0 0 8px #33fefa;
+        font-size: 22px; }
       .pageWrap .roulette ul li div {
         position: absolute;
         right: 0;
         bottom: 0;
         height: 100%;
         width: 100%;
-        -webkit-transform: skew(-60deg) rotate(-30deg);
-                transform: skew(-60deg) rotate(-30deg);
+        -webkit-transform: skew(-72deg) rotate(-36deg);
+                transform: skew(-72deg) rotate(-36deg);
         -webkit-transform-origin: 100% 100%;
                 transform-origin: 100% 100%; }
         .pageWrap .roulette ul li div span {
@@ -84,52 +76,9 @@ body {
           -webkit-transform: rotate(-45deg);
                   transform: rotate(-45deg);
           height: 100%;
-          line-height: 130px;
-          text-align: center; }
-
-.pageWrap .next {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  cursor: pointer; }
-  .pageWrap .next div {
-    margin: 0 auto 5px;
-    height: 2px;
-    border-radius: 5px;
-    background: #2fd5d3; }
-
-@-webkit-keyframes nextFlash {
-  from {
-    background-color: #4cfffe; }
-  to {
-    background-color: #2487a3; } }
-
-@keyframes nextFlash {
-  from {
-    background-color: #4cfffe; }
-  to {
-    background-color: #2487a3; } }
-    .pageWrap .next div:nth-child(1) {
-      width: 10px;
-      -webkit-animation: nextFlash 0.5s linear infinite alternate;
-              animation: nextFlash 0.5s linear infinite alternate; }
-    .pageWrap .next div:nth-child(2) {
-      width: 24px;
-      -webkit-animation: nextFlash 0.5s linear 0.2s infinite alternate;
-              animation: nextFlash 0.5s linear 0.2s infinite alternate; }
-    .pageWrap .next div:nth-child(3) {
-      width: 34px;
-      -webkit-animation: nextFlash 0.5s linear 0.3s infinite alternate;
-              animation: nextFlash 0.5s linear 0.3s infinite alternate; }
-    .pageWrap .next div:nth-child(4) {
-      width: 44px;
-      -webkit-animation: nextFlash 0.5s linear 0.4s infinite alternate;
-              animation: nextFlash 0.5s linear 0.4s infinite alternate; }
-    .pageWrap .next div:nth-child(5) {
-      width: 54px;
-      -webkit-animation: nextFlash 0.5s linear 0.5s infinite alternate;
-              animation: nextFlash 0.5s linear 0.5s infinite alternate; }
+          line-height: 325px;
+          text-align: center;
+          font-size: 18px; }
 
 .page,
 .pageWrap {

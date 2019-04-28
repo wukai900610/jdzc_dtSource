@@ -1,12 +1,54 @@
 var page = {};
 page.pannel = function () {
     var pannel='';
-    var max = 12;
+    var max = 20;
+    var deg = 360 / max;
+    var centerDeg = 0;
+    var menu = ['征信视图','概览页','首页','经济视图','归集视图'];
     for(var i=0;i<max;i++){
-        var deg = 360 / max;
-        pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+i+'</span></div></li>';
+        if(menu[i]){
+            if(i*2+1 == menu.length){
+                pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+menu[i]+'</span></div></li>';
+                centerDeg = i*deg+deg/2;
+            }else{
+                pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+menu[i]+'</span></div></li>';
+            }
+        }else{
+            pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
+        }
     }
     $('.roulette ul').html(pannel);
+    $('.roulette ul').css('transform','rotate('+centerDeg+'deg)');
+
+    // 禁止页面滚动
+    $('.roulette').hover(function () {
+        $('body').css('overflow-y','hidden');
+    },function () {
+        $('body').css('overflow-y','auto');
+    });
+
+    // 菜单滚动
+    var wheel = 0;
+    $(document).on('mousewheel DOMMouseScroll', onMouseScroll);
+    function onMouseScroll(e){
+        // e.preventDefault();
+        var currentWheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+        var delta = Math.max(-1, Math.min(1, currentWheel) );
+        // if(delta<0){//向下滚动
+        //     console.log('向下滚动');
+        // }else{//向上滚动
+        //     console.log('向上滚动');
+        // }
+        wheel = wheel + delta;
+        if(wheel > menu.length*2){
+            wheel = menu.length*2;
+        }
+        if(wheel < 0){
+            wheel = 0;
+        }
+
+        $('.roulette ul').css('transform','rotate('+wheel*(deg/2)+'deg)');
+    }
 }
 page.page1 = {
     mainChart:function () {
@@ -420,10 +462,10 @@ page.page2 = {
                     // 设置仰角
                     amap.setPitch(startPitch);
                 }, 44);
-            }, 2000);
+            }, 500);
             setTimeout(function () {
                 clearInterval(loopSet);
-            }, 60000);
+            }, 120000);
         });
 
     },
