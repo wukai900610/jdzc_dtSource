@@ -48,6 +48,7 @@ page.pannel = function () {
         }
 
         $('.roulette ul').css('transform','rotate('+(wheel*deg-deg/2)+'deg)');
+        $('.roulette ul li').eq(menu.length-wheel).addClass('center').siblings().removeClass('center');
     }
 }
 page.page1 = {

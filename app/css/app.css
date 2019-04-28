@@ -57,6 +57,8 @@ body {
       color: #fff; }
       .pageWrap .roulette ul li.menu {
         cursor: pointer; }
+        .pageWrap .roulette ul li.menu:hover div span {
+          text-shadow: 0 0 10px #ccc; }
       .pageWrap .roulette ul li.center span {
         color: #33fefa;
         text-shadow: 0 0 8px #33fefa;
@@ -76,6 +78,8 @@ body {
           -webkit-transform: rotate(-45deg);
                   transform: rotate(-45deg);
           height: 100%;
+          -webkit-transition: all 0.5s ease-in;
+          transition: all 0.5s ease-in;
           line-height: 325px;
           text-align: center;
           font-size: 18px; }

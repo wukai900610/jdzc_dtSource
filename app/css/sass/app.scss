@@ -64,6 +64,15 @@ body {
 
                 &.menu {
                     cursor: pointer;
+
+                    &:hover {
+                        div {
+                            span {
+                                text-shadow: 0 0 10px #ccc;
+                                // transition: all 0.25s ease-in;
+                            }
+                        }
+                    }
                 }
 
                 &:nth-child(odd) {
@@ -99,6 +108,7 @@ body {
                         display: block;
                         transform: rotate(-45deg);
                         height: 100%;
+                        transition: all 0.5s ease-in;
                         line-height: 325px;
                         text-align: center;
                         font-size: 18px;
