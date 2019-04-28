@@ -426,14 +426,6 @@ body {
         }
 
         .stage {
-            // .muder {
-            //     position: absolute;
-            //     left: 0;
-            //     top: 0;
-            //     width: 100%;
-            //     height: 100%;
-            //     z-index: 1;
-            // }
             .leftPannel {
                 left: -100%;
                 top: 50%;
@@ -587,5 +579,19 @@ body {
                 }
             }
         }
+    }
+
+    &.page2 {
+        .title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 233px;
+            background: url("../css/images/page2_titleBg.png") center no-repeat;
+            z-index: 2;
+        }
+
+        .stage {}
     }
 }

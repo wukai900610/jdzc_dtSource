@@ -40,14 +40,14 @@ page.pannel = function () {
         //     console.log('向上滚动');
         // }
         wheel = wheel + delta;
-        if(wheel > menu.length*2){
-            wheel = menu.length*2;
+        if(wheel >= menu.length){
+            wheel = menu.length;
         }
-        if(wheel < 0){
-            wheel = 0;
+        if(wheel <= 1){
+            wheel = 1;
         }
 
-        $('.roulette ul').css('transform','rotate('+wheel*(deg/2)+'deg)');
+        $('.roulette ul').css('transform','rotate('+(wheel*deg-deg/2)+'deg)');
     }
 }
 page.page1 = {
