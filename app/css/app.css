@@ -299,11 +299,73 @@ body {
       color: #d2d5d7;
       cursor: pointer;
       font-size: 20px; }
+    .page .stage .titleBar,
+    .pageWrap .stage .titleBar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin-top: 40px; }
+      .page .stage .titleBar:before,
+      .pageWrap .stage .titleBar:before {
+        content: ' ';
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-position: center;
+        background-repeat: no-repeat; }
+      .page .stage .titleBar.titleBar1:before,
+      .pageWrap .stage .titleBar.titleBar1:before {
+        background-image: url("../css/images/titleico1.png"); }
+      .page .stage .titleBar.titleBar2:before,
+      .pageWrap .stage .titleBar.titleBar2:before {
+        background-image: url("../css/images/titleico2.png"); }
+      .page .stage .titleBar.titleBar3:before,
+      .pageWrap .stage .titleBar.titleBar3:before {
+        background-image: url("../css/images/titleico3.png"); }
+      .page .stage .titleBar.titleBar4:before,
+      .pageWrap .stage .titleBar.titleBar4:before {
+        background-image: url("../css/images/titleico4.png"); }
+      .page .stage .titleBar .title,
+      .pageWrap .stage .titleBar .title {
+        position: relative;
+        padding-left: 20px;
+        width: 655px;
+        height: 51px;
+        line-height: 51px;
+        background: url("../css/images/titleBar.png") no-repeat;
+        color: #fff;
+        font-weight: normal;
+        font-family: "Microsoft YaHei";
+        font-size: 16px; }
+        .page .stage .titleBar .title .topLine,
+        .pageWrap .stage .titleBar .title .topLine {
+          position: absolute;
+          left: 7px;
+          top: -3px;
+          width: 141px;
+          height: 8px;
+          background: url("../css/images/topLine.png") repeat-x; }
     .page .stage .leftPannel,
     .pageWrap .stage .leftPannel {
       position: absolute;
       top: 140px;
       z-index: 1; }
+    .page .stage .rightPannel,
+    .pageWrap .stage .rightPannel {
+      position: absolute;
+      top: 140px;
+      right: 0;
+      z-index: 1; }
+    .page .stage .charts,
+    .pageWrap .stage .charts {
+      position: relative; }
+      .page .stage .charts .chart,
+      .pageWrap .stage .charts .chart {
+        width: 100%;
+        height: 100%; }
   .page.page1,
   .pageWrap.page1 {
     display: none;
@@ -331,47 +393,6 @@ body {
       .pageWrap.page1 .stage .leftPannel.show {
         left: 35px;
         opacity: 1; }
-      .page.page1 .stage .leftPannel .titleBar,
-      .pageWrap.page1 .stage .leftPannel .titleBar {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-        margin-top: 40px; }
-        .page.page1 .stage .leftPannel .titleBar:before,
-        .pageWrap.page1 .stage .leftPannel .titleBar:before {
-          content: ' ';
-          display: block;
-          width: 35px;
-          height: 35px;
-          background-position: center;
-          background-repeat: no-repeat; }
-        .page.page1 .stage .leftPannel .titleBar.titleBar1:before,
-        .pageWrap.page1 .stage .leftPannel .titleBar.titleBar1:before {
-          background-image: url("../css/images/titleico1.png"); }
-        .page.page1 .stage .leftPannel .titleBar.titleBar2:before,
-        .pageWrap.page1 .stage .leftPannel .titleBar.titleBar2:before {
-          background-image: url("../css/images/titleico2.png"); }
-        .page.page1 .stage .leftPannel .titleBar.titleBar3:before,
-        .pageWrap.page1 .stage .leftPannel .titleBar.titleBar3:before {
-          background-image: url("../css/images/titleico3.png"); }
-        .page.page1 .stage .leftPannel .titleBar.titleBar4:before,
-        .pageWrap.page1 .stage .leftPannel .titleBar.titleBar4:before {
-          background-image: url("../css/images/titleico4.png"); }
-        .page.page1 .stage .leftPannel .titleBar .title,
-        .pageWrap.page1 .stage .leftPannel .titleBar .title {
-          position: relative;
-          padding-left: 20px;
-          width: 655px;
-          height: 51px;
-          line-height: 51px;
-          background: url("../css/images/titleBar.png") no-repeat;
-          color: #fff;
-          font-weight: normal;
-          font-family: "Microsoft YaHei";
-          font-size: 16px; }
       .page.page1 .stage .leftPannel .content,
       .pageWrap.page1 .stage .leftPannel .content {
         padding-top: 10px;
@@ -452,8 +473,8 @@ body {
           padding: 0 20px;
           height: 78px;
           background: url("../css/images/line.png") no-repeat; }
-  .page.page2 .title,
-  .pageWrap.page2 .title {
+  .page.page2 .topTitle,
+  .pageWrap.page2 .topTitle {
     position: absolute;
     left: 0;
     top: 0;
@@ -461,3 +482,110 @@ body {
     height: 233px;
     background: url("../css/images/page2_titleBg.png") center no-repeat;
     z-index: 2; }
+  .page.page2 .stage .titleBar,
+  .pageWrap.page2 .stage .titleBar {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.15); }
+    .page.page2 .stage .titleBar:before,
+    .pageWrap.page2 .stage .titleBar:before {
+      display: none; }
+    .page.page2 .stage .titleBar .title,
+    .pageWrap.page2 .stage .titleBar .title {
+      width: 480px; }
+  .page.page2 .stage .leftPannel,
+  .page.page2 .stage .rightPannel,
+  .pageWrap.page2 .stage .leftPannel,
+  .pageWrap.page2 .stage .rightPannel {
+    top: 65px; }
+  .page.page2 .stage .leftPannel,
+  .pageWrap.page2 .stage .leftPannel {
+    margin-left: 5px; }
+  .page.page2 .stage .rightPannel,
+  .pageWrap.page2 .stage .rightPannel {
+    margin-right: 5px; }
+  .page.page2 .stage .content,
+  .pageWrap.page2 .stage .content {
+    background: rgba(0, 0, 0, 0.15); }
+    .page.page2 .stage .content .charts.chart1,
+    .pageWrap.page2 .stage .content .charts.chart1 {
+      height: 210px; }
+    .page.page2 .stage .content .charts.chart2,
+    .pageWrap.page2 .stage .content .charts.chart2 {
+      height: 220px; }
+    .page.page2 .stage .content .charts.chart3,
+    .pageWrap.page2 .stage .content .charts.chart3 {
+      height: 200px; }
+    .page.page2 .stage .content .charts.chart4,
+    .pageWrap.page2 .stage .content .charts.chart4 {
+      height: 220px; }
+    .page.page2 .stage .content .charts.chart5,
+    .pageWrap.page2 .stage .content .charts.chart5 {
+      height: 285px; }
+    .page.page2 .stage .content .charts.chart6,
+    .pageWrap.page2 .stage .content .charts.chart6 {
+      height: 150px; }
+    .page.page2 .stage .content .charts.chart4, .page.page2 .stage .content .charts.chart7,
+    .pageWrap.page2 .stage .content .charts.chart4,
+    .pageWrap.page2 .stage .content .charts.chart7 {
+      height: 230px; }
+  .page.page2 .stage .chart1:before,
+  .pageWrap.page2 .stage .chart1:before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../css/images/page2_chart1Bg.png") center no-repeat;
+    -webkit-animation: animateChart1Bg 1.5s linear infinite alternate;
+            animation: animateChart1Bg 1.5s linear infinite alternate; }
+
+@-webkit-keyframes animateChart1Bg {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes animateChart1Bg {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+  .page.page2 .stage .chart1 .legend,
+  .pageWrap.page2 .stage .chart1 .legend {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%); }
+    .page.page2 .stage .chart1 .legend span,
+    .pageWrap.page2 .stage .chart1 .legend span {
+      display: block;
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 12px; }
+      .page.page2 .stage .chart1 .legend span:before,
+      .pageWrap.page2 .stage .chart1 .legend span:before {
+        content: ' ';
+        display: inline-block;
+        margin: 0 5px 0 0;
+        width: 14px;
+        height: 10px;
+        border-radius: 3px;
+        vertical-align: middle; }
+      .page.page2 .stage .chart1 .legend span:nth-child(1):before,
+      .pageWrap.page2 .stage .chart1 .legend span:nth-child(1):before {
+        background: #70eca8; }
+      .page.page2 .stage .chart1 .legend span:nth-child(2):before,
+      .pageWrap.page2 .stage .chart1 .legend span:nth-child(2):before {
+        background: #1a95ff; }
+      .page.page2 .stage .chart1 .legend span:nth-child(3):before,
+      .pageWrap.page2 .stage .chart1 .legend span:nth-child(3):before {
+        background: #fbc701; }
+      .page.page2 .stage .chart1 .legend span:nth-child(4):before,
+      .pageWrap.page2 .stage .chart1 .legend span:nth-child(4):before {
+        background: #eb3962; }

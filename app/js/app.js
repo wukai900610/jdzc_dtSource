@@ -353,9 +353,9 @@ page.page1 = {
 }
 page.page2 = {
     mainChart:function () {
-        var startRotation = 30;
+        var startRotation = 0;
         var startPitch = 60;
-        var startZoom = 12;
+        var startZoom = 11;
         var startCenter = [116.397217, 39.909071];
 
         var amap = new AMap.Map('container', {
@@ -366,116 +366,567 @@ page.page2 = {
             pitch: startPitch,
             rotation: startRotation,
             skyColor: '#2b2050',
-            // scrollWheel: false,
-            viewMode: '3D'
+            viewMode: '2D'
         });
 
-        var map = Loca.create(amap);
+        // var map = Loca.create(amap);
 
-        var colors = [
-            '#c57f34',
-            '#cbfddf',
-            '#edea70',
-            '#8cc9f1',
-            '#2c7bb6'
-        ];
-
-        // 10万辆北京公共交通车辆
-        $.get('./js/traffic_110000.csv', function (csv) {
-            var optionConfig = {
-                style: {
-                    // 根据车辆类型设定不同半径
-                    radius: function (obj) {
-                        var value = obj.value;
-                        switch (parseInt(value.type)) {
-                            case 3:
-                                return 1;
-                            case 4:
-                                return 1.2;
-                            case 41:
-                                return 1.4;
-                            case 5:
-                                return 1.2;
-                            default:
-                                return 1;
-                        }
-                    },
-                    // 根据车辆类型设定不同填充颜色
-                    color: function (obj) {
-                        var value = obj.value;
-                        switch (parseInt(value.type)) {
-                            case 3:
-                                return colors[0];
-                            case 4:
-                                return colors[1];
-                            case 41:
-                                return colors[2];
-                            case 5:
-                                return colors[3];
-                            default:
-                                return colors[4];
-                        }
-                    },
-                    opacity: 0.8
+        var heatmap;
+        amap.plugin(["AMap.Heatmap"], function () {
+            //初始化heatmap对象
+            heatmap = new AMap.Heatmap(amap, {
+                radius: 25, //给定半径
+                opacity: [0, 0.8],
+                gradient:{
+                    0.5: 'blue',
+                    0.65: 'rgb(117,211,248)',
+                    0.7: 'rgb(0, 255, 0)',
+                    0.9: '#ffea00',
+                    1.0: 'red'
                 }
-            };
-
-            var layer = Loca.visualLayer({
-                container: map,
-                type: 'point',
-                shape: 'circle'
             });
 
-            layer.setOptions(optionConfig);
-
-            layer.setData(csv, {
-                lnglat: function (obj) {
-                    var value = obj.value;
-                    return [value['lng'], value['lat']];
-                },
-                type: 'csv'
+            $.get('./js/heartMap.json', function (data) {
+                heatmap.setDataSet({
+                    data: data.heartMap,
+                    max: 100
+                });
             });
-
-            layer.render();
-
-            // 地图上帝视角切换
-            var direction = parseInt(Math.random()*2) == 0 ? 'up' : 'down';
-            var loopSet;
-            setTimeout(function () {
-                loopSet = setInterval(function () {
-                    if(direction == 'up'){
-                        if(startPitch >= 75){
-                            direction = 'down';
-                        }else{
-                            startPitch = startPitch + 0.05;
-                        }
-                    }else{
-                        if(startPitch <= 0){
-                            direction = 'up';
-                        }else{
-                            startPitch = startPitch - 0.05;
-                        }
-                    }
-                    startRotation = startRotation + 0.1;
-                    // 设置旋转角度
-                    amap.setRotation(startRotation % 360);
-
-                    // 设置仰角
-                    amap.setPitch(startPitch);
-                }, 44);
-            }, 500);
-            setTimeout(function () {
-                clearInterval(loopSet);
-            }, 120000);
         });
+
+        // 地图上帝视角切换
+        // var direction = parseInt(Math.random()*2) == 0 ? 'up' : 'down';
+        // var loopSet;
+        // setTimeout(function () {
+        //     loopSet = setInterval(function () {
+        //         if(direction == 'up'){
+        //             if(startPitch >= 75){
+        //                 direction = 'down';
+        //             }else{
+        //                 startPitch = startPitch + 0.05;
+        //             }
+        //         }else{
+        //             if(startPitch <= 0){
+        //                 direction = 'up';
+        //             }else{
+        //                 startPitch = startPitch - 0.05;
+        //             }
+        //         }
+        //         startRotation = startRotation + 0.1;
+        //         // 设置旋转角度
+        //         amap.setRotation(startRotation % 360);
+        //
+        //         // 设置仰角
+        //         amap.setPitch(startPitch);
+        //     }, 44);
+        // }, 500);
+        // setTimeout(function () {
+        //     clearInterval(loopSet);
+        // }, 120000);
 
     },
     pageInit:function () {
         // 加载iframe
-        setTimeout(function () {
-            var mainIframe = document.getElementById('mainIframe2');
-            var path = './page2Frame.html';
-             mainIframe.src = path;
-        }, 0);
+        // setTimeout(function () {
+        //     var mainIframe = document.getElementById('mainIframe2');
+        //     var path = './page2Frame.html';
+        //      mainIframe.src = path;
+        // }, 0);
+
+        var chart1 = echarts.init(document.getElementById('page2Chart1'));
+        var chart1Option = {
+            title: {
+                text: '昆山总体信用分',
+                top:5,
+                textStyle:{
+                    color:'#33fefa',
+                    fontSize:16
+                }
+            },
+            series: [{
+                type: 'liquidFill',
+                data: [0.5, {
+                    value: 0.5,
+                    phase: Math.PI
+                }],
+                label: {
+                    fontSize: 28,
+                    color: '#fff',
+                    // formatter: function(data) {
+                    //     console.log(123);
+                    //     return 'ECharts\nLiquid Fill';
+                    // },
+                },
+                color:['#70eca8'],
+                phase: 0,
+                period: 4000,
+                waveLength: '100%',
+                animationDurationUpdate: 2000,
+                outline: {
+                    show: false
+                }
+            }]
+        };
+        chart1.setOption(chart1Option);
+
+        var chart2 = echarts.init(document.getElementById('page2Chart2'));
+        var chart2Data = [220, 182, 191, 234, 290, 330, 310, 123, 442];
+        var chart2Option = {
+            legend: {
+                data:['行业平均信用分'],
+                top:10,
+                textStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+            },
+            color:['#fb944f'],
+            grid:{
+                left:'6%',
+                top:'25%',
+                bottom:'24%',
+                right:'2%',
+            },
+            xAxis: {
+                data: ['2019-01','2019-02','2019-03','2019-04','2019-05','2019-06','2019-07','2019-08','2019-09'],
+                axisLabel: {
+                    interval:0,
+                    rotate:45,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+            },
+            yAxis: {
+                name: '信用分',
+                nameTextStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+                splitLine:{
+                    lineStyle:{
+                        color: '#2f3135'
+                    }
+                },
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            series: [
+                {
+                    type: 'bar',
+                    barWidth:7,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius:[5,5,0,0],
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1,
+                                [
+                                    {offset: 0, color: '#1a95ff'},
+                                    {offset: 1, color: 'rgba(26, 149, 255, .1)'}
+                                ]
+                            )
+                        }
+                    },
+                    data: chart2Data
+                },
+                {
+                    type: 'line',
+                    name:'行业平均信用分',
+                    smooth:true,
+                    data: [234, 290, 330, 310, 123, 442, 220, 182, 191],
+                }
+            ]
+        };
+        chart2.setOption(chart2Option);
+
+        var chart4 = echarts.init(document.getElementById('page2Chart4'));
+        var chart4Option = {
+            legend: {},
+            color:[
+                    new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: '#22d0e5'},
+                        {offset: 1, color: 'rgba(26, 149, 255, .1)'}
+                    ]
+                ),new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: '#1a8df0'},
+                        {offset: 1, color: 'rgba(26, 149, 255, .1)'}
+                    ]
+                ),new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: '#70eba7'},
+                        {offset: 1, color: 'rgba(26, 149, 255, .1)'}
+                    ]
+                )
+            ],
+            dataset: {
+                source: [
+                    ['2018-03', 43.3, 85.8, 93.7],
+                    ['2018-04', 83.1, 73.4, 55.1],
+                    ['2018-05', 86.4, 65.2, 82.5],
+                    ['2018-06', 72.4, 53.9, 39.1],
+                    ['2018-07', 55.4, 45.9, 12.1],
+                    ['2018-08', 66.4, 67.9, 32.1]
+                ]
+            },
+            xAxis: {
+                type: 'category',
+                axisLabel: {
+                    interval:0,
+                    rotate:45,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+            },
+            yAxis: {
+                name: '预警数量',
+                nameTextStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+                splitLine:{
+                    lineStyle:{
+                        color: '#2f3135'
+                    }
+                },
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            series: [
+                {type: 'bar',barWidth:10},
+                {type: 'bar',barWidth:10},
+                {type: 'bar',barWidth:10}
+            ]
+        };
+        chart4.setOption(chart4Option);
+
+        var chart5 = echarts.init(document.getElementById('page2Chart5'));
+        var chart5Option = {
+            title: {
+                text: '部门数据归集量',
+                top:10,
+                left:8,
+                textStyle:{
+                    color:'#33fefa',
+                    fontSize:16
+                }
+            },
+            legend: {
+                top:10,
+                left:'right',
+                textStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+            },
+            color:['#22dbf1','#367ee9','#70eba7'],
+            grid:{
+                left:'12%',
+                top:'15%',
+                bottom:'15%',
+                right:'10%',
+            },
+            dataset: {
+                dimensions: ['product', '自然人', '法人', '非企业法人'],
+                source: [
+                    {product: '工商局', '自然人': 43.3, '法人': 85.8, '非企业法人': 93.7},
+                    {product: '发改委', '自然人': 83.1, '法人': 73.4, '非企业法人': 55.1},
+                    {product: '科技局', '自然人': 86.4, '法人': 65.2, '非企业法人': 82.5},
+                    {product: '公安局', '自然人': 72.4, '法人': 53.9, '非企业法人': 39.1},
+                    {product: '统计局', '自然人': 55.4, '法人': 45.9, '非企业法人': 12.1},
+                    {product: '食药局', '自然人': 66.4, '法人': 67.9, '非企业法人': 32.1},
+                    {product: '民政局', '自然人': 76.4, '法人': 76.9, '非企业法人': 78.1},
+                ]
+            },
+            xAxis: {
+                type: 'value',
+                name: '万条',
+                nameTextStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+                splitLine:{
+                    lineStyle:{
+                        color: '#2f3135'
+                    }
+                },
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                axisLabel: {
+                    interval:0,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                }
+            },
+            series: [
+                {type: 'bar',barWidth:15,stack:true},
+                {type: 'bar',barWidth:15,stack:true},
+                {type: 'bar',barWidth:15,stack:true}
+            ]
+        };
+        chart5.setOption(chart5Option);
+
+
+        var maxData = 2000;
+        var chart6 = echarts.init(document.getElementById('page2Chart6'));
+        var chart6Option = {
+            xAxis: {
+                show:false,
+                max: maxData,
+            },
+            yAxis: {
+                data: ['信用分', 'GDP', '税收'],
+                inverse: true,
+                axisTick: {show: false},
+                axisLine: {show: false},
+                axisLabel: {
+                    margin: 10,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 16
+                    }
+                }
+            },
+            grid: {
+                top: 'center',
+                height: 110,
+                left: 70,
+                right: 10
+            },
+            series: [{
+                label: {
+                    normal: {
+                        show: true,
+                        // offset: [10, 0],
+                        textStyle: {
+                            fontSize: 16
+                        }
+                    }
+                },
+                type: 'pictorialBar',
+                symbol: 'rect',
+                symbolRepeat: 'fixed',
+                symbolMargin: '5%',
+                symbolClip: true,
+                symbolSize: [17,20],
+                symbolMargin:3,
+                symbolBoundingData: maxData,
+                data: [{
+                    value: 157,
+                    itemStyle:{
+                        color:'#22dbf1'
+                    }
+                },{
+                    value:1220,
+                    itemStyle:{
+                        color:'#1a95ff'
+                    }
+                },{
+                    value:660,
+                    itemStyle:{
+                        color:'#70eba7'
+                    }
+                }],
+            }, {
+                // full data
+                type: 'pictorialBar',
+                itemStyle: {
+                    normal: {
+                        opacity: 0.2
+                    }
+                },
+                label: {
+                    normal: {
+                        show: false,
+                    }
+                },
+                color:['#0c434a'],
+                animationDuration: 0,
+                symbolRepeat: 'fixed',
+                symbolMargin: '5%',
+                symbol: 'rect',
+                symbolSize: [17,20],
+                symbolMargin:3,
+                symbolBoundingData: maxData,
+                data: [891, 1220, 660],
+            }]
+        };
+        chart6.setOption(chart6Option);
+
+        var chart7 = echarts.init(document.getElementById('page2Chart7'));
+        var chart7Data1 = [120, 182, 191, 234, 290, 330];
+        var chart7Data2 = [ 234, 290, 330,182, 220, 191];
+        var chart7Data3 = [34, 290, 191, 330 ,220, 182];
+        var chart7Option = {
+            legend: {
+                data:['信用分','GDP','税收'],
+                top:10,
+                icon:'pin',
+                // data:[{
+                //     icon:'circle'
+                // }],
+                textStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+            },
+            color: [
+                    new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 1, color: 'rgba(34, 219, 241, .9)'}
+                    ]
+                ),new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: 'rgba(112, 234, 167, .9)'}
+                    ]
+                ),new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                        {offset: 0, color: 'rgba(28, 55, 80, .9)'}
+                    ]
+                )
+            ],
+            grid:{
+                left:'8%',
+                top:'25%',
+                bottom:'14%',
+                right:'2%',
+            },
+            xAxis: {
+                data: ['2019-01','2019-02','2019-03','2019-04','2019-05','2019-06'],
+                axisLabel: {
+                    interval:0,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                },
+            },
+            yAxis: {
+                nameTextStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+                splitLine:{
+                    lineStyle:{
+                        color: '#2f3135'
+                    }
+                },
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            series: [
+                {
+                    name:'信用分',
+                    type: 'line',
+                    barWidth:7,
+                    areaStyle: {normal: {}},
+                    smooth:true,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius:[5,5,0,0],
+                        }
+                    },
+                    data: chart7Data1
+                },
+                {
+                    name:'GDP',
+                    type: 'line',
+                    barWidth:7,
+                    areaStyle: {normal: {}},
+                    smooth:true,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius:[5,5,0,0],
+                        }
+                    },
+                    data: chart7Data2
+                },
+                {
+                    name:'税收',
+                    type: 'line',
+                    barWidth:7,
+                    areaStyle: {normal: {}},
+                    smooth:true,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius:[5,5,0,0],
+                        }
+                    },
+                    data: chart7Data3
+                },
+            ]
+        };
+        chart7.setOption(chart7Option);
     }
 }
