@@ -41,15 +41,51 @@ body {
   z-index: 2; }
   .pageWrap .mainSearch.show {
     bottom: 30px; }
-  .pageWrap .mainSearch:after {
-    content: ' ';
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background: -webkit-radial-gradient(#1c3d40, #1f4d50);
-    background: radial-gradient(#1c3d40, #1f4d50);
-    opacity: 0.4; }
+  .pageWrap .mainSearch .lineBox {
+    position: absolute;
+    left: 0;
+    top: -4px;
+    bottom: 0;
+    width: 100%; }
+    .pageWrap .mainSearch .lineBox:after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      border-radius: 10px;
+      background: -webkit-radial-gradient(#1c3d40, #1f4d50);
+      background: radial-gradient(#1c3d40, #1f4d50);
+      opacity: 0.4; }
+    .pageWrap .mainSearch .lineBox .line {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%; }
+      .pageWrap .mainSearch .lineBox .line:after, .pageWrap .mainSearch .lineBox .line:before {
+        content: ' ';
+        position: absolute;
+        display: block;
+        background: #1c3d40;
+        z-index: 1; }
+      .pageWrap .mainSearch .lineBox .line.landscape:after, .pageWrap .mainSearch .lineBox .line.landscape:before {
+        left: 9px;
+        right: 9px;
+        height: 4px; }
+      .pageWrap .mainSearch .lineBox .line.landscape:before {
+        top: 0; }
+      .pageWrap .mainSearch .lineBox .line.landscape:after {
+        bottom: 0; }
+      .pageWrap .mainSearch .lineBox .line.portrait:after, .pageWrap .mainSearch .lineBox .line.portrait:before {
+        top: 9px;
+        bottom: 9px;
+        width: 4px; }
+      .pageWrap .mainSearch .lineBox .line.portrait:before {
+        left: 0; }
+      .pageWrap .mainSearch .lineBox .line.portrait:after {
+        right: 0; }
   .pageWrap .mainSearch .inputBox {
     position: absolute;
     left: 0;
@@ -58,7 +94,23 @@ body {
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    z-index: 1; }
+    z-index: 1;
+    border-radius: 10px;
+    border: 2px solid #33fefa;
+    -webkit-animation: borderFlash 0.5s linear infinite alternate;
+            animation: borderFlash 0.5s linear infinite alternate; }
+
+@-webkit-keyframes borderFlash {
+  from {
+    border-color: #33fefa; }
+  to {
+    border-color: #2487a3; } }
+
+@keyframes borderFlash {
+  from {
+    border-color: #33fefa; }
+  to {
+    border-color: #2487a3; } }
     .pageWrap .mainSearch .inputBox .input {
       -webkit-box-flex: 1;
           -ms-flex: 1;
@@ -80,7 +132,7 @@ body {
     .pageWrap .mainSearch .inputBox .searchBtn {
       position: absolute;
       right: 15px;
-      top: 12px;
+      top: 14px;
       width: 45px;
       height: 35px;
       background: url("../css/images/search.png") no-repeat;

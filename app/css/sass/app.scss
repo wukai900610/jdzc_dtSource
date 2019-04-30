@@ -47,14 +47,75 @@ body {
             bottom: 30px;
         }
 
-        &:after {
-            content: ' ';
-            display: block;
+        .lineBox {
+            position: absolute;
+            left: 0;
+            top: -4px;
+            bottom: 0;
             width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            background: radial-gradient(#1c3d40 , #1f4d50);
-            opacity: 0.4;
+
+            &:after {
+                content: ' ';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 100%;
+                border-radius: 10px;
+                background: radial-gradient(#1c3d40 , #1f4d50);
+                opacity: 0.4;
+            }
+
+            .line {
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+
+                &:after,
+                &:before {
+                    content: ' ';
+                    position: absolute;
+                    display: block;
+                    background: #1c3d40;
+                    z-index: 1;
+                }
+
+                &.landscape {
+                    &:after,
+                    &:before {
+                        left: 9px;
+                        right: 9px;
+                        height: 4px;
+                    }
+
+                    &:before {
+                        top: 0;
+                    }
+
+                    &:after {
+                        bottom: 0;
+                    }
+                }
+
+                &.portrait {
+                    &:after,
+                    &:before {
+                        top: 9px;
+                        bottom: 9px;
+                        width: 4px;
+                    }
+
+                    &:before {
+                        left: 0;
+                    }
+
+                    &:after {
+                        right: 0;
+                    }
+                }
+            }
         }
 
         .inputBox {
@@ -64,6 +125,18 @@ body {
             display: flex;
             width: 100%;
             z-index: 1;
+            border-radius: 10px;
+            border: 2px solid #33fefa;
+            animation: borderFlash 0.5s linear infinite alternate;
+            @keyframes borderFlash {
+                from {
+                    border-color: #33fefa;
+                }
+
+                to {
+                    border-color: #2487a3;
+                }
+            }
 
             .input {
                 flex: 1;
@@ -90,7 +163,7 @@ body {
             .searchBtn {
                 position: absolute;
                 right: 15px;
-                top: 12px;
+                top: 14px;
                 width: 45px;
                 height: 35px;
                 background: url("../css/images/search.png") no-repeat;
