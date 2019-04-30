@@ -8,10 +8,10 @@ page.pannel = function () {
     for(var i=0;i<max;i++){
         if(menu[i]){
             if(i*2+1 == menu.length){
-                pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+menu[i]+'</span></div></li>';
+                pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span><a>'+menu[i]+'</a></span></div></li>';
                 centerDeg = i*deg+deg/2;
             }else{
-                pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span>'+menu[i]+'</span></div></li>';
+                pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span><a>'+menu[i]+'</a></span></div></li>';
             }
         }else{
             pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
@@ -29,7 +29,7 @@ page.pannel = function () {
 
     // 菜单滚动
     var wheel = 0;
-    $(document).on('mousewheel DOMMouseScroll', onMouseScroll);
+    $('.roulette').on('mousewheel DOMMouseScroll', onMouseScroll);
     function onMouseScroll(e){
         // e.preventDefault();
         var currentWheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
@@ -50,6 +50,21 @@ page.pannel = function () {
         $('.roulette ul').css('transform','rotate('+(wheel*deg-deg/2)+'deg)');
         $('.roulette ul li').eq(menu.length-wheel).addClass('center').siblings().removeClass('center');
     }
+
+    // 显示搜索
+    $('.roulette .eye').click(function () {
+        $('.roulette').addClass('hide');
+        setTimeout(function () {
+            $('.mainSearch').addClass('show');
+        }, 500);
+    });
+    // 隐藏搜索
+    $('.mainSearch .next').click(function () {
+        $('.mainSearch').removeClass('show');
+        setTimeout(function () {
+            $('.roulette').removeClass('hide');
+        }, 500);
+    });
 }
 page.page1 = {
     mainChart:function () {
@@ -65,7 +80,7 @@ page.page1 = {
             features: ['bg', 'road'],
             pitch: startPitch,
             rotation: startRotation,
-            skyColor: '#2b2050',
+            skyColor: '#1c2025',
             // scrollWheel: false,
             viewMode: '3D'
         });
@@ -355,7 +370,7 @@ page.page2 = {
     mainChart:function () {
         var startRotation = 0;
         var startPitch = 60;
-        var startZoom = 11;
+        var startZoom = 12;
         var startCenter = [116.397217, 39.909071];
 
         var amap = new AMap.Map('container', {
@@ -365,33 +380,47 @@ page.page2 = {
             features: ['bg', 'road'],
             pitch: startPitch,
             rotation: startRotation,
-            skyColor: '#2b2050',
-            viewMode: '2D'
+            skyColor: '#1c2025',
+            viewMode: '3D'
+        });
+        var map = Loca.create(amap);
+
+        var layer = Loca.visualLayer({
+            container: map,
+            type: 'heatmap',
+            // 基本热力图
+            shape: 'normal'
         });
 
-        // var map = Loca.create(amap);
+        $.get('./js/heartMap.json', function (data) {
+            var list = [];
+            var i = -1, length = data.heartMap.length;
+            while (++i < length) {
+                var item = data.heartMap[i];
+                list.push({
+                    coordinate: [item.lng, item.lat],
+                    count: item.count
+                })
+            }
 
-        var heatmap;
-        amap.plugin(["AMap.Heatmap"], function () {
-            //初始化heatmap对象
-            heatmap = new AMap.Heatmap(amap, {
-                radius: 25, //给定半径
-                opacity: [0, 0.8],
-                gradient:{
-                    0.5: 'blue',
-                    0.65: 'rgb(117,211,248)',
-                    0.7: 'rgb(0, 255, 0)',
-                    0.9: '#ffea00',
-                    1.0: 'red'
+            layer.setData(list, {
+               lnglat: 'coordinate',
+               value: 'count'
+            });
+            layer.setOptions({
+                style: {
+                    radius: 30,
+                    color: {
+                        0.5: '#2c7bb6',
+                        0.65: '#abd9e9',
+                        0.7: '#ffffbf',
+                        0.9: '#fde468',
+                        1.0: '#d7191c'
+                    }
                 }
             });
 
-            $.get('./js/heartMap.json', function (data) {
-                heatmap.setDataSet({
-                    data: data.heartMap,
-                    max: 100
-                });
-            });
+            layer.draw();
         });
 
         // 地图上帝视角切换
@@ -423,7 +452,6 @@ page.page2 = {
         // setTimeout(function () {
         //     clearInterval(loopSet);
         // }, 120000);
-
     },
     pageInit:function () {
         // 加载iframe
@@ -554,6 +582,145 @@ page.page2 = {
         };
         chart2.setOption(chart2Option);
 
+        var chart3_1 = echarts.init(document.getElementById('page2Chart3_1'));
+        var chart3_2 = echarts.init(document.getElementById('page2Chart3_2'));
+        var chart3_3 = echarts.init(document.getElementById('page2Chart3_3'));
+        var placeHolderStyle = {
+            normal: {
+                label: {
+                    show: false
+                },
+                labelLine: {
+                    show: false
+                },
+                color: "rgba(0,0,0,0)",
+                borderWidth: 0
+            },
+            emphasis: {
+                color: "rgba(0,0,0,0)",
+                borderWidth: 0
+            }
+        };
+        var dataStyle = {
+            normal: {
+                // formatter: '{c}\n{c}',
+                position: 'center',
+                show: true,
+                textStyle: {
+                    fontSize: '28',
+                    fontWeight: 'normal',
+                    color: '#fff'
+                }
+            }
+        };
+        var innerConfig = {
+            type: 'pie',
+            hoverAnimation: false,
+            radius: ['70%', '76%'],
+            center: '50%',
+            startAngle: 225,
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            label: {
+                normal: {
+                    position: 'center',
+                    formatter: [
+                        '{spanC|{c}}',
+                        '{spanD|+{d}%}',
+                    ].join('\n'),
+                    rich:{
+                        spanC: {
+                            fontSize: 18,
+                            color:'#33fefa'
+                        },
+                        spanD: {
+                            fontSize: 13,
+                            color:'#33fefa'
+                        },
+                    }
+                    // formatter:'{c}\n+{d}%'
+                }
+            },
+            data: [{
+                value: 100,
+                itemStyle: {
+                    normal: {}
+                },
+                label: dataStyle,
+            }, {
+                value: 100,
+                itemStyle: placeHolderStyle,
+            }]
+        };
+        var outConfig = {
+            type: 'pie',
+            hoverAnimation: false,
+            radius: ['76%', '77%'],
+            center: '50%',
+            startAngle: 225,
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            // label: {
+            //     normal: {
+            //         position: 'center'
+            //     }
+            // },
+            data: [{
+                value: 75,
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#80eeb5'
+                        }]),
+                    }
+                },
+            }]
+        };
+        var chart3_1Option = {
+            series: [
+                myUtil.getNewObj(innerConfig),
+                myUtil.getNewObj(outConfig),
+            ]
+        };
+        var chart3_2Option = {
+            series: [
+                myUtil.getNewObj(innerConfig),
+                myUtil.getNewObj(outConfig),
+            ]
+        };
+        var chart3_3Option = {
+            series: [
+                myUtil.getNewObj(innerConfig),
+                myUtil.getNewObj(outConfig),
+            ]
+        };
+        // chart3Option.series[0].center = ['17%', '50%'];
+        // chart3Option.series[1].center = ['17%', '50%'];
+        // chart3Option.series[2].center = ['50%', '50%'];
+        // chart3Option.series[3].center = ['50%', '50%'];
+        // chart3Option.series[4].center = ['83%', '50%'];
+        // chart3Option.series[5].center = ['83%', '50%'];
+        // chart3_1Option.title.text = '联合奖惩';
+        // chart3_2Option.title.text = '黑名单';
+        // chart3_3Option.title.text = '多次通报';
+        chart3_1Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#4cfffe'}, {offset: 1,color: '#32afbe'}]);
+        chart3_1Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#21c1d4'}]);
+        chart3_2Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#1d9cff'}, {offset: 1,color: '#2e80c4'}]);
+        chart3_2Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#1a8bec'}]);
+        chart3_3Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#74d7a4'}, {offset: 1,color: '#67bb91'}]);
+        chart3_3Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#69db9d'}]);
+
+        chart3_1.setOption(chart3_1Option);
+        chart3_2.setOption(chart3_2Option);
+        chart3_3.setOption(chart3_3Option);
+
         var chart4 = echarts.init(document.getElementById('page2Chart4'));
         var chart4Option = {
             legend: {},
@@ -587,6 +754,12 @@ page.page2 = {
                     ['2018-07', 55.4, 45.9, 12.1],
                     ['2018-08', 66.4, 67.9, 32.1]
                 ]
+            },
+            grid:{
+                left:'7%',
+                top:'20%',
+                bottom:'25%',
+                right:'3%',
             },
             xAxis: {
                 type: 'category',
@@ -657,8 +830,8 @@ page.page2 = {
             color:['#22dbf1','#367ee9','#70eba7'],
             grid:{
                 left:'12%',
-                top:'15%',
-                bottom:'15%',
+                top:'20%',
+                bottom:'10%',
                 right:'10%',
             },
             dataset: {
@@ -720,7 +893,6 @@ page.page2 = {
         };
         chart5.setOption(chart5Option);
 
-
         var maxData = 2000;
         var chart6 = echarts.init(document.getElementById('page2Chart6'));
         var chart6Option = {
@@ -747,6 +919,7 @@ page.page2 = {
                 left: 70,
                 right: 10
             },
+            // animation: true,
             series: [{
                 label: {
                     normal: {
@@ -765,6 +938,10 @@ page.page2 = {
                 symbolSize: [17,20],
                 symbolMargin:3,
                 symbolBoundingData: maxData,
+                animationEasing: 'elasticOut',
+                animationDelay: function(dataIndex, params) {
+                    return dataIndex * 500;
+                },
                 data: [{
                     value: 157,
                     itemStyle:{

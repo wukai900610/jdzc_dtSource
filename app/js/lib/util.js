@@ -27,6 +27,9 @@ var myUtil = {
 		}
 		return result;
 	},
+	getNewObj: function (data) {
+        return JSON.parse(JSON.stringify(data));
+    },
 	isFullscreen: function() {
 		return document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || false;
 	},
