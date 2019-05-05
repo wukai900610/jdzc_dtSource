@@ -405,39 +405,34 @@ page.stage2 = {
         setTimeout(function () {
             // 加载主地图
             page.stage2.mainChart();
-            $('.stage2').show();
+            $('.stage2').addClass('show');
 
             setTimeout(function () {
-                $('.stage2 .leftPannel').addClass('show');
-                $('.stage2 .rightPannel').addClass('show');
+                var chart1 = echarts.init(document.getElementById('stage2Chart1'));
+                chart1.setOption(chart1Option);
 
-                setTimeout(function () {
-                    var chart1 = echarts.init(document.getElementById('stage2Chart1'));
-                    chart1.setOption(chart1Option);
+                var chart2 = echarts.init(document.getElementById('stage2Chart2'));
+                chart2.setOption(chart2Option);
 
-                    var chart2 = echarts.init(document.getElementById('stage2Chart2'));
-                    chart2.setOption(chart2Option);
+                var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
+                var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
+                var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
+                chart3_1.setOption(chart3_1Option);
+                chart3_2.setOption(chart3_2Option);
+                chart3_3.setOption(chart3_3Option);
 
-                    var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
-                    var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
-                    var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
-                    chart3_1.setOption(chart3_1Option);
-                    chart3_2.setOption(chart3_2Option);
-                    chart3_3.setOption(chart3_3Option);
+                var chart4 = echarts.init(document.getElementById('stage2Chart4'));
+                chart4.setOption(chart4Option);
 
-                    var chart4 = echarts.init(document.getElementById('stage2Chart4'));
-                    chart4.setOption(chart4Option);
+                var chart5 = echarts.init(document.getElementById('stage2Chart5'));
+                chart5.setOption(chart5Option);
 
-                    var chart5 = echarts.init(document.getElementById('stage2Chart5'));
-                    chart5.setOption(chart5Option);
+                var chart6 = echarts.init(document.getElementById('stage2Chart6'));
+                chart6.setOption(chart6Option);
 
-                    var chart6 = echarts.init(document.getElementById('stage2Chart6'));
-                    chart6.setOption(chart6Option);
-
-                    var chart7 = echarts.init(document.getElementById('stage2Chart7'));
-                    chart7.setOption(chart7Option);
-                }, 500);
-            }, 500);
+                var chart7 = echarts.init(document.getElementById('stage2Chart7'));
+                chart7.setOption(chart7Option);
+            }, 1500);
         }, 5000);
 
         // var chart1 = echarts.init(document.getElementById('stage2Chart1'));
@@ -1153,14 +1148,12 @@ page.pannel = function () {
         // var index = $(this).parent().parent().parent().index();
 
         if(currentStage != stageName){
-            console.log('do');
             if(stageName == menu[1].stage){//概览页
 
             }else if(stageName == menu[2].stage){//首页
                 page.stage1.out();
                 page.stage2.pageInit();
             }
-
             currentStage = stageName;
         }
     });

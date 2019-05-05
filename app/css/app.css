@@ -205,7 +205,7 @@ body {
   background: url("../css/images/pannelBg.png") center top no-repeat;
   width: 940px;
   height: 143px;
-  z-index: 1; }
+  z-index: 10; }
   .pageWrap .roulette.hide {
     bottom: -150px; }
   .pageWrap .roulette .muder {
@@ -678,7 +678,20 @@ body {
           background: url("../css/images/line.png") no-repeat; }
     .page .stage.stage2,
     .pageWrap .stage.stage2 {
-      display: none; }
+      opacity: 0;
+      z-index: -1; }
+      .page .stage.stage2.show,
+      .pageWrap .stage.stage2.show {
+        opacity: 1;
+        z-index: 1; }
+        .page .stage.stage2.show .leftPannel,
+        .pageWrap .stage.stage2.show .leftPannel {
+          left: 35px;
+          opacity: 1; }
+        .page .stage.stage2.show .rightPannel,
+        .pageWrap .stage.stage2.show .rightPannel {
+          right: 35px;
+          opacity: 1; }
       .page .stage.stage2 .topTitle,
       .pageWrap .stage.stage2 .topTitle {
         position: absolute;
@@ -710,17 +723,9 @@ body {
       .page .stage.stage2 .leftPannel,
       .pageWrap .stage.stage2 .leftPannel {
         left: -100%; }
-        .page .stage.stage2 .leftPannel.show,
-        .pageWrap .stage.stage2 .leftPannel.show {
-          left: 35px;
-          opacity: 1; }
       .page .stage.stage2 .rightPannel,
       .pageWrap .stage.stage2 .rightPannel {
         right: -100%; }
-        .page .stage.stage2 .rightPannel.show,
-        .pageWrap .stage.stage2 .rightPannel.show {
-          right: 35px;
-          opacity: 1; }
         .page .stage.stage2 .rightPannel .warningNum .percent,
         .pageWrap .stage.stage2 .rightPannel .warningNum .percent {
           float: right;

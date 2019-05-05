@@ -248,7 +248,7 @@ body {
         background: url("../css/images/pannelBg.png") center top no-repeat;
         width: 940px;
         height: 143px;
-        z-index: 1;
+        z-index: 10;
 
         &.hide {
             bottom: -150px;
@@ -809,7 +809,23 @@ body {
         }
 
         &.stage2 {
-            display: none;
+            opacity: 0;
+            z-index: -1;
+
+            &.show {
+                opacity: 1;
+                z-index: 1;
+
+                .leftPannel {
+                    left: 35px;
+                    opacity: 1;
+                }
+
+                .rightPannel {
+                    right: 35px;
+                    opacity: 1;
+                }
+            }
 
             .topTitle {
                 position: absolute;
@@ -845,21 +861,11 @@ body {
             .leftPannel {
                 // margin-left: 5px;
                 left: -100%;
-
-                &.show {
-                    left: 35px;
-                    opacity: 1;
-                }
             }
 
             .rightPannel {
                 // margin-right: 5px;
                 right: -100%;
-
-                &.show {
-                    right: 35px;
-                    opacity: 1;
-                }
 
                 .warningNum {
                     .percent {
