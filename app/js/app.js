@@ -22,7 +22,7 @@ page.stage1 = {
     layers:[],
     out:function () {
         // 隐藏左侧
-        $('.stage1 .leftPannel').removeClass('show');
+        $('.stage1').removeClass('show');
 
         // 清除图层
         page.stage1.layers.map(function (item,index) {
@@ -30,6 +30,18 @@ page.stage1 = {
                 item.remove();
             }, 100);
         });
+        // 残余layer
+        // setTimeout(function () {
+        //     var clearIndex = 0;
+        //     var clearRemnant = setInterval(function () {
+        //         var remnant = page.amap.getLayers();
+        //         remnant.map(function (item,index) {
+        //             index > 1 && page.amap.remove(item);
+        //         });
+        //         clearIndex > 5 && clearInterval(clearRemnant);
+        //         clearIndex++;
+        //     }, 1000);
+        // }, 500);
 
         // 地图定位
         setTimeout(function () {
@@ -262,7 +274,7 @@ page.stage1 = {
 
         // 显示左侧
         setTimeout(function () {
-            $('.stage1 .leftPannel').addClass('show');
+            $('.stage1').addClass('show');
 
             // 滚动字幕1
             var num = Math.ceil(Math.random()*999999999);
@@ -331,7 +343,35 @@ page.stage1 = {
     }
 }
 page.stage2 = {
-    layers:[],
+    out:function () {
+        // 隐藏左侧
+        $('.stage2').removeClass('show');
+
+        // 清除图层
+        // page.stage1.layers.map(function (item,index) {
+        //     setTimeout(function () {
+        //         item.remove();
+        //     }, 100);
+        // });
+        //
+        // // 地图定位
+        // setTimeout(function () {
+        //     page.amap.setCenter(page.mapConfig.startCenter);
+        // }, 500);
+        //
+        // // 垂直显示
+        // setTimeout(function () {
+        //     var pitch = page.amap.getPitch();
+        //     var changePitch = setInterval(function () {
+        //         pitch--;
+        //         page.amap.setPitch(pitch);
+        //
+        //         if(pitch == 0){
+        //             clearInterval(changePitch)
+        //         }
+        //     }, 10);
+        // }, 1000);
+    },
     mainChart:function () {
         var layer = Loca.visualLayer({
             container: page.map,
@@ -433,7 +473,7 @@ page.stage2 = {
                 var chart7 = echarts.init(document.getElementById('stage2Chart7'));
                 chart7.setOption(chart7Option);
             }, 1500);
-        }, 5000);
+        }, 4500);
 
         // var chart1 = echarts.init(document.getElementById('stage2Chart1'));
         var chart1Option = {
@@ -1153,12 +1193,17 @@ page.pannel = function () {
             }else if(stageName == menu[2].stage){//首页
                 page.stage1.out();
                 page.stage2.pageInit();
+            }else{
+                page.stage2.out();
             }
             currentStage = stageName;
         }
     });
 
     // 显示搜索
+    setTimeout(function () {
+        $('.roulette').removeClass('hide');
+    }, 11500);
     $('.roulette .eye').click(function () {
         $('.roulette').addClass('hide');
         setTimeout(function () {
