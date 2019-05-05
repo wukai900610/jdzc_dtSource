@@ -1,92 +1,56 @@
 var page = {};
-page.pannel = function () {
-    var pannel='';
-    var max = 20;
-    var deg = 360 / max;
-    var centerDeg = 0;
-    var menu = ['征信视图','概览页','首页','经济视图','归集视图'];
-    for(var i=0;i<max;i++){
-        if(menu[i]){
-            if(i*2+1 == menu.length){
-                pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span><a>'+menu[i]+'</a></span></div></li>';
-                centerDeg = i*deg+deg/2;
-            }else{
-                pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span><a>'+menu[i]+'</a></span></div></li>';
-            }
-        }else{
-            pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
-        }
-    }
-    $('.roulette ul').html(pannel);
-    $('.roulette ul').css('transform','rotate('+centerDeg+'deg)');
-
-    // 禁止页面滚动
-    $('.roulette').hover(function () {
-        $('body').css('overflow-y','hidden');
-    },function () {
-        $('body').css('overflow-y','auto');
-    });
-
-    // 菜单滚动
-    var wheel = 0;
-    $('.roulette').on('mousewheel DOMMouseScroll', onMouseScroll);
-    function onMouseScroll(e){
-        // e.preventDefault();
-        var currentWheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
-        var delta = Math.max(-1, Math.min(1, currentWheel) );
-        // if(delta<0){//向下滚动
-        //     console.log('向下滚动');
-        // }else{//向上滚动
-        //     console.log('向上滚动');
-        // }
-        wheel = wheel + delta;
-        if(wheel >= menu.length){
-            wheel = menu.length;
-        }
-        if(wheel <= 1){
-            wheel = 1;
-        }
-
-        $('.roulette ul').css('transform','rotate('+(wheel*deg-deg/2)+'deg)');
-        $('.roulette ul li').eq(menu.length-wheel).addClass('center').siblings().removeClass('center');
-    }
-
-    // 显示搜索
-    $('.roulette .eye').click(function () {
-        $('.roulette').addClass('hide');
-        setTimeout(function () {
-            $('.mainSearch').addClass('show');
-        }, 500);
-    });
-    // 隐藏搜索
-    $('.mainSearch .next').click(function () {
-        $('.mainSearch').removeClass('show');
-        setTimeout(function () {
-            $('.roulette').removeClass('hide');
-        }, 500);
-    });
+page.mapConfig = {
+    startRotation:30,
+    startPitch:60,
+    startZoom:12,
+    startCenter:[116.397217, 39.909071]
 }
-page.page1 = {
-    mainChart:function () {
-        var startRotation = 30;
-        var startPitch = 60;
-        var startZoom = 12;
-        var startCenter = [116.397217, 39.909071];
+page.amap = new AMap.Map('container', {
+    mapStyle: 'amap://styles/midnight',
+    features: ['bg', 'road'],
+    rotation: page.mapConfig.startRotation,
+    pitch: page.mapConfig.startPitch,
+    zoom: page.mapConfig.startZoom,
+    center: page.mapConfig.startCenter,
+    skyColor: '#1c2025',
+    // scrollWheel: false,
+    viewMode: '3D'
+});
+page.map = Loca.create(page.amap);
 
-        var amap = new AMap.Map('container', {
-            mapStyle: 'amap://styles/midnight',
-            zoom: startZoom,
-            center: startCenter,
-            features: ['bg', 'road'],
-            pitch: startPitch,
-            rotation: startRotation,
-            skyColor: '#1c2025',
-            // scrollWheel: false,
-            viewMode: '3D'
+page.stage1 = {
+    layers:[],
+    out:function () {
+        // 隐藏左侧
+        $('.stage1 .leftPannel').removeClass('show');
+
+        // 清除图层
+        page.stage1.layers.map(function (item,index) {
+            setTimeout(function () {
+                item.remove();
+            }, 100);
         });
-        var map = Loca.create(amap);
 
-        amap.panBy(850,-850);
+        // 地图定位
+        setTimeout(function () {
+            page.amap.setCenter(page.mapConfig.startCenter);
+        }, 500);
+
+        // 垂直显示
+        setTimeout(function () {
+            var pitch = page.amap.getPitch();
+            var changePitch = setInterval(function () {
+                pitch--;
+                page.amap.setPitch(pitch);
+
+                if(pitch == 0){
+                    clearInterval(changePitch)
+                }
+            }, 10);
+        }, 1000);
+    },
+    mainChart:function () {
+        page.amap.panBy(850,-850);
 
         var colors = [
             '#c57f34',
@@ -151,14 +115,17 @@ page.page1 = {
             };
 
             var renderCsvData = [];
+            // 保存闪烁图层
             var tempLayers = [];
             // 渲染方法
             function render(data,index) {
                 var layer = Loca.visualLayer({
-                    container: map,
+                    container: page.map,
                     type: 'point',
                     shape: 'circle'
                 });
+
+                page.stage1.layers.push(layer);
 
                 layer.setOptions(optionConfig);
 
@@ -177,6 +144,7 @@ page.page1 = {
 
                 // layer.render();
                 layer.draw();
+
                 if(index < 10){
                     tempLayers.push({
                         layer:layer,
@@ -250,7 +218,7 @@ page.page1 = {
                 }else{
                     lX = lX - 20;
                 }
-                amap.panBy(-16,30);
+                page.amap.panBy(-16,30);
             }, 150);
         });
     },
@@ -280,7 +248,7 @@ page.page1 = {
             areaHtml = areaHtml + '<p>'+(Math.ceil(Math.random()*1000)+100)+'</p>';
             areaHtml = areaHtml + '</li>';
         });
-        $('.page1 .flashSquareBox').html(areaHtml);
+        $('.stage1 .flashSquareBox').html(areaHtml);
 
         // 行业
         var industryHtml = '';
@@ -290,11 +258,11 @@ page.page1 = {
             industryHtml = industryHtml + '<p>'+(Math.ceil(Math.random()*500)+100)+'</p>';
             industryHtml = industryHtml + '</li>';
         });
-        $('.page1 .productBox').html(industryHtml);
+        $('.stage1 .productBox').html(industryHtml);
 
         // 显示左侧
         setTimeout(function () {
-            $('.page1 .leftPannel').addClass('show');
+            $('.stage1 .leftPannel').addClass('show');
 
             // 滚动字幕1
             var num = Math.ceil(Math.random()*999999999);
@@ -351,42 +319,22 @@ page.page1 = {
                 var num2_1 = parseInt(Math.random()*16);
                 var num2_2 = parseInt(Math.random()*16);
                 var num2_3 = parseInt(Math.random()*16);
-                $('.page1 ul.flashSquareBox li').removeClass('light');
-                $('.page1 ul.flashSquareBox li').eq(num2_1).addClass('light');
-                $('.page1 ul.flashSquareBox li').eq(num2_2).addClass('light');
-                $('.page1 ul.flashSquareBox li').eq(num2_3).addClass('light');
+                $('.stage1 ul.flashSquareBox li').removeClass('light');
+                $('.stage1 ul.flashSquareBox li').eq(num2_1).addClass('light');
+                $('.stage1 ul.flashSquareBox li').eq(num2_2).addClass('light');
+                $('.stage1 ul.flashSquareBox li').eq(num2_3).addClass('light');
             }, 2500);
         }, 7000);
 
-        // 加载iframe
-        setTimeout(function () {
-            var mainIframe = document.getElementById('mainIframe');
-            var path = './page1Frame.html';
-             mainIframe.src = path;
-        }, 0);
+        // 加载主地图
+        page.stage1.mainChart();
     }
 }
-page.page2 = {
+page.stage2 = {
+    layers:[],
     mainChart:function () {
-        var startRotation = 0;
-        var startPitch = 60;
-        var startZoom = 12;
-        var startCenter = [116.397217, 39.909071];
-
-        var amap = new AMap.Map('container', {
-            mapStyle: 'amap://styles/midnight',
-            zoom: startZoom,
-            center: startCenter,
-            features: ['bg', 'road'],
-            pitch: startPitch,
-            rotation: startRotation,
-            skyColor: '#1c2025',
-            viewMode: '3D'
-        });
-        var map = Loca.create(amap);
-
         var layer = Loca.visualLayer({
-            container: map,
+            container: page.map,
             type: 'heatmap',
             // 基本热力图
             shape: 'normal'
@@ -454,23 +402,54 @@ page.page2 = {
         // }, 120000);
     },
     pageInit:function () {
-        // 加载iframe
-        // setTimeout(function () {
-        //     var mainIframe = document.getElementById('mainIframe2');
-        //     var path = './page2Frame.html';
-        //      mainIframe.src = path;
-        // }, 0);
+        setTimeout(function () {
+            // 加载主地图
+            page.stage2.mainChart();
+            $('.stage2').show();
 
-        var chart1 = echarts.init(document.getElementById('page2Chart1'));
+            setTimeout(function () {
+                $('.stage2 .leftPannel').addClass('show');
+                $('.stage2 .rightPannel').addClass('show');
+
+                setTimeout(function () {
+                    var chart1 = echarts.init(document.getElementById('stage2Chart1'));
+                    chart1.setOption(chart1Option);
+
+                    var chart2 = echarts.init(document.getElementById('stage2Chart2'));
+                    chart2.setOption(chart2Option);
+
+                    var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
+                    var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
+                    var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
+                    chart3_1.setOption(chart3_1Option);
+                    chart3_2.setOption(chart3_2Option);
+                    chart3_3.setOption(chart3_3Option);
+
+                    var chart4 = echarts.init(document.getElementById('stage2Chart4'));
+                    chart4.setOption(chart4Option);
+
+                    var chart5 = echarts.init(document.getElementById('stage2Chart5'));
+                    chart5.setOption(chart5Option);
+
+                    var chart6 = echarts.init(document.getElementById('stage2Chart6'));
+                    chart6.setOption(chart6Option);
+
+                    var chart7 = echarts.init(document.getElementById('stage2Chart7'));
+                    chart7.setOption(chart7Option);
+                }, 500);
+            }, 500);
+        }, 5000);
+
+        // var chart1 = echarts.init(document.getElementById('stage2Chart1'));
         var chart1Option = {
-            title: {
-                text: '昆山总体信用分',
-                top:5,
-                textStyle:{
-                    color:'#33fefa',
-                    fontSize:16
-                }
-            },
+            // title: {
+            //     text: '总体信用分',
+            //     top:5,
+            //     textStyle:{
+            //         color:'#33fefa',
+            //         fontSize:16
+            //     }
+            // },
             series: [{
                 type: 'liquidFill',
                 data: [0.5, {
@@ -495,9 +474,9 @@ page.page2 = {
                 }
             }]
         };
-        chart1.setOption(chart1Option);
+        // chart1.setOption(chart1Option);
 
-        var chart2 = echarts.init(document.getElementById('page2Chart2'));
+        // var chart2 = echarts.init(document.getElementById('stage2Chart2'));
         var chart2Data = [220, 182, 191, 234, 290, 330, 310, 123, 442];
         var chart2Option = {
             legend: {
@@ -580,11 +559,11 @@ page.page2 = {
                 }
             ]
         };
-        chart2.setOption(chart2Option);
+        // chart2.setOption(chart2Option);
 
-        var chart3_1 = echarts.init(document.getElementById('page2Chart3_1'));
-        var chart3_2 = echarts.init(document.getElementById('page2Chart3_2'));
-        var chart3_3 = echarts.init(document.getElementById('page2Chart3_3'));
+        // var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
+        // var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
+        // var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
         var placeHolderStyle = {
             normal: {
                 label: {
@@ -701,27 +680,17 @@ page.page2 = {
                 myUtil.getNewObj(outConfig),
             ]
         };
-        // chart3Option.series[0].center = ['17%', '50%'];
-        // chart3Option.series[1].center = ['17%', '50%'];
-        // chart3Option.series[2].center = ['50%', '50%'];
-        // chart3Option.series[3].center = ['50%', '50%'];
-        // chart3Option.series[4].center = ['83%', '50%'];
-        // chart3Option.series[5].center = ['83%', '50%'];
-        // chart3_1Option.title.text = '联合奖惩';
-        // chart3_2Option.title.text = '黑名单';
-        // chart3_3Option.title.text = '多次通报';
         chart3_1Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#4cfffe'}, {offset: 1,color: '#32afbe'}]);
         chart3_1Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#21c1d4'}]);
         chart3_2Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#1d9cff'}, {offset: 1,color: '#2e80c4'}]);
         chart3_2Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#1a8bec'}]);
         chart3_3Option.series[0].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#74d7a4'}, {offset: 1,color: '#67bb91'}]);
         chart3_3Option.series[1].data[0].itemStyle.normal.color = new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0,color: '#69db9d'}]);
+        // chart3_1.setOption(chart3_1Option);
+        // chart3_2.setOption(chart3_2Option);
+        // chart3_3.setOption(chart3_3Option);
 
-        chart3_1.setOption(chart3_1Option);
-        chart3_2.setOption(chart3_2Option);
-        chart3_3.setOption(chart3_3Option);
-
-        var chart4 = echarts.init(document.getElementById('page2Chart4'));
+        // var chart4 = echarts.init(document.getElementById('stage2Chart4'));
         var chart4Option = {
             legend: {},
             color:[
@@ -806,9 +775,9 @@ page.page2 = {
                 {type: 'bar',barWidth:10}
             ]
         };
-        chart4.setOption(chart4Option);
+        // chart4.setOption(chart4Option);
 
-        var chart5 = echarts.init(document.getElementById('page2Chart5'));
+        // var chart5 = echarts.init(document.getElementById('stage2Chart5'));
         var chart5Option = {
             title: {
                 text: '部门数据归集量',
@@ -891,10 +860,10 @@ page.page2 = {
                 {type: 'bar',barWidth:15,stack:true}
             ]
         };
-        chart5.setOption(chart5Option);
+        // chart5.setOption(chart5Option);
 
         var maxData = 2000;
-        var chart6 = echarts.init(document.getElementById('page2Chart6'));
+        // var chart6 = echarts.init(document.getElementById('stage2Chart6'));
         var chart6Option = {
             xAxis: {
                 show:false,
@@ -982,9 +951,9 @@ page.page2 = {
                 data: [891, 1220, 660],
             }]
         };
-        chart6.setOption(chart6Option);
+        // chart6.setOption(chart6Option);
 
-        var chart7 = echarts.init(document.getElementById('page2Chart7'));
+        // var chart7 = echarts.init(document.getElementById('stage2Chart7'));
         var chart7Data1 = [120, 182, 191, 234, 290, 330];
         var chart7Data2 = [ 234, 290, 330,182, 220, 191];
         var chart7Data3 = [34, 290, 191, 330 ,220, 182];
@@ -1104,6 +1073,110 @@ page.page2 = {
                 },
             ]
         };
-        chart7.setOption(chart7Option);
+        // chart7.setOption(chart7Option);
     }
+}
+page.pannel = function () {
+    var pannel='';
+    var max = 20;
+    var deg = 360 / max;
+    var centerDeg = 0;
+    var menu = [
+        {
+            name:'征信视图',
+            stage:''
+        },{
+            name:'概览页',
+            stage:'stage1'
+        },{
+            name:'首页',
+            stage:'stage2'
+        },{
+            name:'经济视图',
+            stage:''
+        },{
+            name:'归集视图',
+            stage:''
+        }
+    ];
+    for(var i=0;i<max;i++){
+        if(menu[i]){
+            if(i*2+1 == menu.length){
+                pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);" data-stage="'+menu[i].stage+'"><div><span><a>'+menu[i].name+'</a></span></div></li>';
+                centerDeg = i*deg+deg/2;
+            }else{
+                pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);" data-stage="'+menu[i].stage+'"><div><span><a>'+menu[i].name+'</a></span></div></li>';
+            }
+        }else{
+            pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
+        }
+    }
+    $('.roulette ul').html(pannel);
+    $('.roulette ul').css('transform','rotate('+centerDeg+'deg)');
+
+    // 禁止页面滚动
+    $('.roulette').hover(function () {
+        $('body').css('overflow-y','hidden');
+    },function () {
+        $('body').css('overflow-y','auto');
+    });
+
+    // 菜单滚动
+    var wheel = 0;
+    $('.roulette').on('mousewheel DOMMouseScroll', onMouseScroll);
+    function onMouseScroll(e){
+        // e.preventDefault();
+        var currentWheel = e.originalEvent.wheelDelta || -e.originalEvent.detail;
+        var delta = Math.max(-1, Math.min(1, currentWheel) );
+        // if(delta<0){//向下滚动
+        //     console.log('向下滚动');
+        // }else{//向上滚动
+        //     console.log('向上滚动');
+        // }
+        wheel = wheel + delta;
+        if(wheel >= menu.length){
+            wheel = menu.length;
+        }
+        if(wheel <= 1){
+            wheel = 1;
+        }
+
+        $('.roulette ul').css('transform','rotate('+(wheel*deg-deg/2)+'deg)');
+        $('.roulette ul li').eq(menu.length-wheel).addClass('center').siblings().removeClass('center');
+    }
+
+    // 轮盘点击
+    var currentStage = menu[1].stage;
+    page.stage1.pageInit();
+    $('.roulette li.menu a').click(function () {
+        var stageName = $(this).parent().parent().parent().data('stage');
+        // var index = $(this).parent().parent().parent().index();
+
+        if(currentStage != stageName){
+            console.log('do');
+            if(stageName == menu[1].stage){//概览页
+
+            }else if(stageName == menu[2].stage){//首页
+                page.stage1.out();
+                page.stage2.pageInit();
+            }
+
+            currentStage = stageName;
+        }
+    });
+
+    // 显示搜索
+    $('.roulette .eye').click(function () {
+        $('.roulette').addClass('hide');
+        setTimeout(function () {
+            $('.mainSearch').addClass('show');
+        }, 500);
+    });
+    // 隐藏搜索
+    $('.mainSearch .next').click(function () {
+        $('.mainSearch').removeClass('show');
+        setTimeout(function () {
+            $('.roulette').removeClass('hide');
+        }, 500);
+    });
 }
