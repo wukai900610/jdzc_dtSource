@@ -5,22 +5,22 @@ page.mapConfig = {
     startZoom:12,
     startCenter:[116.397217, 39.909071]
 }
-page.amap = new AMap.Map('container', {
-    mapStyle: 'amap://styles/midnight',
-    features: ['bg', 'road'],
-    rotation: page.mapConfig.startRotation,
-    pitch: page.mapConfig.startPitch,
-    zoom: page.mapConfig.startZoom,
-    center: page.mapConfig.startCenter,
-    skyColor: '#1c2025',
-    // scrollWheel: false,
-    viewMode: '3D'
-});
-page.map = Loca.create(page.amap);
+// page.amap = new AMap.Map('container', {
+//     mapStyle: 'amap://styles/midnight',
+//     features: ['bg', 'road'],
+//     rotation: page.mapConfig.startRotation,
+//     pitch: page.mapConfig.startPitch,
+//     zoom: page.mapConfig.startZoom,
+//     center: page.mapConfig.startCenter,
+//     skyColor: '#1c2025',
+//     // scrollWheel: false,
+//     viewMode: '3D'
+// });
+// page.map = Loca.create(page.amap);
 
 page.stage1 = {
     layers:[],
-    out:function () {
+    pageOut:function () {
         // 隐藏左侧
         $('.stage1').removeClass('show');
 
@@ -278,7 +278,7 @@ page.stage1 = {
 
             // 滚动字幕1
             var num = Math.ceil(Math.random()*999999999);
-            $('.page .animateNumber1').animateNumber({
+            $('.stage1 .animateNumber1').animateNumber({
                 easing: 'easeInQuad',
                 number: num,
                 // numberStep: comma_separator_number_step,
@@ -301,7 +301,7 @@ page.stage1 = {
 
             // 滚动字幕2
             var num2 = Math.ceil(Math.random()*999999999);
-            $('.page .animateNumber2').animateNumber({
+            $('.stage1 .animateNumber2').animateNumber({
                 easing: 'easeInQuad',
                 number: num2,
                 // numberStep: comma_separator_number_step,
@@ -343,34 +343,16 @@ page.stage1 = {
     }
 }
 page.stage2 = {
-    out:function () {
+    pageOut:function () {
         // 隐藏左侧
         $('.stage2').removeClass('show');
 
-        // 清除图层
-        // page.stage1.layers.map(function (item,index) {
-        //     setTimeout(function () {
-        //         item.remove();
-        //     }, 100);
-        // });
-        //
-        // // 地图定位
-        // setTimeout(function () {
-        //     page.amap.setCenter(page.mapConfig.startCenter);
-        // }, 500);
-        //
-        // // 垂直显示
-        // setTimeout(function () {
-        //     var pitch = page.amap.getPitch();
-        //     var changePitch = setInterval(function () {
-        //         pitch--;
-        //         page.amap.setPitch(pitch);
-        //
-        //         if(pitch == 0){
-        //             clearInterval(changePitch)
-        //         }
-        //     }, 10);
-        // }, 1000);
+        setTimeout(function () {
+            var remnant = page.amap.getLayers();
+            remnant.map(function (item,index) {
+                index > 1 && page.amap.remove(item);
+            });
+        }, 1000);
     },
     mainChart:function () {
         var layer = Loca.visualLayer({
@@ -1111,6 +1093,249 @@ page.stage2 = {
         // chart7.setOption(chart7Option);
     }
 }
+page.stage3 = {
+    out:function () {
+
+    },
+    pageInit:function () {
+        var num = Math.random()*100;
+        $('.stage3 .animateNumber1').animateNumber({
+            easing: 'easeInQuad',
+            number: num,
+            // numberStep: comma_separator_number_step,
+            numberStep: function(now, tween) {
+                target = $(tween.elem);
+
+                var nowString = now.toFixed(1).toString();
+                var newNowString='';
+                for(var i=0;i<nowString.split('').length;i++){
+                    if(nowString[i] == '.'){
+                        newNowString = newNowString + '<span class="number dot">' + nowString[i] + '</span>';
+                    }else{
+                        newNowString = newNowString + '<span class="number num'+nowString[i]+' flip">' + nowString[i] + '</span>';
+                    }
+                }
+                target.html(newNowString+'亿');
+            }
+        }, 6000);
+
+        var num2 = Math.random()*10000000000;
+        $('.stage3 .animateNumber2').animateNumber({
+            easing: 'easeInQuad',
+            number: num2,
+            // numberStep: comma_separator_number_step,
+            numberStep: function(now, tween) {
+                target = $(tween.elem);
+
+                // var nowString = parseInt(now).toString();
+                nowString = myUtil.toThousands(parseInt(now)).toString();
+                var newNowString='';
+                for(var i=0;i<nowString.split('').length;i++){
+                    if(nowString[i] == ','){
+                        newNowString = newNowString + '<span class="number dot">' + nowString[i] + '</span>';
+                    }else{
+                        newNowString = newNowString + '<span class="number num'+nowString[i]+'">' + nowString[i] + '</span>';
+                    }
+                }
+                target.html(newNowString);
+            }
+        }, 6000);
+
+        var chart1Option = {
+            title: {
+                text: '主要信息资源库分类',
+                top:10,
+                // left:8,
+                textStyle:{
+                    color:'#33fefa',
+                    fontSize:16
+                }
+            },
+            color:['#70eba7'],
+            grid:{
+                left:'12%',
+                top:'10%',
+                bottom:'10%',
+                right:'10%',
+            },
+            dataset: {
+                dimensions: ['product', '值1'],
+                source: [
+                    {product: '工商库', '值1': 2433},
+                    {product: '法律信息库', '值1': 1831},
+                    {product: '失信人库', '值1': 1864},
+                    {product: '欠税公告库', '值1': 1724},
+                    {product: '经营信息库', '值1': 1554},
+                    {product: '股票信息库', '值1': 2664},
+                    {product: '知识产权库', '值1': 764},
+                    {product: '双公示库', '值1': 1452},
+                    {product: '红名单库', '值1': 2321},
+                    {product: '黑名单库', '值1': 1231},
+                ]
+            },
+            xAxis: {
+                type: 'value',
+                name: '万条',
+                nameTextStyle:{
+                    color:'#fff',
+                    fontSize:14
+                },
+                splitLine:{
+                    lineStyle:{
+                        color: '#2f3135'
+                    }
+                },
+                axisLine: {
+                    show: false
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                axisLabel: {
+                    interval:0,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLine: {
+                    show: false,
+                }
+            },
+            series: [
+                {type: 'bar',barWidth:15},
+            ]
+        };
+        var chart1 = echarts.init(document.getElementById('stage3Chart1'));
+        chart1.setOption(chart1Option);
+
+        var chart2Option_data = [
+            {
+                "name": "政府上报",
+                "value": 101
+            },{
+                "name": "互联网",
+                "value": 110
+            },{
+                "name": "自主填报",
+                "value": 210
+            },{
+                "name": "其他渠道",
+                "value": 320
+            },{
+                "name": "行业",
+                "value": 289
+            }
+        ];
+        var chart2Option = {
+            color: ['#32abba', '#3181c7', '#c64f75', '#bbb14d', '#67ba91'],
+            title: {
+                text: '数据归集渠道',
+                top:10,
+                // left:8,
+                textStyle:{
+                    color:'#33fefa',
+                    fontSize:16
+                }
+            },
+            grid: {
+                bottom: 150,
+                left: 100,
+                right: '10%'
+            },
+            series: [
+                // 主要展示层的
+                {
+                    radius: ['50%', '70%'],
+                    type: 'pie',
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: "{b}{d}%",
+                        },
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false,
+                        },
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    data: [],
+
+                },
+                // 边框的设置
+                {
+                    radius: ['50%', '55%'],
+                    type: 'pie',
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: false
+                        }
+                    },
+                    animation: false,
+                    tooltip: {
+                        show: false
+                    },
+                    data: [{
+                        value: 1,
+                        itemStyle: {
+                            color: "rgba(250,250,250,0.3)",
+                        },
+                    }],
+                },
+                {
+                    name: '外边框',
+                    type: 'pie',
+                    clockWise: false, //顺时加载
+                    hoverAnimation: false, //鼠标移入变大
+                    radius: ['75%', '75%'],
+                    label: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [{
+                        value: 9,
+                        name: '',
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 2,
+                                borderColor: '#0b5263'
+                            }
+                        }
+                    }]
+                },
+            ]
+        };
+        chart2Option.series[0].data = chart2Option_data;
+        var chart2 = echarts.init(document.getElementById('stage3Chart2'));
+
+        chart2.setOption(chart2Option);
+    }
+}
 page.pannel = function () {
     var pannel='';
     var max = 20;
@@ -1127,10 +1352,10 @@ page.pannel = function () {
             name:'首页',
             stage:'stage2'
         },{
-            name:'经济视图',
+            name:'数据归集',
             stage:''
         },{
-            name:'归集视图',
+            name:'经济视图',
             stage:''
         }
     ];
@@ -1182,7 +1407,8 @@ page.pannel = function () {
 
     // 轮盘点击
     var currentStage = menu[1].stage;
-    page.stage1.pageInit();
+    // page.stage1.pageInit();
+    page.stage3.pageInit();
     $('.roulette li.menu a').click(function () {
         var stageName = $(this).parent().parent().parent().data('stage');
         // var index = $(this).parent().parent().parent().index();
@@ -1191,10 +1417,10 @@ page.pannel = function () {
             if(stageName == menu[1].stage){//概览页
 
             }else if(stageName == menu[2].stage){//首页
-                page.stage1.out();
+                page.stage1.pageOut();
                 page.stage2.pageInit();
             }else{
-                page.stage2.out();
+                page.stage2.pageOut();
             }
             currentStage = stageName;
         }
