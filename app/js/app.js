@@ -5,18 +5,18 @@ page.mapConfig = {
     startZoom:12,
     startCenter:[116.397217, 39.909071]
 }
-// page.amap = new AMap.Map('container', {
-//     mapStyle: 'amap://styles/midnight',
-//     features: ['bg', 'road'],
-//     rotation: page.mapConfig.startRotation,
-//     pitch: page.mapConfig.startPitch,
-//     zoom: page.mapConfig.startZoom,
-//     center: page.mapConfig.startCenter,
-//     skyColor: '#1c2025',
-//     // scrollWheel: false,
-//     viewMode: '3D'
-// });
-// page.map = Loca.create(page.amap);
+page.amap = new AMap.Map('container', {
+    mapStyle: 'amap://styles/midnight',
+    features: ['bg', 'road'],
+    rotation: page.mapConfig.startRotation,
+    pitch: page.mapConfig.startPitch,
+    zoom: page.mapConfig.startZoom,
+    center: page.mapConfig.startCenter,
+    skyColor: '#1c2025',
+    // scrollWheel: false,
+    viewMode: '3D'
+});
+page.map = Loca.create(page.amap);
 
 page.stage1 = {
     layers:[],
@@ -236,11 +236,20 @@ page.stage1 = {
     },
     pageInit:function () {
         // 全屏功能
-        $('.page .fullScreen').click(function (e) {
-            $(this).hide();
-            var el = e.srcElement || e.target;
-            // $('.page').css('height','1440px');
-            myUtil.FullScreen(el);
+        // $('.page .fullScreen').click(function (e) {
+        //     $(this).hide();
+        //     var el = e.srcElement || e.target;
+        //     // $('.page').css('height','1440px');
+        //     myUtil.FullScreen(el);
+        // });
+        $('.stage1 .next').click(function (e) {
+            page.stage1.pageOut();
+            page.stage2.pageInit();
+
+            // 显示搜索
+            setTimeout(function () {
+                $('.roulette').removeClass('hide');
+            }, 9000);
         });
 
         var payload = {
@@ -347,12 +356,16 @@ page.stage2 = {
         // 隐藏左侧
         $('.stage2').removeClass('show');
 
+        // 隐藏热力图
         setTimeout(function () {
             var remnant = page.amap.getLayers();
             remnant.map(function (item,index) {
                 index > 1 && page.amap.remove(item);
             });
         }, 1000);
+
+        // 隐藏主地图
+        $('.container').addClass('hide');
     },
     mainChart:function () {
         var layer = Loca.visualLayer({
@@ -424,11 +437,12 @@ page.stage2 = {
         // }, 120000);
     },
     pageInit:function () {
+        // 加载主地图
         setTimeout(function () {
-            // 加载主地图
             page.stage2.mainChart();
-            $('.stage2').addClass('show');
 
+            $('.stage2').addClass('show');
+            $('.container').removeClass('hide');
             setTimeout(function () {
                 var chart1 = echarts.init(document.getElementById('stage2Chart1'));
                 chart1.setOption(chart1Option);
@@ -455,7 +469,7 @@ page.stage2 = {
                 var chart7 = echarts.init(document.getElementById('stage2Chart7'));
                 chart7.setOption(chart7Option);
             }, 1500);
-        }, 4500);
+        }, 4000);
 
         // var chart1 = echarts.init(document.getElementById('stage2Chart1'));
         var chart1Option = {
@@ -1094,10 +1108,14 @@ page.stage2 = {
     }
 }
 page.stage3 = {
-    out:function () {
-
+    pageOut:function () {
+        $('.stage3').removeClass('show');
     },
     pageInit:function () {
+        setTimeout(function () {
+            $('.stage3').addClass('show');
+        }, 1000);
+
         var num = Math.random()*100;
         $('.stage3 .animateNumber1').animateNumber({
             easing: 'easeInQuad',
@@ -1346,14 +1364,11 @@ page.pannel = function () {
             name:'征信视图',
             stage:''
         },{
-            name:'概览页',
-            stage:'stage1'
-        },{
             name:'首页',
             stage:'stage2'
         },{
             name:'数据归集',
-            stage:''
+            stage:'stage3'
         },{
             name:'经济视图',
             stage:''
@@ -1361,14 +1376,14 @@ page.pannel = function () {
     ];
     for(var i=0;i<max;i++){
         if(menu[i]){
-            if(i*2+1 == menu.length){
+            if((menu.length % 2 != 0 && i == parseInt((menu.length)/2)) || (menu.length % 2 == 0 && i == parseInt((menu.length+1)/2))){
                 pannel = pannel + '<li class="menu center" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);" data-stage="'+menu[i].stage+'"><div><span><a>'+menu[i].name+'</a></span></div></li>';
                 centerDeg = i*deg+deg/2;
             }else{
                 pannel = pannel + '<li class="menu" style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);" data-stage="'+menu[i].stage+'"><div><span><a>'+menu[i].name+'</a></span></div></li>';
             }
         }else{
-            pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
+            // pannel = pannel + '<li style="transform:rotate('+deg*i+'deg) skew('+(90-deg)+'deg);"><div><span></span></div></li>';
         }
     }
     $('.roulette ul').html(pannel);
@@ -1407,29 +1422,37 @@ page.pannel = function () {
 
     // 轮盘点击
     var currentStage = menu[1].stage;
-    // page.stage1.pageInit();
-    page.stage3.pageInit();
+    page.stage1.pageInit();
+    // page.stage3.pageInit();
+
+    // var showOneRoulette = false;
     $('.roulette li.menu a').click(function () {
         var stageName = $(this).parent().parent().parent().data('stage');
-        // var index = $(this).parent().parent().parent().index();
+        var index = $(this).parent().parent().parent().index();
+        // $('.roulette ul').css('transform','rotate('+(index*deg-deg/2)+'deg)');
 
         if(currentStage != stageName){
-            if(stageName == menu[1].stage){//概览页
-
-            }else if(stageName == menu[2].stage){//首页
-                page.stage1.pageOut();
+            page.stage1.pageOut();
+            page.stage2.pageOut();
+            page.stage3.pageOut();
+            if(stageName == menu[1].stage){//首页
                 page.stage2.pageInit();
+            }else if(stageName == menu[2].stage){//数据归集
+                page.stage3.pageInit();
             }else{
-                page.stage2.pageOut();
             }
             currentStage = stageName;
         }
+
+        // 只显示一次搜索
+        // if(!showRoulette){
+        //     setTimeout(function () {
+        //         $('.roulette').removeClass('hide');
+        //     }, 11500);
+        //     showOneRoulette = true;
+        // }
     });
 
-    // 显示搜索
-    setTimeout(function () {
-        $('.roulette').removeClass('hide');
-    }, 11500);
     $('.roulette .eye').click(function () {
         $('.roulette').addClass('hide');
         setTimeout(function () {

@@ -26,7 +26,53 @@ body {
   body::-webkit-scrollbar {
     display: none; }
 
-.pageWrap .mainSearch {
+.next {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  cursor: pointer;
+  z-index: 1; }
+  .next div {
+    margin: 0 auto 5px;
+    height: 2px;
+    border-radius: 5px;
+    background: #2fd5d3; }
+
+@-webkit-keyframes nextFlash {
+  from {
+    background-color: #4cfffe; }
+  to {
+    background-color: #2487a3; } }
+
+@keyframes nextFlash {
+  from {
+    background-color: #4cfffe; }
+  to {
+    background-color: #2487a3; } }
+    .next div:nth-child(1) {
+      width: 10px;
+      -webkit-animation: nextFlash 0.5s linear infinite alternate;
+              animation: nextFlash 0.5s linear infinite alternate; }
+    .next div:nth-child(2) {
+      width: 24px;
+      -webkit-animation: nextFlash 0.5s linear 0.2s infinite alternate;
+              animation: nextFlash 0.5s linear 0.2s infinite alternate; }
+    .next div:nth-child(3) {
+      width: 34px;
+      -webkit-animation: nextFlash 0.5s linear 0.3s infinite alternate;
+              animation: nextFlash 0.5s linear 0.3s infinite alternate; }
+    .next div:nth-child(4) {
+      width: 44px;
+      -webkit-animation: nextFlash 0.5s linear 0.4s infinite alternate;
+              animation: nextFlash 0.5s linear 0.4s infinite alternate; }
+    .next div:nth-child(5) {
+      width: 54px;
+      -webkit-animation: nextFlash 0.5s linear 0.5s infinite alternate;
+              animation: nextFlash 0.5s linear 0.5s infinite alternate; }
+
+.mainSearch {
   position: fixed;
   left: 50%;
   bottom: -120px;
@@ -38,16 +84,16 @@ body {
   height: 60px;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
-  z-index: 2; }
-  .pageWrap .mainSearch.show {
+  z-index: 10; }
+  .mainSearch.show {
     bottom: 30px; }
-  .pageWrap .mainSearch .lineBox {
+  .mainSearch .lineBox {
     position: absolute;
     left: 0;
     top: -4px;
     bottom: 0;
     width: 100%; }
-    .pageWrap .mainSearch .lineBox:before {
+    .mainSearch .lineBox:before {
       content: ' ';
       display: block;
       position: absolute;
@@ -71,7 +117,7 @@ body {
     border-color: #33fefa; }
   to {
     border-color: #2487a3; } }
-    .pageWrap .mainSearch .lineBox:after {
+    .mainSearch .lineBox:after {
       content: ' ';
       display: block;
       position: absolute;
@@ -83,34 +129,34 @@ body {
       background: -webkit-radial-gradient(#1c3d40, #1f4d50);
       background: radial-gradient(#1c3d40, #1f4d50);
       opacity: 0.4; }
-    .pageWrap .mainSearch .lineBox .line {
+    .mainSearch .lineBox .line {
       position: absolute;
       z-index: 1;
       width: 100%;
       height: 100%; }
-      .pageWrap .mainSearch .lineBox .line:after, .pageWrap .mainSearch .lineBox .line:before {
+      .mainSearch .lineBox .line:after, .mainSearch .lineBox .line:before {
         content: ' ';
         position: absolute;
         display: block;
         background: #1c3d40;
         z-index: 1; }
-      .pageWrap .mainSearch .lineBox .line.landscape:after, .pageWrap .mainSearch .lineBox .line.landscape:before {
+      .mainSearch .lineBox .line.landscape:after, .mainSearch .lineBox .line.landscape:before {
         left: 9px;
         right: 9px;
         height: 4px; }
-      .pageWrap .mainSearch .lineBox .line.landscape:before {
+      .mainSearch .lineBox .line.landscape:before {
         top: 0; }
-      .pageWrap .mainSearch .lineBox .line.landscape:after {
+      .mainSearch .lineBox .line.landscape:after {
         bottom: 0; }
-      .pageWrap .mainSearch .lineBox .line.portrait:after, .pageWrap .mainSearch .lineBox .line.portrait:before {
+      .mainSearch .lineBox .line.portrait:after, .mainSearch .lineBox .line.portrait:before {
         top: 9px;
         bottom: 9px;
         width: 4px; }
-      .pageWrap .mainSearch .lineBox .line.portrait:before {
+      .mainSearch .lineBox .line.portrait:before {
         left: 0; }
-      .pageWrap .mainSearch .lineBox .line.portrait:after {
+      .mainSearch .lineBox .line.portrait:after {
         right: 0; }
-  .pageWrap .mainSearch .inputBox {
+  .mainSearch .inputBox {
     position: absolute;
     left: 0;
     bottom: 2px;
@@ -120,7 +166,7 @@ body {
     width: 100%;
     z-index: 2;
     border-radius: 10px; }
-    .pageWrap .mainSearch .inputBox .input {
+    .mainSearch .inputBox .input {
       -webkit-box-flex: 1;
           -ms-flex: 1;
               flex: 1;
@@ -133,12 +179,12 @@ body {
       border: none;
       color: #fff;
       font-size: 18px; }
-      .pageWrap .mainSearch .inputBox .input:focus {
+      .mainSearch .inputBox .input:focus {
         box-shadow: 0 0 10px #fff; }
-      .pageWrap .mainSearch .inputBox .input::-webkit-input-placeholder {
+      .mainSearch .inputBox .input::-webkit-input-placeholder {
         color: #999;
         font-size: 18px; }
-    .pageWrap .mainSearch .inputBox .searchBtn {
+    .mainSearch .inputBox .searchBtn {
       position: absolute;
       right: 15px;
       top: 14px;
@@ -146,58 +192,15 @@ body {
       height: 35px;
       background: url("../css/images/search.png") no-repeat;
       cursor: pointer; }
-  .pageWrap .mainSearch .serach {
+  .mainSearch .serach {
     width: 40px;
     height: 40px; }
-  .pageWrap .mainSearch .next {
-    position: fixed;
-    top: -50px;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
-    cursor: pointer; }
-    .pageWrap .mainSearch .next div {
-      margin: 0 auto 5px;
-      height: 2px;
-      border-radius: 5px;
-      background: #2fd5d3; }
 
-@-webkit-keyframes nextFlash {
-  from {
-    background-color: #4cfffe; }
-  to {
-    background-color: #2487a3; } }
-
-@keyframes nextFlash {
-  from {
-    background-color: #4cfffe; }
-  to {
-    background-color: #2487a3; } }
-      .pageWrap .mainSearch .next div:nth-child(1) {
-        width: 10px;
-        -webkit-animation: nextFlash 0.5s linear infinite alternate;
-                animation: nextFlash 0.5s linear infinite alternate; }
-      .pageWrap .mainSearch .next div:nth-child(2) {
-        width: 24px;
-        -webkit-animation: nextFlash 0.5s linear 0.2s infinite alternate;
-                animation: nextFlash 0.5s linear 0.2s infinite alternate; }
-      .pageWrap .mainSearch .next div:nth-child(3) {
-        width: 34px;
-        -webkit-animation: nextFlash 0.5s linear 0.3s infinite alternate;
-                animation: nextFlash 0.5s linear 0.3s infinite alternate; }
-      .pageWrap .mainSearch .next div:nth-child(4) {
-        width: 44px;
-        -webkit-animation: nextFlash 0.5s linear 0.4s infinite alternate;
-                animation: nextFlash 0.5s linear 0.4s infinite alternate; }
-      .pageWrap .mainSearch .next div:nth-child(5) {
-        width: 54px;
-        -webkit-animation: nextFlash 0.5s linear 0.5s infinite alternate;
-                animation: nextFlash 0.5s linear 0.5s infinite alternate; }
-
-.pageWrap .roulette {
+.roulette {
   position: fixed;
   left: 50%;
   bottom: 0;
+  overflow: hidden;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   -webkit-transition: all 0.5s;
@@ -206,9 +209,9 @@ body {
   width: 940px;
   height: 143px;
   z-index: 10; }
-  .pageWrap .roulette.hide {
+  .roulette.hide {
     bottom: -150px; }
-  .pageWrap .roulette .muder {
+  .roulette .muder {
     position: absolute;
     left: 50%;
     top: 70%;
@@ -218,7 +221,7 @@ body {
     height: 900px;
     border-radius: 100%;
     z-index: 1; }
-    .pageWrap .roulette .muder .eye {
+    .roulette .muder .eye {
       position: absolute;
       left: 50%;
       margin-top: 2px;
@@ -245,7 +248,7 @@ body {
   to {
     -webkit-transform: translate(-50%, 0) scale(1);
             transform: translate(-50%, 0) scale(1); } }
-  .pageWrap .roulette ul {
+  .roulette ul {
     position: relative;
     width: 940px;
     height: 940px;
@@ -254,7 +257,7 @@ body {
     overflow: hidden;
     -webkit-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out; }
-    .pageWrap .roulette ul li {
+    .roulette ul li {
       position: absolute;
       top: 0;
       left: 0;
@@ -264,13 +267,13 @@ body {
               transform-origin: 100% 100%;
       overflow: hidden;
       color: #fff; }
-      .pageWrap .roulette ul li.menu:hover div span {
+      .roulette ul li.menu:hover div span {
         text-shadow: 0 0 10px #ccc; }
-      .pageWrap .roulette ul li.center span {
+      .roulette ul li.center span {
         color: #33fefa;
         text-shadow: 0 0 8px #33fefa;
         font-size: 22px; }
-      .pageWrap .roulette ul li div {
+      .roulette ul li div {
         position: absolute;
         right: 0;
         bottom: 0;
@@ -280,7 +283,7 @@ body {
                 transform: skew(-72deg) rotate(-36deg);
         -webkit-transform-origin: 100% 100%;
                 transform-origin: 100% 100%; }
-        .pageWrap .roulette ul li div span {
+        .roulette ul li div span {
           display: block;
           -webkit-transform: rotate(-45deg);
                   transform: rotate(-45deg);
@@ -290,7 +293,7 @@ body {
           line-height: 325px;
           text-align: center;
           font-size: 18px; }
-          .pageWrap .roulette ul li div span a {
+          .roulette ul li div span a {
             cursor: pointer; }
 
 .flexBox {
@@ -459,6 +462,12 @@ body {
   .pageWrap .container {
     width: 100%;
     height: 100%; }
+    .page .container.hide,
+    .pageWrap .container.hide {
+      opacity: 0;
+      z-index: -1;
+      -webkit-transition: all 1s;
+      transition: all 1s; }
   .page .number,
   .pageWrap .number {
     background: url("../css/images/number.png") no-repeat;
@@ -608,6 +617,9 @@ body {
     .pageWrap .stage.stage1.show .leftPannel {
       left: 35px;
       opacity: 1; }
+    .page .stage.stage1.show .next,
+    .pageWrap .stage.stage1.show .next {
+      top: 90%; }
     .page .stage.stage1 .leftPannel,
     .pageWrap .stage.stage1 .leftPannel {
       left: -100%;
@@ -698,6 +710,9 @@ body {
           padding: 0 20px;
           height: 78px;
           background: url("../css/images/line.png") no-repeat; }
+    .page .stage.stage1 .next,
+    .pageWrap .stage.stage1 .next {
+      top: -100%; }
     .page .stage.stage2.show .topTitle,
     .pageWrap .stage.stage2.show .topTitle {
       top: 0; }
@@ -921,7 +936,15 @@ body {
         height: 260px; }
     .page .stage.stage3,
     .pageWrap .stage.stage3 {
-      background: url("../css/images/page3_bg.png") center no-repeat; }
+      opacity: 0;
+      z-index: -1;
+      background: url("../css/images/page3_bg.png") center no-repeat;
+      -webkit-transition: all 2s;
+      transition: all 2s; }
+      .page .stage.stage3.show,
+      .pageWrap .stage.stage3.show {
+        opacity: 1;
+        z-index: 1; }
       .page .stage.stage3 .platform,
       .pageWrap .stage.stage3 .platform {
         position: relative;
@@ -1213,7 +1236,7 @@ body {
             top: 143px; }
           .page .stage.stage3 .platform .titles li:nth-child(7),
           .pageWrap .stage.stage3 .platform .titles li:nth-child(7) {
-            right: 11px;
+            right: 6px;
             top: 293px;
             width: 350px;
             text-align: center; }
