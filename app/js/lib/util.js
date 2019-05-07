@@ -71,5 +71,16 @@ var myUtil = {
 		if (typeof cfs != "undefined" && cfs) {
 			cfs.call(el);
 		}
+	},
+	splitHash:function (hash) {
+		hash = hash.slice(1);
+		hash = hash.split('/');
+		var hashObj = {};
+
+		hash.map(function (item) {
+			var data = item.split('=');
+			hashObj[data[0]] = data[1];
+		});
+		return hashObj;
 	}
 }

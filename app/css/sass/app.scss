@@ -581,15 +581,76 @@ body {
     width: 1920px;
     height: 1080px;
     background: #1c2025;
+}
 
+.page {
     .container {
         width: 100%;
         height: 100%;
+        transition: all 1s;
+    }
 
-        &.hide {
+    &.page1Show {
+        .stage {
+            &.stage1 {
+                .logo {
+                    opacity: 1;
+                }
+
+                .leftPannel {
+                    left: 35px;
+                    opacity: 1;
+                }
+
+                .next {
+                    top: 90%;
+                    z-index: 2;
+                }
+            }
+        }
+
+        .container {
+            // opacity: 1;
+            // z-index: 1;
+        }
+    }
+
+    &.page2Show {
+        .stage {
+            &.stage2 {
+                .topTitle {
+                    top: 0;
+                }
+
+                .leftPannel {
+                    left: 35px;
+                    opacity: 1;
+                }
+
+                .rightPannel {
+                    right: 35px;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .container {
+            // opacity: 1;
+            // z-index: 1;
+        }
+    }
+
+    &.page3Show {
+        .stage {
+            &.stage3 {
+                opacity: 1;
+                z-index: 1;
+            }
+        }
+
+        .container {
             opacity: 0;
             z-index: -1;
-            transition: all 1s;
         }
     }
 
@@ -771,27 +832,12 @@ body {
                 position: absolute;
                 left: 40px;
                 top: 35px;
-                z-index: 1;
+                z-index: 2;
                 width: 490px;
                 height: 68px;
                 background: url("../css/images/logo.png") no-repeat;
                 opacity: 0;
                 transition: all 2s ease-in;
-            }
-
-            &.show {
-                .logo {
-                    opacity: 1;
-                }
-
-                .leftPannel {
-                    left: 35px;
-                    opacity: 1;
-                }
-
-                .next {
-                    top: 90%;
-                }
             }
 
             .leftPannel {
@@ -896,22 +942,6 @@ body {
         }
 
         &.stage2 {
-            &.show {
-                .topTitle {
-                    top: 0;
-                }
-
-                .leftPannel {
-                    left: 35px;
-                    opacity: 1;
-                }
-
-                .rightPannel {
-                    right: 35px;
-                    opacity: 1;
-                }
-            }
-
             .topTitle {
                 top: -100%;
             }
@@ -1133,11 +1163,6 @@ body {
             z-index: -1;
             background: url("../css/images/page3_bg.png") center no-repeat;
             transition: all 2s;
-
-            &.show {
-                opacity: 1;
-                z-index: 1;
-            }
 
             .platform {
                 position: relative;

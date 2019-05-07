@@ -22,7 +22,7 @@ page.stage1 = {
     layers:[],
     pageOut:function () {
         // 隐藏左侧
-        $('.stage1').removeClass('show');
+        $('.page').removeClass('page1Show');
 
         // 清除图层
         page.stage1.layers.map(function (item,index) {
@@ -242,6 +242,8 @@ page.stage1 = {
         //     // $('.page').css('height','1440px');
         //     myUtil.FullScreen(el);
         // });
+        location.hash = 'from=stage1';
+
         $('.stage1 .next').click(function (e) {
             page.stage1.pageOut();
             page.stage2.pageInit();
@@ -283,7 +285,7 @@ page.stage1 = {
 
         // 显示左侧
         setTimeout(function () {
-            $('.stage1').addClass('show');
+            $('.page').addClass('page1Show');
 
             // 滚动字幕1
             var num = Math.ceil(Math.random()*999999999);
@@ -354,7 +356,7 @@ page.stage1 = {
 page.stage2 = {
     pageOut:function () {
         // 隐藏左侧
-        $('.stage2').removeClass('show');
+        $('.page').removeClass('page2Show');
 
         // 隐藏热力图
         setTimeout(function () {
@@ -365,7 +367,6 @@ page.stage2 = {
         }, 1000);
 
         // 隐藏主地图
-        $('.container').addClass('hide');
     },
     mainChart:function () {
         var layer = Loca.visualLayer({
@@ -437,39 +438,52 @@ page.stage2 = {
         // }, 120000);
     },
     pageInit:function () {
-        // 加载主地图
-        setTimeout(function () {
-            page.stage2.mainChart();
-
-            $('.stage2').addClass('show');
-            $('.container').removeClass('hide');
+        var hashObj = myUtil.splitHash(location.hash);
+        // 来自引导页
+        if(hashObj.from == 'stage1'){
+            // 加载主地图
             setTimeout(function () {
-                var chart1 = echarts.init(document.getElementById('stage2Chart1'));
-                chart1.setOption(chart1Option);
+                page.stage2.mainChart();
 
-                var chart2 = echarts.init(document.getElementById('stage2Chart2'));
-                chart2.setOption(chart2Option);
+                $('.page').addClass('page2Show');
+                setTimeout(loadChart, 1500);
+            }, 4000);
+        }else{
+            $('.page').addClass('page2Show');
+            setTimeout(function(){
+                loadChart();
+            }, 1000);
+            setTimeout(function(){
+                page.stage2.mainChart();
+            }, 3000);
+        }
 
-                var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
-                var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
-                var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
-                chart3_1.setOption(chart3_1Option);
-                chart3_2.setOption(chart3_2Option);
-                chart3_3.setOption(chart3_3Option);
+        function loadChart() {
+            var chart1 = echarts.init(document.getElementById('stage2Chart1'));
+            chart1.setOption(chart1Option);
 
-                var chart4 = echarts.init(document.getElementById('stage2Chart4'));
-                chart4.setOption(chart4Option);
+            var chart2 = echarts.init(document.getElementById('stage2Chart2'));
+            chart2.setOption(chart2Option);
 
-                var chart5 = echarts.init(document.getElementById('stage2Chart5'));
-                chart5.setOption(chart5Option);
+            var chart3_1 = echarts.init(document.getElementById('stage2Chart3_1'));
+            var chart3_2 = echarts.init(document.getElementById('stage2Chart3_2'));
+            var chart3_3 = echarts.init(document.getElementById('stage2Chart3_3'));
+            chart3_1.setOption(chart3_1Option);
+            chart3_2.setOption(chart3_2Option);
+            chart3_3.setOption(chart3_3Option);
 
-                var chart6 = echarts.init(document.getElementById('stage2Chart6'));
-                chart6.setOption(chart6Option);
+            var chart4 = echarts.init(document.getElementById('stage2Chart4'));
+            chart4.setOption(chart4Option);
 
-                var chart7 = echarts.init(document.getElementById('stage2Chart7'));
-                chart7.setOption(chart7Option);
-            }, 1500);
-        }, 4000);
+            var chart5 = echarts.init(document.getElementById('stage2Chart5'));
+            chart5.setOption(chart5Option);
+
+            var chart6 = echarts.init(document.getElementById('stage2Chart6'));
+            chart6.setOption(chart6Option);
+
+            var chart7 = echarts.init(document.getElementById('stage2Chart7'));
+            chart7.setOption(chart7Option);
+        }
 
         // var chart1 = echarts.init(document.getElementById('stage2Chart1'));
         var chart1Option = {
@@ -1109,11 +1123,11 @@ page.stage2 = {
 }
 page.stage3 = {
     pageOut:function () {
-        $('.stage3').removeClass('show');
+        $('.page').removeClass('page3Show');
     },
     pageInit:function () {
         setTimeout(function () {
-            $('.stage3').addClass('show');
+            $('.page').addClass('page3Show');
         }, 1000);
 
         var num = Math.random()*100;
@@ -1354,6 +1368,7 @@ page.stage3 = {
         chart2.setOption(chart2Option);
     }
 }
+
 page.pannel = function () {
     var pannel='';
     var max = 20;
@@ -1441,6 +1456,7 @@ page.pannel = function () {
                 page.stage3.pageInit();
             }else{
             }
+            window.location.hash = 'from='+currentStage;
             currentStage = stageName;
         }
 
