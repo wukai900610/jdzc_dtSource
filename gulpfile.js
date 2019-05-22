@@ -33,17 +33,18 @@ gulp.task('js.minify', function() {
 
     gulp.src(['app/js/lib/*.*', 'app/js/lib/**/*.*'])
         .pipe(gulp.dest('dist/js/lib'));
-    // gulp.src(['app/js/*.js','!app/js/app.js'])
-    //  .pipe(concat('all.js'))
-    //  .pipe(uglify())
-    //  .pipe(rename('all.min.js'))
-    //  .pipe(gulp.dest('dist/js'));
 
-    // gulp.src('app/js/app.js')
-    //  .pipe(concat('app.js'))
-    //  .pipe(uglify())
-    //  .pipe(rename('app.min.js'))
-    //  .pipe(gulp.dest('dist/js'));
+    // csv
+    gulp.src('app/js/*.csv')
+        .pipe(gulp.dest('dist/js'));
+    // json
+    gulp.src('app/js/*.json')
+        .pipe(gulp.dest('dist/js'));
+    // mp3
+    gulp.src('app/*.mp3')
+        .pipe(gulp.dest('dist'));
+    gulp.src('app/*.m4a')
+        .pipe(gulp.dest('dist'));
 });
 
 // 合并、压缩、重命名css
@@ -66,9 +67,9 @@ gulp.task('css.minify', function() {
 
 // 压缩图片
 gulp.task('img.minify', function() {
-    return gulp.src('app/images/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/images'))
+    return gulp.src('app/css/images/*')
+        // .pipe(imagemin())
+        .pipe(gulp.dest('dist/css/images'))
 });
 // 字体
 gulp.task('font.minify', function() {
