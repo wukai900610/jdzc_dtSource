@@ -13,7 +13,8 @@
         <div class="mainSearch">
             <div class="inputBox">
                 <input type="text" placeholder="搜企业、查征信、看预警" class="input">
-                <div class="searchBtn"></div>
+                <!-- <div class="searchBtn"></div> -->
+                <div class="loading"></div>
                 <div class="dataList"></div>
             </div>
             <div class="lineBox">
@@ -85,7 +86,7 @@
                                 <div></div>
                                 <div></div>
                             </div>
-                            企业区域分布（万）
+                            企业区域分布
                         </div>
                     </h5>
                     <div class="content">
@@ -102,7 +103,7 @@
                                 <div></div>
                                 <div></div>
                             </div>
-                            企业行业分布（万）
+                            企业行业分布
                         </div>
                     </h5>
                     <div class="content">
@@ -116,16 +117,13 @@
                     <div></div>
                     <div></div>
                 </div>
-
-                <audio id="music" loop="loop" style='display:none'>
-                    <source src="./music.m4a" type="audio/mpeg">
-                </audio>
             </div>
             <div class="stage stage2">
                 <div class="topTitle">
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                 </div>
                 <div class="leftPannel">
                     <h5 class="titleBar titleBar1" style="padding-top:10px;">
@@ -172,7 +170,7 @@
                     </h5>
                     <div class="content">
                         <div class="warningNum">
-                            预警数量: <span class="num">12500</span> <span class="percent down">21.4%</span>
+                            预警数量: <span class="num"></span> <span class="percent"></span>
                         </div>
                         <div class="charts chart3">
                             <div class="stage2Chart3_1">
@@ -210,20 +208,20 @@
                     </h5>
                     <div class="content">
                         <div class="warningNum">
-                            归集数量: <span class="num">12500</span> <span class="percent up">21.4%</span>
+                            归集数量: <span class="num"></span> <span class="percent up"></span>
                         </div>
                         <ul class="flexNum">
                             <li>
                                 <p>自然人数量</p>
-                                <span>123500</span>
+                                <span></span>
                             </li>
                             <li>
                                 <p>法人数量</p>
-                                <span>52535602</span>
+                                <span></span>
                             </li>
                             <li>
                                 <p>非企业法人数量</p>
-                                <span>500120</span>
+                                <span></span>
                             </li>
                         </ul>
                         <div class="charts chart5">
@@ -266,6 +264,7 @@
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                 </div>
                 <div class="platform">
                     <ul class="lines">
@@ -332,7 +331,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    236
+                                    <span>0</span>
                                 </div>
                             </div>
                         </li>
@@ -356,7 +355,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    121087234
+                                    <span>0</span>
                                 </div>
                             </div>
                         </li>
@@ -380,7 +379,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    65125300
+                                    <span>0</span>
                                 </div>
                             </div>
                         </li>
@@ -404,7 +403,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    88%
+                                    <span>0</span>
                                 </div>
                             </div>
                         </li>
@@ -525,47 +524,29 @@
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                     <span class="back"></span>
                 </div>
                 <div class="Company_information">
-                    <div class="company_head">
-                        <ul class="logo_head">
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <ul class="text_head">
-                            <li>金电联行(北京)信息技术有限公司</li>
-                            <li>统一社会信用代码：91110101663110040k</li>
-                            <li>在业</li>
-                            <li>重点行业</li>
-                            <li>联合激励对象</li>
-                        </ul>
-                    </div>
                     <div class="more">
                         <ul class="moreinfo">
                             <li><span>下载报告</span></li>
                             <li><span>关注</span></li>
                         </ul>
                     </div>
+                    <div class="company_head">
+                        <div class="logo_head"></div>
+                        <ul class="text_head">
+                            <li></li>
+                            <li></li>
+                            <li class="tags"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="leftPannel">
                     <div class="left_titles">
-                        <ul class="page4_titles">
-                            <li>
-                                <div class="animateNumber animateNumber1">194</div> 基本信息
-                            </li>
-                            <li>
-                                <div class="animateNumber animateNumber1">12</div> 法律诉讼 </li>
-                            <li>
-                                <div class="animateNumber animateNumber1">880</div> 经营状况 </li>
-                            <li>
-                                <div class="animateNumber animateNumber1">2</div> 经营风险 </li>
-                            <li>
-                                <div class="animateNumber animateNumber1">25</div> 企业发展 </li>
-                            <li>
-                                <div class="animateNumber animateNumber1">82</div> 知识产权 </li>
-                            <li> <p>信用分</p> <span>85</span> </li>
-                        </ul>
+                        <ul class="page4_titles"></ul>
                         <ul class="blocks">
                             <li></li>
                             <li></li>
@@ -602,254 +583,250 @@
                         </div>
                     </div>
                 </div>
-                <ul>
-                    <div class="page4_right rightPage1">
-                        <h5 class="titleBar">
-                            <div class="title">
-                                <div class="topLine"></div>
-                                <div class="dots">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div> 基本信息
-                            </div>
-                        </h5>
-                        <div class="back">
-                            <ul class="back_to">
-                                <li>回到总览</li>
+                <div class="page4_right rightPage1">
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div> 基本信息
+                        </div>
+                    </h5>
+                    <div class="back">
+                        <ul class="back_to">
+                            <li>回到总览</li>
+                        </ul>
+                    </div>
+                    <div class="tab">
+                        <ul class="tab_titles">
+                            <li class="selected"> <a href="javascript:void(0);">工商信息</a> </li>
+                            <li> <a href="javascript:void(0);">平台信息</a> </li>
+                            <li> <a href="javascript:void(0);">历史沿革</a> </li>
+                            <li> <a href="javascript:void(0);">主要人员</a> </li>
+                            <li> <a href="javascript:void(0);">股东信息</a> </li>
+                            <li> <a href="javascript:void(0);">对外投资</a> </li>
+                            <li> <a href="javascript:void(0);">变更记录</a> </li>
+                            <li> <a href="javascript:void(0);">分之机构</a> </li>
+                            <li> <a href="javascript:void(0);">公司年报</a> </li>
+                        </ul>
+                    </div>
+                    <div class="business">
+                        <div class="rightPannel_head1">
+                            <ul>
+                                <li>工商信息</li>
+                                <li><a href="javascript:void(0);">查看工商官网快照信息</a></li>
                             </ul>
                         </div>
-                        <div class="tab">
-                            <ul class="tab_titles">
-                                <li class="selected"> <a href="javascript:void(0);">工商信息</a> </li>
-                                <li> <a href="javascript:void(0);">平台信息</a> </li>
-                                <li> <a href="javascript:void(0);">历史沿革</a> </li>
-                                <li> <a href="javascript:void(0);">主要人员</a> </li>
-                                <li> <a href="javascript:void(0);">股东信息</a> </li>
-                                <li> <a href="javascript:void(0);">对外投资</a> </li>
-                                <li> <a href="javascript:void(0);">变更记录</a> </li>
-                                <li> <a href="javascript:void(0);">分之机构</a> </li>
-                                <li> <a href="javascript:void(0);">公司年报</a> </li>
-                            </ul>
-                        </div>
-                        <div class="business">
-                            <div class="rightPannel_head1">
-                                <ul>
-                                    <li>工商信息</li>
-                                    <li><a href="javascript:void(0);">查看工商官网快照信息</a></li>
-                                </ul>
-                            </div>
-                            <div class="business_info">
-                                <table class="business_list">
-                                    <tbody>
-                                    <tr>
-                                        <td class="list1">统一社会信用代码</td>
-                                        <td>91110101663110040k</td>
-                                        <td class="list1">成立日期</td>
-                                        <td>2007-06-12</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">公司类型</td>
-                                        <td>其他责任有限公司</td>
-                                        <td class="list1">所属行业</td>
-                                        <td>信息传输、软件技术服务行业</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">标准日期</td>
-                                        <td>2019-04-24</td>
-                                        <td class="list1">登记机关</td>
-                                        <td>北京市工商行政管理局东城分局</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">所属地区</td>
-                                        <td>北京市</td>
-                                        <td class="list1">英文名</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">曾用名</td>
-                                        <td>-</td>
-                                        <td class="list1">参保人数</td>
-                                        <td>177</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">人员规模</td>
-                                        <td>100-499</td>
-                                        <td class="list1">营业期限至</td>
-                                        <td>2007-6-12至2027-06-11</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">企业地址</td>
-                                        <td>北京市东城区金宝街67号S302C</td>
-                                        <td class="list1"></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="list1">经营范围</td>
-                                        <td class="list2" colspan="3">技术推广服务；信息咨询（不含中介服务）；投资顾问；承办展览展示；公关策划；企业形象策划；企业管理咨询；会议服务；销售电子计算机及软硬件设备；软件设计。</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="shareholder">
-                            <div class="rightPannel_head2">
-                                <p>股东信息</p>
-                            </div>
-                            <table class="shareholder_list">
-                                <thead class="shareholder_head">
+                        <div class="business_info">
+                            <table class="business_list">
+                                <tbody>
                                 <tr>
-                                    <td>序号</td>
-                                    <td>股东(发起人)</td>
-                                    <td>持股比例</td>
-                                    <td>认缴出资额(万元)</td>
-                                    <td>认缴出资日期</td>
-                                </tr>
-                                </thead>
-                                <tbody class="shareholder_body">
-                                <tr>
-                                    <td class="list4">1</td>
-                                    <td class="list3">北京众成创新信息产业投资基金(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">统一社会信用代码</td>
+                                    <td>91110101663110040k</td>
+                                    <td class="list1">成立日期</td>
+                                    <td>2007-06-12</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">2</td>
-                                    <td class="list3">范晓忻</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">公司类型</td>
+                                    <td>其他责任有限公司</td>
+                                    <td class="list1">所属行业</td>
+                                    <td>信息传输、软件技术服务行业</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">3</td>
-                                    <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">标准日期</td>
+                                    <td>2019-04-24</td>
+                                    <td class="list1">登记机关</td>
+                                    <td>北京市工商行政管理局东城分局</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">4</td>
-                                    <td class="list3">北京融汇通达投资管理有限公司</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">所属地区</td>
+                                    <td>北京市</td>
+                                    <td class="list1">英文名</td>
+                                    <td>-</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">5</td>
-                                    <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">曾用名</td>
+                                    <td>-</td>
+                                    <td class="list1">参保人数</td>
+                                    <td>177</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">6</td>
-                                    <td class="list3">北京众城创新信息产业投资基金(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">人员规模</td>
+                                    <td>100-499</td>
+                                    <td class="list1">营业期限至</td>
+                                    <td>2007-6-12至2027-06-11</td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">7</td>
-                                    <td class="list3">范晓忻</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">企业地址</td>
+                                    <td>北京市东城区金宝街67号S302C</td>
+                                    <td class="list1"></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="list4">8</td>
-                                    <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
-                                </tr>
-                                <tr>
-                                    <td class="list4">9</td>
-                                    <td class="list3">北京融汇通达投资管理有限公司</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
-                                </tr>
-                                <tr>
-                                    <td class="list4">10</td>
-                                    <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
-                                    <td>15.95%</td>
-                                    <td>1260.875</td>
-                                    <td>2027-06-01</td>
+                                    <td class="list1">经营范围</td>
+                                    <td class="list2" colspan="3">技术推广服务；信息咨询（不含中介服务）；投资顾问；承办展览展示；公关策划；企业形象策划；企业管理咨询；会议服务；销售电子计算机及软硬件设备；软件设计。</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="page4_right rightPage2 show">
-                        <h5 class="titleBar" style="padding-top:10px;">
-                            <div class="title">
-                                <div class="topLine"></div>
-                                <div class="dots">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div> 总览
-                            </div> </h5>
-                        <div class="right_1">
-                            <div class="area1">
-                                <div class="area1_head">
-                                </div>
-                                <div class="charts chart5">
-                                    <div id="stage4Chart5" class="chart"></div>
-                                    <span class="stage4_num1">7903.5849万元</span>
-                                    <span class="stage4_percentup1">32.12%</span>
-                                    <span class="stage4_num2">83.12万元</span>
-                                    <span class="stage4_percentup2">18.56%</span>
-                                    <span class="stage4_num3">32.12万元</span>
-                                    <span class="stage4_percentup3">12.31%</span>
-                                </div>
-                                <div class="charts chart1">
-                                    <div class="stage4Chart1_1">
-                                        <div id="stage4Chart1_1" class="chart"></div>
-                                        <p>税务评级</p>
-                                    </div>
-                                    <div class="stage4Chart1_2">
-                                        <div id="stage4Chart1_2" class="chart"></div>
-                                        <p>联合激励</p>
-                                    </div>
-                                    <div class="stage4Chart1_3">
-                                        <div id="stage4Chart1_3" class="chart"></div>
-                                        <p>红名单</p>
-                                    </div>
-                                </div>
+                    <div class="shareholder">
+                        <div class="rightPannel_head2">
+                            <p>股东信息</p>
+                        </div>
+                        <table class="shareholder_list">
+                            <thead class="shareholder_head">
+                            <tr>
+                                <td>序号</td>
+                                <td>股东(发起人)</td>
+                                <td>持股比例</td>
+                                <td>认缴出资额(万元)</td>
+                                <td>认缴出资日期</td>
+                            </tr>
+                            </thead>
+                            <tbody class="shareholder_body">
+                            <tr>
+                                <td class="list4">1</td>
+                                <td class="list3">北京众成创新信息产业投资基金(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">2</td>
+                                <td class="list3">范晓忻</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">3</td>
+                                <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">4</td>
+                                <td class="list3">北京融汇通达投资管理有限公司</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">5</td>
+                                <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">6</td>
+                                <td class="list3">北京众城创新信息产业投资基金(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">7</td>
+                                <td class="list3">范晓忻</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">8</td>
+                                <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">9</td>
+                                <td class="list3">北京融汇通达投资管理有限公司</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">10</td>
+                                <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page4_right rightPage2 show">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div> 总览
+                        </div> </h5>
+                    <div class="right_1">
+                        <div class="area1">
+                            <div class="area1_head">
                             </div>
-                            <div class="area2">
-                                <div class="area2_head">
+                            <div class="charts chart5">
+                                <div id="stage4Chart5" class="chart"></div>
+                                <!-- <div class="numBox numBox1">
+                                    <div class="value">7903.5849万元</div>
+                                    <span class="down percent">18.56%</span>
+                                </div> -->
+                            </div>
+                            <div class="charts chart1">
+                                <div class="stage4Chart1_1">
+                                    <div id="stage4Chart1_1" class="chart"></div>
+                                    <p>税务评级</p>
                                 </div>
-                                <div class="charts chart6">
-                                    <div id="stage4Chart6" class="chart"></div>
+                                <div class="stage4Chart1_2">
+                                    <div id="stage4Chart1_2" class="chart"></div>
+                                    <p>联合激励</p>
+                                </div>
+                                <div class="stage4Chart1_3">
+                                    <div id="stage4Chart1_3" class="chart"></div>
+                                    <p>红名单</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="right_2">
-                            <div class="area3">
-                                <div class="area3_head">
-                                </div>
-                                <div class="charts chart4">
-                                    <div id="stage4Chart4" class="chart"></div>
-                                </div>
+                        <div class="area2">
+                            <div class="area2_head">
                             </div>
-                            <div class="area4">
-                                <div class="area4_head">
-                                </div>
-                                <div id="stage4_map">
-                                </div>
+                            <div class="charts chart6">
+                                <div id="stage4Chart6" class="chart"></div>
                             </div>
                         </div>
                     </div>
-                </ul>
+                    <div class="right_2">
+                        <div class="area3">
+                            <div class="area3_head">
+                            </div>
+                            <div class="charts chart4">
+                                <div id="stage4Chart4" class="chart"></div>
+                            </div>
+                        </div>
+                        <div class="area4">
+                            <div class="area4_head">
+                            </div>
+                            <div id="stage4_map">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="stage stage5">
@@ -857,6 +834,7 @@
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                 </div>
                 <div class="leftPannel">
                     <h5 class="titleBar" style="padding-top:10px;">
@@ -944,6 +922,7 @@
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                 </div>
                 <div class="topPannel">
                     <ul class="flexBox">
@@ -1004,7 +983,7 @@
                                     <div class="left corner"></div>
 
                                     <div class="numBox">
-                                        <div class="num"><span></span> <b>百万元</b></div>
+                                        <div class="num"><span></span> <b>亿元</b></div>
                                         <span class="up percent"></span>
                                     </div>
                                 </div>
@@ -1020,7 +999,7 @@
                                     <div class="left corner"></div>
 
                                     <div class="numBox">
-                                        <div class="num"><span></span> <b>百万元</b></div>
+                                        <div class="num"><span></span> <b>亿元</b></div>
                                         <span class="down percent"></span>
                                     </div>
                                 </div>
@@ -1135,6 +1114,7 @@
                     <div class="area">地区: <span>城市</span></div>
                     <div class="time">当前时间</div>
                     <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
                 </div>
                 <div class="leftPannel">
                     <ul class="flexBox">
@@ -1159,7 +1139,8 @@
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
                                     <span class="nums">
-                                        86%<b>5.6GHZ</b>
+                                        0
+                                        <!-- 86%<b>5.6GHZ</b> -->
                                     </span>
                                 </div>
                             </div>
@@ -1184,7 +1165,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    <span class="nums">85900</span>
+                                    <span class="nums">0</span>
                                 </div>
                             </div>
                         </li>
@@ -1209,7 +1190,7 @@
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
                                     <span class="nums">
-                                        78%<b>5.6GB</b>
+                                        0
                                     </span>
                                 </div>
                             </div>
@@ -1234,7 +1215,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    0.016
+                                    <span class="nums">0</span>
                                 </div>
                             </div>
                         </li>
@@ -1258,7 +1239,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    8M
+                                    <span class="nums">0</span>
                                 </div>
                             </div>
                         </li>
@@ -1282,7 +1263,7 @@
                                     <div class="right corner"></div>
                                     <div class="bottom corner"></div>
                                     <div class="left corner"></div>
-                                    8900
+                                    <span class="nums">0</span>
                                 </div>
                             </div>
                         </li>
@@ -1401,7 +1382,7 @@
                 <div id="container" class="container"></div>
             </div>
 
-            
+
             <!-- <div class="alert">
                 <h3>金电联行（北京）信息技术有限公司</h3>
                 <p>信用代码：91110101663110040K</p>
@@ -1414,6 +1395,11 @@
             </div> -->
         </div>
     </div>
+
+    <!-- <audio id="music" loop="loop" style='display:none'>
+        <source src="./music.m4a" type="audio/mpeg">
+    </audio> -->
+    <audio src="./music.m4a" loop style="display:none;"></audio>
     <script src="./js/lib/jquery-1.11.2.js"></script>
     <script src="./js/lib/jquery.animateNumber.min.js"></script>
     <script src="./js/lib/swiper/idangerous.swiper.min.js"></script>
@@ -1443,8 +1429,51 @@
     	// //缩放页面
     	myUtil.setScale();
 
-        setTimeout(page.pannel, 0);
         page.topTitle();
+
+        // stage数据加载
+        // '/credit-data-platform/viewAble/selectAreaLocate.json'
+        $.get('./js/selectAreaLocate.json',function (callbackdata) {
+            // 配置城市及坐标
+            page.mapConfig.startCenter = callbackdata.startCenter;
+            page.mapConfig.city = callbackdata.city;
+            page.mapConfig.adcode = callbackdata.adcode;
+            // 设置标题区域
+            $('.topTitle .area span').text(page.mapConfig.city);
+
+            // 实例地图
+            page.amap = page.creditMap(page.amapConfig);
+            page.map = Loca.create(page.amap);
+
+            // 设置中心
+            page.amap.setCenter(page.mapConfig.startCenter);
+
+            // 概览页数据
+            // '/credit-data-platform/viewAble/stageData1.json'
+            $.get('./js/stage1.json',function (callbackdata) {
+                page.stage1.data = callbackdata;
+                page.pannel();
+            });
+        });
+
+        $.get('./js/stage2.json',function (callbackdata) {
+            page.stage2.data = callbackdata;
+        });
+        $.get('./js/stage3.json',function (callbackdata) {
+            page.stage3.data = callbackdata;
+        });
+        $.get('./js/stage4.json',function (callbackdata) {
+            page.stage4.data = callbackdata;
+        });
+        $.get('./js/stage5.json',function (callbackdata) {
+            page.stage5.data = callbackdata;
+        });
+        $.get('./js/stage6.json',function (callbackdata) {
+            page.stage6.data = callbackdata;
+        });
+        $.get('./js/stage7.json',function (callbackdata) {
+            page.stage7.data = callbackdata;
+        });
     });
     </script>
 </body>
