@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>信用大数据分析</title>
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/nanjing.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- echarts2.0,首页地图使用 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
+
+    <script src="http://10.10.136.71:8080/map/js/gFun.js"></script>
+</head>
+
+<body>
+    <div class="jdChartLoading"></div>
+    <div class="dtCharts">
+        <div class="title">联合奖惩大数据动态图表</div>
+        <div class="leftBar">
+            <div class="module chart1">
+                <h5>联合激励规则</h5>
+                <div class="moduleContent">
+                    <ul class="areaBox">
+                        <li class="area area1">
+                            国&nbsp;&nbsp;&nbsp;家 <span>25</span>
+                        </li>
+                        <li class="area area2">
+                            江苏省 <span>25</span>
+                        </li>
+                        <li class="area area3">
+                            无锡市 <span>25</span>
+                        </li>
+                    </ul>
+                    <div id="chart1"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>联合激励事件主体</h5>
+                <div class="moduleContent">
+                    <div id="chart2"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>激励事件发起</h5>
+                <div class="moduleContent">
+                    <div id="chart3"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>激励事件部门参与</h5>
+                <div class="moduleContent">
+                    <div class="block">
+                        <div id="chart4"></div>
+                    </div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="leftLeftBottom"></div>
+        </div>
+        <div class="mainBar">
+            <div class="mainMap">
+                <div id="mainMap"></div>
+                <ul class="mainNum">
+                    <li>
+                        <h5>激励事件数</h5>
+                        <p></p>
+                    </li>
+                    <li>
+                        <h5>惩戒事件数</h5>
+                        <p></p>
+                    </li>
+                </ul>
+                <div class="listTop">
+                    <h5>主体类型分布<span></span></h5>
+                    <ul>
+                        <li>法人：<span>0</span>万</li>
+                        <li>关联处罚：<span>0</span>万</li>
+                        <li>自然人<span>0</span>万</li>
+                    </ul>
+                </div>
+                <div class="xygs">
+                    <h5>联合奖惩数据状态<span></span></h5>
+                    <ul>
+                        <li><b>进行中：</b><span>0</span></li>
+                        <li><b>公&nbsp;&nbsp;&nbsp;示:</b><span>0</span></li>
+                        <li><b>移&nbsp;&nbsp;&nbsp;出:</b><span>0</span></li>
+                    </ul>
+                </div>
+                <div class="totalNum">
+                    <h5>
+                        <label class="active">通报TOP5</label>
+                        <label>反馈TOP5</label>
+                    </h5>
+                    <div class="topPic swiper-container" id="topPic">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <ul>
+                                    <li><b class="">发改委：</b><span class="">0</span></li>
+                                    <li><b class="">发改委：</b><span class="">0</span></li>
+                                    <li><b class="">税务局：</b><span class="">0</span></li>
+                                    <li><b class="">发改委1：</b><span class="">0</span></li>
+                                    <li><b class="">发改委2：</b><span class="">0</span></li>
+                                    <li><b class="">税务局3：</b><span class="">0</span></li>
+                                </ul>
+                            </div>
+                            <div class="swiper-slide">
+                                <ul>
+                                    <li><b class="">发改委：</b><span class="">0</span></li>
+                                    <li><b class="">发改委：</b><span class="">0</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mainLeftBottom"></div>
+            </div>
+            <div class="block">
+                <div class="module">
+                    <h5>激励事件规则分布</h5>
+                    <div class="moduleContent">
+                        <div id="chart5"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+                <div class="module">
+                    <h5>惩戒事件规则分布</h5>
+                    <div class="moduleContent">
+                        <div id="chart6"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBar">
+            <div class="module chart10">
+                <h5>联合惩戒规则</h5>
+                <div class="moduleContent">
+                    <!-- <div class="topPic swiper-container" id="topPic">
+                        <div class="swiper-wrapper"></div>
+                        <div class="pagination"></div>
+                    </div>
+                    <ul class="news"></ul> -->
+                    <ul class="areaBox">
+                        <li class="area area1">
+                            国&nbsp;&nbsp;&nbsp;家 <span>25</span>
+                        </li>
+                        <li class="area area2">
+                            江苏省 <span>25</span>
+                        </li>
+                        <li class="area area3">
+                            无锡市 <span>25</span>
+                        </li>
+                    </ul>
+                    <div id="chart10"></div>
+                </div>
+                <div class="rightLeftTop"></div>
+                <div class="rightLeftBottom"></div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>联合惩戒事件主体</h5>
+                <div class="moduleContent">
+                    <div id="chart7"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>惩戒事件发起</h5>
+                <div class="moduleContent">
+                    <div id="chart8"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>惩戒事件部门参与</h5>
+                <div class="moduleContent">
+                    <div id="chart9"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>信用大数据分析</title>
+    <script src="js/lib/jquery-1.11.2.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <script src="js/lib/nanjing.js"></script>
+    <script src="js/lib/jquery.animateNumber.min.js"></script>
+    <script src="js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="js/lib/swiper/idangerous.swiper.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="jdChartLoading"></div>
+    <div class="dtCharts">
+        <div class="title">信用大数据分析11</div>
+        <div class="leftBar">
+            <div class="module chart1">
+                <h5>信用指数</h5>
+                <div class="moduleContent">
+                    <div id="chart1"></div>
+                    <div class="rangePoint">
+                        综合信用指数
+                        <br/><b>11</b>分
+                    </div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>收集信用主体</h5>
+                <div class="moduleContent">
+                    <div id="chart2"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>信用归集数据</h5>
+                <div class="moduleContent">
+                    <div id="chart3"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>重点监管</h5>
+                <div class="moduleContent">
+                    <div class="block">
+                        <div id="chart4_1"></div>
+                        <div id="chart4_2"></div>
+                    </div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="leftLeftBottom"></div>
+        </div>
+        <div class="mainBar">
+            <div class="mainMap">
+                <div id="mainMap"></div>
+                <ul class="mainNum">
+                    <li>
+                        <h5>归集数据量</h5>
+                        <p></p>
+                    </li>
+                    <li>
+                        <h5>同比增长率</h5>
+                        <span><b>0</b>%</span>
+                    </li>
+                </ul>
+                <div class="listTop">
+                    <h5>行业TOP5<span></span></h5>
+                    <ul>
+                        <li>旅游业：<span>0</span>万</li>
+                        <li>服务业：<span>0</span>万</li>
+                        <li>软件业：<span>0</span>万</li>
+                        <li>建筑业：<span>0</span>万</li>
+                        <li>制造业：<span>0</span>万</li>
+                    </ul>
+                </div>
+                <div class="xygs">
+                    <h5>信用公示<span></span></h5>
+                    <ul>
+                        <li>行政许可：<span>0</span></li>
+                        <li>行政处罚：<span>0</span></li>
+                        <li>红名单：<span>0</span></li>
+                        <li>黑名单：<span>0</span></li>
+                    </ul>
+                </div>
+                <div class="totalNum">
+                    <h5>主体数据量<span></span></h5>
+                    <ul>
+                        <li>法人：<span>0</span></li>
+                        <li>非法人：<span>0</span></li>
+                        <li>自然人：<span>0</span></li>
+                    </ul>
+                </div>
+                <div class="mainLeftBottom"></div>
+            </div>
+            <div class="block">
+                <div class="module">
+                    <h5>行业分布</h5>
+                    <div class="moduleContent">
+                        <div id="chart5"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+                <div class="module">
+                    <h5>规模分布</h5>
+                    <div class="moduleContent">
+                        <div id="chart6"></div>
+                    </div>
+                    <div class="leftBottomRaidus"></div>
+                    <div class="rightBottomRaidus"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBar">
+            <div class="module xydt">
+                <h5>信用动态</h5>
+                <div class="moduleContent">
+                    <div class="topPic swiper-container" id="topPic">
+                        <div class="swiper-wrapper"></div>
+                        <div class="pagination"></div>
+                    </div>
+                    <ul class="news"></ul>
+                </div>
+                <div class="rightLeftTop"></div>
+                <div class="rightLeftBottom"></div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>信用公示</h5>
+                <div class="moduleContent">
+                    <div id="chart7"></div>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+            <div class="module">
+                <h5>信用服务</h5>
+                <div class="moduleContent">
+                    <div id="chart8"></div>
+                    <ul class="chart8">
+                        <li class="hover"><span>信用<br>查询</span><em class="bg"><b class="mark"></b></em></li>
+                        <li><span>异议<br>处理</span><em class="bg"><b class="mark"></b></em></li>
+                        <li><span>信用<br>修复</span><em class="bg"><b class="mark"></b></em></li>
+                        <li><span>实名<br>注册</span><em class="bg"><b class="mark"></b></em></li>
+                        <li><span>办件<br>查询</span><em class="bg"><b class="mark"></b></em></li>
+                    </ul>
+                </div>
+                <div class="leftBottomRaidus"></div>
+                <div class="rightBottomRaidus"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

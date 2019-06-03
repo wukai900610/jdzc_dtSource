@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="./css/app.css">
+    <style type="text/css">.anchorBL{display:none;}</style>
+</head>
+<body>
+    <div class="pageWrap">
+        <div class="mainSearch">
+            <div class="inputBox">
+                <input type="text" placeholder="搜企业、查征信、看预警" class="input">
+                <!-- <div class="searchBtn"></div> -->
+                <div class="loading"></div>
+                <div class="dataList"></div>
+            </div>
+            <div class="lineBox">
+                <div class="landscape line"></div>
+                <div class="portrait line"></div>
+            </div>
+            <div class="next">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="roulette hide">
+            <div class="muder">
+                <div class="eye"></div>
+            </div>
+            <ul>
+            </ul>
+        </div>
+
+        <div class="page">
+            <div class="stage stage1">
+                <h1 class="logo"></h1>
+                <!-- <div class="fullScreen">全屏</div> -->
+                <div class="leftPannel">
+                    <h5 class="titleBar titleBar1">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            数据总数
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="animateNumber animateNumber1"></div>
+                    </div>
+
+                    <h5 class="titleBar titleBar2">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            企业总数
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="animateNumber animateNumber2"></div>
+                    </div>
+
+                    <h5 class="titleBar titleBar3">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            企业区域分布
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <ul class="flashSquareBox"></ul>
+                    </div>
+
+                    <h5 class="titleBar titleBar4">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            企业行业分布
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <ul class="productBox"></ul>
+                    </div>
+                </div>
+                <div class="next">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="stage stage2">
+                <div class="topTitle">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                </div>
+                <div class="leftPannel">
+                    <h5 class="titleBar titleBar1" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            信用分
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart1">
+                            <div class="legend">
+                                <span>信用优良</span>
+                                <span>信用正常</span>
+                                <span>信用偏低</span>
+                                <span>信用预警</span>
+                            </div>
+                            <div id="stage2Chart1" class="chart"></div>
+                        </div>
+                        <div class="charts chart2">
+                            <div id="stage2Chart2" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <h5 class="titleBar titleBar2">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            信用预警
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="warningNum">
+                            预警数量: <span class="num"></span> <span class="percent"></span>
+                        </div>
+                        <div class="charts chart3">
+                            <div class="stage2Chart3_1">
+                                <div id="stage2Chart3_1" class="chart"></div>
+                                <p>联合奖惩</p>
+                            </div>
+                            <div class="stage2Chart3_2">
+                                <div id="stage2Chart3_2" class="chart"></div>
+                                <p>黑名单</p>
+                            </div>
+                            <div class="stage2Chart3_3">
+                                <div id="stage2Chart3_3" class="chart"></div>
+                                <p>多次通报</p>
+                            </div>
+                        </div>
+                        <div class="charts chart4">
+                            <div id="stage2Chart4" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightPannel">
+                    <h5 class="titleBar titleBar1" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            数据归集
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="warningNum">
+                            归集数量: <span class="num"></span> <span class="percent up"></span>
+                        </div>
+                        <ul class="flexNum">
+                            <li>
+                                <p>自然人数量</p>
+                                <span></span>
+                            </li>
+                            <li>
+                                <p>法人数量</p>
+                                <span></span>
+                            </li>
+                            <li>
+                                <p>非企业法人数量</p>
+                                <span></span>
+                            </li>
+                        </ul>
+                        <div class="charts chart5">
+                            <div id="stage2Chart5" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <h5 class="titleBar titleBar2">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            信用分/GDP/税收曲线
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart6">
+                            <div id="stage2Chart6" class="chart"></div>
+                        </div>
+                        <div class="charts chart7">
+                            <div id="stage2Chart7" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="mapLegend">
+                        <h5>企业密度</h5>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="stage stage3">
+                <div class="topTitle">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                </div>
+                <div class="platform">
+                    <ul class="lines">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class="titles">
+                        <li>部门</li>
+                        <li>上报</li>
+                        <li>
+                            <div class="animateNumber animateNumber1"></div>
+                            归集数据总量
+                        </li>
+                        <li>法人库</li>
+                        <li>自然人库</li>
+                        <li>非企业法人库</li>
+                        <li>
+                            清洗数据总量
+                            <div class="animateNumber animateNumber2"></div>
+                        </li>
+                        <li>问题数据</li>
+                    </ul>
+                    <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <div class="report"></div>
+                    <div class="question"></div>
+                    <ul class="core">
+                        <li><span>资源分类</span></li>
+                        <li><span>清洗比对</span></li>
+                        <li><span>ETL 抽取</span></li>
+                        <li><span>资源编目</span></li>
+                    </ul>
+                </div>
+                <div class="leftPannel">
+                    <ul class="flexBox">
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    部门数
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare" style="cursor:pointer">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    信息资源数
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare" style="cursor:pointer">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    问题数据量
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    合格率
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span>0</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rightPannel pannel1">
+                    <h5 class="titleBar titleBar1" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            数据归集总览
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="warningNum">
+                            归集数量: <span class="num">2,132,452,500</span> <span class="percent">21.4%</span>
+                        </div>
+                        <div class="charts chart1">
+                            <div id="stage3Pannel1Chart1" class="chart"></div>
+                        </div>
+                        <div class="charts chart2">
+                            <div id="stage3Pannel1Chart2" class="chart"></div>
+                        </div>
+                        <a class="button">数据报告导出</a>
+                    </div>
+                </div>
+                <div class="rightPannel pannel2">
+                    <h5 class="titleBar titleBar1" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            部门归集分析
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart1">
+                            <div id="stage3Pannel2Chart1" class="chart"></div>
+                        </div>
+                        <div class="charts chart2">
+                            <div id="stage3Pannel2Chart2" class="chart"></div>
+                        </div>
+
+                        <div class="stage3Parts swiper-container" id="stage3Parts">
+                            <h4 class="gjTitle">部门数据归集动态</h4>
+                            <div class="swiper-wrapper"></div>
+                            <div class="pagination"></div>
+                        </div>
+
+                        <a class="button">数据报告导出</a>
+                    </div>
+                </div>
+                <div class="rightPannel pannel3">
+                    <h5 class="titleBar titleBar1" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            部门归集分析
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="warningNum">
+                            信息资源数量: <span class="num">5665</span> <span class="percent down">19.2%</span>
+                        </div>
+                        <div class="charts chart1">
+                            <div class="stage3Chart1_1">
+                                <div id="stage3Chart1_1" class="chart"></div>
+                                <p>异常数</p>
+                            </div>
+                            <div class="stage3Chart1_2">
+                                <div id="stage3Chart1_2" class="chart"></div>
+                                <p>重复数</p>
+                            </div>
+                            <div class="stage3Chart1_3">
+                                <div id="stage3Chart1_3" class="chart"></div>
+                                <p>待关联</p>
+                            </div>
+                            <div class="stage3Chart1_4">
+                                <div id="stage3Chart1_4" class="chart"></div>
+                                <p>入库率</p>
+                            </div>
+                        </div>
+
+                        <div class="charts chart2">
+                            <div id="stage3Pannel3Chart1" class="chart"></div>
+                        </div>
+                        <div class="charts chart3">
+                            <div id="stage3Pannel3Chart2" class="chart"></div>
+                        </div>
+
+                        <a class="button">数据报告导出</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage stage4">
+                <div class="topTitle backMode">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                    <span class="back"></span>
+                </div>
+                <div class="Company_information">
+                    <div class="more">
+                        <ul class="moreinfo">
+                            <li><span>下载报告</span></li>
+                            <li><span>关注</span></li>
+                        </ul>
+                    </div>
+                    <div class="company_head">
+                        <div class="logo_head"></div>
+                        <ul class="text_head">
+                            <li></li>
+                            <li></li>
+                            <li class="tags"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="leftPannel">
+                    <div class="left_titles">
+                        <ul class="page4_titles"></ul>
+                        <ul class="blocks">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <ul class="page4_radar">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <ul class="page4_core">
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="left_bot">
+                        <h5 class="titleBar">
+                            <div class="title">
+                                <div class="topLine"></div>
+                                <div class="dots">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div> 企业历史信用分
+                            </div>
+                        </h5>
+                        <div class="charts chart2">
+                            <div id="stage4Chart2" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page4_right rightPage1">
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div> 基本信息
+                        </div>
+                    </h5>
+                    <div class="back">
+                        <ul class="back_to">
+                            <li>回到总览</li>
+                        </ul>
+                    </div>
+                    <div class="tab">
+                        <ul class="tab_titles">
+                            <li class="selected"> <a href="javascript:void(0);">工商信息</a> </li>
+                            <li> <a href="javascript:void(0);">平台信息</a> </li>
+                            <li> <a href="javascript:void(0);">历史沿革</a> </li>
+                            <li> <a href="javascript:void(0);">主要人员</a> </li>
+                            <li> <a href="javascript:void(0);">股东信息</a> </li>
+                            <li> <a href="javascript:void(0);">对外投资</a> </li>
+                            <li> <a href="javascript:void(0);">变更记录</a> </li>
+                            <li> <a href="javascript:void(0);">分之机构</a> </li>
+                            <li> <a href="javascript:void(0);">公司年报</a> </li>
+                        </ul>
+                    </div>
+                    <div class="business">
+                        <div class="rightPannel_head1">
+                            <ul>
+                                <li>工商信息</li>
+                                <li><a href="javascript:void(0);">查看工商官网快照信息</a></li>
+                            </ul>
+                        </div>
+                        <div class="business_info">
+                            <table class="business_list">
+                                <tbody>
+                                <tr>
+                                    <td class="list1">统一社会信用代码</td>
+                                    <td>91110101663110040k</td>
+                                    <td class="list1">成立日期</td>
+                                    <td>2007-06-12</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">公司类型</td>
+                                    <td>其他责任有限公司</td>
+                                    <td class="list1">所属行业</td>
+                                    <td>信息传输、软件技术服务行业</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">标准日期</td>
+                                    <td>2019-04-24</td>
+                                    <td class="list1">登记机关</td>
+                                    <td>北京市工商行政管理局东城分局</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">所属地区</td>
+                                    <td>北京市</td>
+                                    <td class="list1">英文名</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">曾用名</td>
+                                    <td>-</td>
+                                    <td class="list1">参保人数</td>
+                                    <td>177</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">人员规模</td>
+                                    <td>100-499</td>
+                                    <td class="list1">营业期限至</td>
+                                    <td>2007-6-12至2027-06-11</td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">企业地址</td>
+                                    <td>北京市东城区金宝街67号S302C</td>
+                                    <td class="list1"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="list1">经营范围</td>
+                                    <td class="list2" colspan="3">技术推广服务；信息咨询（不含中介服务）；投资顾问；承办展览展示；公关策划；企业形象策划；企业管理咨询；会议服务；销售电子计算机及软硬件设备；软件设计。</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="shareholder">
+                        <div class="rightPannel_head2">
+                            <p>股东信息</p>
+                        </div>
+                        <table class="shareholder_list">
+                            <thead class="shareholder_head">
+                            <tr>
+                                <td>序号</td>
+                                <td>股东(发起人)</td>
+                                <td>持股比例</td>
+                                <td>认缴出资额(万元)</td>
+                                <td>认缴出资日期</td>
+                            </tr>
+                            </thead>
+                            <tbody class="shareholder_body">
+                            <tr>
+                                <td class="list4">1</td>
+                                <td class="list3">北京众成创新信息产业投资基金(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">2</td>
+                                <td class="list3">范晓忻</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">3</td>
+                                <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">4</td>
+                                <td class="list3">北京融汇通达投资管理有限公司</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">5</td>
+                                <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">6</td>
+                                <td class="list3">北京众城创新信息产业投资基金(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">7</td>
+                                <td class="list3">范晓忻</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">8</td>
+                                <td class="list3">北京国科鼎鑫创业投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">9</td>
+                                <td class="list3">北京融汇通达投资管理有限公司</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            <tr>
+                                <td class="list4">10</td>
+                                <td class="list3">北京电联瑞沣投资中心(有限合伙)</td>
+                                <td>15.95%</td>
+                                <td>1260.875</td>
+                                <td>2027-06-01</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="page4_right rightPage2 show">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div> 总览
+                        </div> </h5>
+                    <div class="right_1">
+                        <div class="area1">
+                            <div class="area1_head">
+                            </div>
+                            <div class="charts chart5">
+                                <div id="stage4Chart5" class="chart"></div>
+                                <!-- <div class="numBox numBox1">
+                                    <div class="value">7903.5849万元</div>
+                                    <span class="down percent">18.56%</span>
+                                </div> -->
+                            </div>
+                            <div class="charts chart1">
+                                <div class="stage4Chart1_1">
+                                    <div id="stage4Chart1_1" class="chart"></div>
+                                    <p>税务评级</p>
+                                </div>
+                                <div class="stage4Chart1_2">
+                                    <div id="stage4Chart1_2" class="chart"></div>
+                                    <p>联合激励</p>
+                                </div>
+                                <div class="stage4Chart1_3">
+                                    <div id="stage4Chart1_3" class="chart"></div>
+                                    <p>红名单</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area2">
+                            <div class="area2_head">
+                            </div>
+                            <div class="charts chart6">
+                                <div id="stage4Chart6" class="chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right_2">
+                        <div class="area3">
+                            <div class="area3_head">
+                            </div>
+                            <div class="charts chart4">
+                                <div id="stage4Chart4" class="chart"></div>
+                            </div>
+                        </div>
+                        <div class="area4">
+                            <div class="area4_head">
+                            </div>
+                            <div id="stage4_map">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stage stage5">
+                <div class="topTitle">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                </div>
+                <div class="leftPannel">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            区域评分雷达图
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart1">
+                            <div class="avgScore">区域信用平均分: <span></span></div>
+                            <div id="stage5Chart1" class="chart"></div>
+                        </div>
+                    </div>
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            企业类型信用等级分布
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart2">
+                            <div id="stage5Chart2" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightPannel">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            联合奖惩分析
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart3">
+                            <div id="stage5Chart3" class="chart"></div>
+                        </div>
+                    </div>
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            信用核查分析
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart4">
+                            <div id="stage5Chart4" class="chart"></div>
+                        </div>
+                        <a class="button">数据报告导出</a>
+                    </div>
+                </div>
+            </div>
+            <div class="stage stage6">
+                <div class="topTitle">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                </div>
+                <div class="topPannel">
+                    <ul class="flexBox">
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>五百强企业数量</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>家</b></div>
+                                        <span class="down percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>上市企业数量</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>家</b></div>
+                                        <span class="down percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>经营异常名录企业</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>家</b></div>
+                                        <span class="down percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>GDP</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>亿元</b></div>
+                                        <span class="up percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>纳税总额</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>亿元</b></div>
+                                        <span class="down percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content flashSquareBox">
+                                <h5>就业人数</h5>
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+
+                                    <div class="numBox">
+                                        <div class="num"><span></span> <b>万人</b></div>
+                                        <span class="up percent"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="leftPannel">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            主体信用与社会运行关系图
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart1">
+                            <div class="avgScore">区域信用平均分: <span></span></div>
+                            <div id="stage6Chart1" class="chart"></div>
+                        </div>
+                    </div>
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            主体类型分布图
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart2">
+                            <div id="stage6Chart2" class="chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightPannel">
+                    <h5 class="titleBar" style="padding-top:10px;">
+                        <div class="title">
+                            <div class="topLine"></div>
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            行业分布
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart3">
+                            <div id="stage6Chart3" class="chart"></div>
+                        </div>
+                    </div>
+                    <h5 class="titleBar">
+                        <div class="title">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            行业信用分和行业纳税
+                        </div>
+                    </h5>
+                    <div class="content">
+                        <div class="charts chart4">
+                            <div id="stage6Chart4" class="chart"></div>
+                        </div>
+                        <a class="button">数据报告导出</a>
+                    </div>
+                    <div class="mapLegend">
+                        <h5>GDP高</h5>
+                        <ul></ul>
+                        <h5>GDP低</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="stage stage7">
+                <div class="topTitle">
+                    <div class="area">地区: <span>城市</span></div>
+                    <div class="time">当前时间</div>
+                    <div class="screen fullScreen">全屏</div>
+                    <div class="music play">音乐</div>
+                </div>
+                <div class="leftPannel">
+                    <ul class="flexBox">
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    CPU使用率
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">
+                                        0
+                                        <!-- 86%<b>5.6GHZ</b> -->
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    连接数
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    内存
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">
+                                        0
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    负载
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    带宽
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">0</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h5 class="titleBar">
+                                <div class="title">
+                                    <div class="dots">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    接口请求
+                                </div>
+                            </h5>
+                            <div class="content flashSquareBox">
+                                <div class="flashSquare">
+                                    <div class="top corner"></div>
+                                    <div class="right corner"></div>
+                                    <div class="bottom corner"></div>
+                                    <div class="left corner"></div>
+                                    <span class="nums">0</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dashBoard">
+                    <ul class="flexBox">
+                        <li>
+                            <div class="info">
+                                <span class="left diff">CPU</span>
+                                <span class="right">Intel(R) Core(TM)i5-6656CPU@8.9GHz</span>
+                            </div>
+                            <div class="info">
+                                <span class="left">%利用率</span>
+                                <span class="right">100%</span>
+                            </div>
+                            <div class="charts chart1">
+                                <div id="stage7Chart1" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <span class="left diff">连接数</span>
+                            </div>
+                            <div class="info">
+                                <span class="left">%利用率</span>
+                                <span class="right">100%</span>
+                            </div>
+                            <div class="charts chart2">
+                                <div id="stage7Chart2" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <span class="left diff">磁盘I/O</span>
+                                <span class="right">磁盘型号</span>
+                            </div>
+                            <div class="info">
+                                <span class="left">%利用率</span>
+                                <span class="right">1兆字节/秒</span>
+                            </div>
+                            <div class="charts chart3">
+                                <div id="stage7Chart3" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="flexBox">
+                        <li>
+                            <div class="info">
+                                <span class="left diff">内存</span>
+                                <span class="right">8.0GB DDR3 </span>
+                            </div>
+                            <div class="info">
+                                <span class="left">内存使用率</span>
+                                <span class="right">100硬中断/秒</span>
+                            </div>
+                            <div class="charts chart4">
+                                <div id="stage7Chart4" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <span class="left diff">登录用户数</span>
+                                <span class="right">登录用户数描述</span>
+                            </div>
+                            <div class="info">
+                                <span class="left">%利用率</span>
+                                <span class="right">100000</span>
+                            </div>
+                            <div class="charts chart5">
+                                <div id="stage7Chart5" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info">
+                                <span class="left diff">流量</span>
+                                <span class="right">流量描述</span>
+                            </div>
+                            <div class="info">
+                                <span class="left">%利用率</span>
+                                <span class="right">100%</span>
+                            </div>
+                            <div class="charts chart6">
+                                <div id="stage7Chart6" class="chart"></div>
+                            </div>
+                            <div class="info">
+                                <span class="left">60秒</span>
+                                <span class="right">0</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container">
+                <div id="container" class="container"></div>
+            </div>
+
+
+            <!-- <div class="alert">
+                <h3>金电联行（北京）信息技术有限公司</h3>
+                <p>信用代码：91110101663110040K</p>
+                <div class="tags">
+                    <span class="tag">98分</span>
+                    <span class="tag">AAA</span>
+                </div>
+                <p>金电联行是一家第三方的信用及征信服务提供商，为金融与社会管理提供创新性信用服务。</p>
+                <span class="detail">查看企业详情</span>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- <audio id="music" loop="loop" style='display:none'>
+        <source src="./music.m4a" type="audio/mpeg">
+    </audio> -->
+    <audio src="./music.m4a" loop style="display:none;"></audio>
+    <script src="./js/lib/jquery-1.11.2.js"></script>
+    <script src="./js/lib/jquery.animateNumber.min.js"></script>
+    <script src="./js/lib/swiper/idangerous.swiper.min.js"></script>
+    <link rel="stylesheet" href="./js/lib/swiper/idangerous.swiper.css">
+    <script src="./js/lib/util.js"></script>
+
+    <script src="https://webapi.amap.com/maps?v=1.4.14&key=241178e6eb501d3dbe44862162f2fa6d"></script>
+    <script src="./js/lib/loca.js?v=1.2.0&key=241178e6eb501d3dbe44862162f2fa6d"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=h3lNwgZXljQqSOWoDq0ahAFNMpT8XlYQ"></script>
+
+    <script src='./js/lib/echarts.min.js'></script>
+    <script src='./js/lib/echarts-liquidfill.js'></script>
+    <script src="./js/app.js"></script>
+    <script>
+    $(function(){
+        $(window).resize(function(){
+            clearTimeout(timeScale);
+            var timeScale = setTimeout(function () {
+                if(myUtil.isFullscreen() == false){
+                    $('.page .fullScreen').show();
+                    // $('.page').css('height','1080px');
+                }else{
+                }
+        		// myUtil.setScale();
+            }, 250);
+    	});
+    	// //缩放页面
+    	myUtil.setScale();
+
+        page.topTitle();
+
+        // stage数据加载
+        // '/credit-data-platform/viewAble/selectAreaLocate.json'
+        $.get('./js/selectAreaLocate.json',function (callbackdata) {
+            // 配置城市及坐标
+            page.mapConfig.startCenter = callbackdata.startCenter;
+            page.mapConfig.city = callbackdata.city;
+            page.mapConfig.adcode = callbackdata.adcode;
+            // 设置标题区域
+            $('.topTitle .area span').text(page.mapConfig.city);
+
+            // 实例地图
+            page.amap = page.creditMap(page.amapConfig);
+            page.map = Loca.create(page.amap);
+
+            // 设置中心
+            page.amap.setCenter(page.mapConfig.startCenter);
+
+            // 概览页数据
+            // '/credit-data-platform/viewAble/stageData1.json'
+            $.get('./js/stage1.json',function (callbackdata) {
+                page.stage1.data = callbackdata;
+                page.pannel();
+            });
+        });
+
+        $.get('./js/stage2.json',function (callbackdata) {
+            page.stage2.data = callbackdata;
+        });
+        $.get('./js/stage3.json',function (callbackdata) {
+            page.stage3.data = callbackdata;
+        });
+        $.get('./js/stage4.json',function (callbackdata) {
+            page.stage4.data = callbackdata;
+        });
+        $.get('./js/stage5.json',function (callbackdata) {
+            page.stage5.data = callbackdata;
+        });
+        $.get('./js/stage6.json',function (callbackdata) {
+            page.stage6.data = callbackdata;
+        });
+        $.get('./js/stage7.json',function (callbackdata) {
+            page.stage7.data = callbackdata;
+        });
+    });
+    </script>
+</body>
+</html>
